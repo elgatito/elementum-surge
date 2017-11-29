@@ -1,2 +1,2 @@
 deploy:
-	surge -d elementum.surge.sh -p ./
+	surge -d elementum.surge.sh -p ./static/
