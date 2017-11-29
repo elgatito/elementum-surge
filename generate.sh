@@ -13,7 +13,7 @@ for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst
   VERSION=$(sed -ne "s/.*version=\"\([0-9a-z\.\-]*\)\"\sprovider.*/\1/p" addon.xml)
   VERSION="v${VERSION}"
 
-  echo ${VERSION} >> release
+  echo -n ${VERSION} >> release
 done
 
 surge -p ${CWD}/static/ -d elementum.surge.sh
