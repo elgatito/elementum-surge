@@ -9,11 +9,12 @@ for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst
   cd ${plugin}
 
   rm -f *
-  wget https://raw.githubusercontent.com/${plugin}/master/addon.xml
-  VERSION=$(sed -ne "s/.*version=\"\([0-9a-z\.\-]*\)\"\sprovider.*/\1/p" addon.xml)
+
+  VERSION=$(curl https://api.github.com/repos/${plugin}/releases/latest -s | jq .name -r)
   VERSION="v${VERSION}"
 
+  wget https://raw.githubusercontent.com/${plugin}/${VERSION}/addon.xml
   echo -n ${VERSION} >> release
 done
 
-surge -p ${CWD}/static/ -d elementum.surge.sh
+# surge -p ${CWD}/static/ -d elementum.surge.sh
