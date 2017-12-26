@@ -17,4 +17,4 @@ for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst
   echo -n ${VERSION} >> release
 done
 
-# surge -p ${CWD}/static/ -d elementum.surge.sh
+surge -p ${CWD}/static/ -d elementum.surge.sh
