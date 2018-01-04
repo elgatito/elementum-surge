@@ -23,4 +23,4 @@ done
 cd ${CWD}/src/
 hugo -d dist/ && cp -Rf dist/* ../static/
 
-# surge -p ${CWD}/static/ -d elementum.surge.sh
+surge -p ${CWD}/static/ -d elementum.surge.sh
