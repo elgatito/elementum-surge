@@ -1,0 +1,48 @@
+<style>
+  .platform-os {
+
+  }
+  .platform-name {
+  }
+  .platform-assets {
+  }
+  .platform-asset {
+  }
+</style>
+
+<table class="platform-os" border=0 cellspacing=1 cellpadding=1>
+  {{ $type := .Get 0 }}
+  {{ $pl := getJSON "data/" $type "/platforms.json" }}
+  {{ range $pl }}
+    {{ $os := .name }}
+    <tr class="platform-os">
+      <td class="platform-name" width=100>
+        {{ if eq .name "Android" }}
+          <i class="fab fa-android fa-3x"></i> {{ .name }}
+        {{ else if eq .name "OSx" }}
+          <i class="fab fa-apple fa-3x"></i> {{ .name }}
+        {{ else if eq .name "iOS" }}
+          <i class="fab fa-apple fa-3x"></i> {{ .name }}
+        {{ else if eq .name "Linux" }}
+          <i class="fab fa-linux fa-3x"></i> {{ .name }}
+        {{ else if eq .name "Windows" }}
+          <i class="fab fa-windows fa-3x"></i> {{ .name }}
+        {{ else }}
+          <i class="fas fa-trophy fa-3x"></i> {{ .name }}
+        {{ end }}
+      </td>
+
+      <td class="platform-assets">
+      {{ range .assets }}
+        {{ $.Scratch.Set "name" .arch }}
+        {{ $name := .arch }}
+
+        {{ if eq $name "" }}
+          {{ $.Scratch.Set "name" "All-in-one" }}
+        {{ end }}
+        <div class="platform-asset"><a href="{{ .url }}" title="{{ $os}} {{ .arch }}">{{ $.Scratch.Get "name" }}</a></div>
+      {{ end }}
+      </td>
+    </tr>
+  {{ end }}
+</table>

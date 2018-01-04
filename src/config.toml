@@ -1,0 +1,46 @@
+baseURL = "/"
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+
+title = "Elementum"
+description = "Elementum Documentation"
+theme = "docdock"
+#themesdir = "themes/docdock"
+
+[params]
+editURL = "https://github.com/elgatito/elementum-surge/edit/master/src/content/"
+showVisitedLinks = true # default is false
+# themeStyle = "flex" # "original" or "flex" # default "original"
+themeStyle = "original" # "original" or "flex" # default "original"
+themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
+ordersectionsby = "weight" # ordersectionsby = "title"
+disableHomeIcon = false # default is false
+disableSearch = false # default is false
+disableNavChevron = false # set true to hide next/prev chevron, default is false
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> Github repo"
+identifier = "ds"
+url = "https://github.com/elgatito/plugin.video.elementum"
+weight = 10
+
+# [[menu.shortcuts]]
+# name = "<i class='fa fa-camera'></i> Showcases"
+# url = "/showcase"
+# weight = 11
+
+# [[menu.shortcuts]]
+# name = "<i class='fa fa-bookmark'></i> Hugo Documentation"
+# identifier = "hugodoc"
+# url = "https://gohugo.io/"
+# weight = 20
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-bullhorn'></i> Credits"
+url = "/credits"
+weight = 30
