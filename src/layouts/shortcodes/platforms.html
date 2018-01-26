@@ -16,19 +16,19 @@
   {{ range $pl }}
     {{ $os := .name }}
     <tr class="platform-os">
-      <td class="platform-name" width=100>
+      <td class="platform-name" width=100 align="center">
         {{ if eq .name "Android" }}
-          <i class="fab fa-android fa-3x"></i> {{ .name }}
+          <i class="fab fa-android fa-3x"></i><br>{{ .name }}
         {{ else if eq .name "OSx" }}
-          <i class="fab fa-apple fa-3x"></i> {{ .name }}
+          <i class="fab fa-apple fa-3x"></i><br>{{ .name }}
         {{ else if eq .name "iOS" }}
-          <i class="fab fa-apple fa-3x"></i> {{ .name }}
+          <i class="fab fa-apple fa-3x"></i><br>{{ .name }}
         {{ else if eq .name "Linux" }}
-          <i class="fab fa-linux fa-3x"></i> {{ .name }}
+          <i class="fab fa-linux fa-3x"></i><br>{{ .name }}
         {{ else if eq .name "Windows" }}
-          <i class="fab fa-windows fa-3x"></i> {{ .name }}
+          <i class="fab fa-windows fa-3x"></i><br>{{ .name }}
         {{ else }}
-          <i class="fas fa-trophy fa-3x"></i> {{ .name }}
+          <i class="fas fa-trophy fa-3x"></i><br>{{ .name }}
         {{ end }}
       </td>
 

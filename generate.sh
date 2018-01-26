@@ -3,7 +3,7 @@
 CWD=$(pwd)
 mkdir -p static/packages
 
-for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst"; do
+for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst" "elgatito/context.elementum"; do
   cd ${CWD}
   go run generator.go ${plugin}
 
