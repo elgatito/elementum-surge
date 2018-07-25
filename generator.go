@@ -111,12 +111,15 @@ func main() {
 		Name:   "Universal",
 		Assets: osAry["Universal"],
 	})
-	output = append(output, Output{
-		Name:   "Client",
-		Assets: osAry["Client"],
-	})
 	delete(osAry, "Universal")
-	delete(osAry, "Client")
+
+	if _, ok := osAry["Client"]; ok {
+		output = append(output, Output{
+			Name:   "Client",
+			Assets: osAry["Client"],
+		})
+		delete(osAry, "Client")
+	}
 
 	for i, v := range osAry {
 		output = append(output, Output{
