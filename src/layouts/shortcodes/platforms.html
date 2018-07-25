@@ -27,6 +27,8 @@
           <i class="fab fa-linux fa-3x"></i><br>{{ .name }}
         {{ else if eq .name "Windows" }}
           <i class="fab fa-windows fa-3x"></i><br>{{ .name }}
+          {{ else if eq .name "Client" }}
+          <i class="fas fa-desktop fa-3x"></i><br>{{ .name }}
         {{ else }}
           <i class="fas fa-trophy fa-3x"></i><br>{{ .name }}
         {{ end }}
@@ -35,9 +37,12 @@
       <td class="platform-assets">
       {{ range .assets }}
         {{ $.Scratch.Set "name" .arch }}
+        {{ $mname := .name }}
         {{ $name := .arch }}
 
-        {{ if eq $name "" }}
+        {{ if eq $os "Client" }}
+          {{ $.Scratch.Set "name" "Client" }}
+        {{ else if eq $name "" }}
           {{ $.Scratch.Set "name" "All-in-one" }}
         {{ end }}
         <div class="platform-asset"><a href="{{ .url }}" title="{{ $os}} {{ .arch }}">{{ $.Scratch.Get "name" }}</a></div>

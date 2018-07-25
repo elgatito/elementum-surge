@@ -82,9 +82,12 @@ func main() {
 		arch := ""
 
 		parts := strings.Split(a.Name, ".")
-		subParts := strings.Split(parts[5], "_")
+		fmt.Printf("Parts: %#v", parts)
+		subParts := strings.Split(parts[len(parts)-2], "_")
 
-		if len(subParts) == 2 {
+		if strings.Contains(a.Name, "client") {
+			osName = "Client"
+		} else if len(subParts) == 2 {
 			// Universal
 			osName = strings.Title(subParts[0])
 			arch = subParts[1]
@@ -108,7 +111,12 @@ func main() {
 		Name:   "Universal",
 		Assets: osAry["Universal"],
 	})
+	output = append(output, Output{
+		Name:   "Client",
+		Assets: osAry["Client"],
+	})
 	delete(osAry, "Universal")
+	delete(osAry, "Client")
 
 	for i, v := range osAry {
 		output = append(output, Output{
