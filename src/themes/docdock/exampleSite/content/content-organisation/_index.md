@@ -60,7 +60,7 @@ example to display a github icon
 
 	+++
 	title = "Github repo"
-	pre ="<i class='fa fa-github'></i> "
+	pre ="<i class='fab fa-github'></i> "
 	+++
 
 ![dsf](/menu-entry-icon.png?height=40px&classes=shadow)
@@ -73,7 +73,7 @@ Add a `name` param next to `[menu.main]`
 	[menu.main]
 	parent = ""
 	identifier = "repo"
-	pre ="<i class='fa fa-github'></i> "
+	pre ="<i class='fab fa-github'></i> "
 	name = "Github repo"
 	+++ -->
 

@@ -9,12 +9,22 @@ Installation instructions.
 
 ## Installation
 
-Installation consists of Kodi preparation, zip download, installing addon from zip, initial configuration:
+Installation is simple! 
 
-1. Download zip file: [Platforms]({{%relref "platforms.md"%}})
-2. Enable remote control in Kodi.
+1. Enable remote controls in Kodi.
+    - Enter Kodi Service settings
+        ![Enter Kodi Service settings](/screenshots/install1.png)
+    - Enable both remote controls
+        ![Enable both remote controls](/screenshots/install2.png)
+    - It is needed to operate properly, to run library update, for example, or sync the library or add repository, and other usefull things.
+
+2. 
+    - Download zip file for your platform here: [Platforms]({{%relref "platforms-page.md"%}}). 
+    - It is highly recommended to use the "All-in-one" package, it will detect your platform automatically.
+
 3. Install addon from zip.
-4. Configure file path when asked.
+4. Plugin will be ready to use.
+    ![Enable both remote controls](/screenshots/install3.png)
 
 ## Configuration
 

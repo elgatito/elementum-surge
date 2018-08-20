@@ -13,7 +13,7 @@ Example from the current website, **note the `pre` param** which allows you to i
 
 	[[menu.shortcuts]]
 	pre = "<h3>More</h3>"
-	name = "<i class='fa fa-github'></i> Github repo"
+	name = "<i class='fab fa-github'></i> Github repo"
 	identifier = "ds"
 	url = "https://github.com/vjeantet/hugo-theme-docdock"
 	weight = 1

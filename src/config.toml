@@ -24,7 +24,7 @@ home = [ "HTML", "RSS", "JSON"]
 
 [[menu.shortcuts]]
 pre = "<h3>More</h3>"
-name = "<i class='fa fa-github'></i> Github repo"
+name = "<i class='fab fa-github'></i> Github repo"
 identifier = "ds"
 url = "https://github.com/elgatito/plugin.video.elementum"
 weight = 10
@@ -44,3 +44,7 @@ weight = 10
 name = "<i class='fa fa-bullhorn'></i> Credits"
 url = "/credits"
 weight = 30
+
+[blackfriday]
+  plainIDAnchors = true
+  hrefTargetBlank = true

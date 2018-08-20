@@ -6,13 +6,15 @@ date = "2017-04-24T18:36:24+02:00"
 +++
 
 # Elementum Kodi addon
-[Elementum addon {{%icon fa-github%}}](https://github.com/elgatito/plugin.video.elementum) is an addon for Kodi, that manages your virtual library, syncs with your Trakt account . **Author does not take any responsibility for how users use this software!**
+[Elementum addon <i class='fab fa-github'></i>](https://github.com/elgatito/plugin.video.elementum) is an addon for Kodi, that manages your virtual library, syncs with your Trakt account . **Author does not take any responsibility for how users use this software!**
 
 ## Main features
 
 * To be added later
 
 ### Elementum Downloads
+
+> It is always better to use "All-on-one" zip file to install, it includes all the platforms!
 
 {{% platforms "plugin.video.elementum" %}}
 
