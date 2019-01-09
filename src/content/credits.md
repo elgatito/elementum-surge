@@ -17,8 +17,8 @@ description = "contributors and packages used by Elementum"
 </div>
 
 ## Packages and libraries
-* [Torrent](https://github.com/anacrolix/torrent) - Torrent library in Go language
-* [Quasar](https://github.com/scakemyer/plugin.video.quasar) - Kodi plugin, forked to become Elementum
+* [Torrent](https://github.com/arvidn/libtorrent) - Torrent library, used in plugin.
+* [Quasar](https://github.com/scakemyer/plugin.video.quasar) - Kodi plugin, forked to become Elementum.
 
 ## Tooling
 
