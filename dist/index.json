@@ -1,0 +1,120 @@
+[
+{
+	"uri": "/getting-started/",
+	"title": "Getting started",
+	"tags": [],
+	"description": "",
+	"content": " Requirements Install Kodi for your OS\n Installation Installation instructions.  Configuration TODO  Downloads \n Updating Update instructions.  "
+},
+{
+	"uri": "/getting-started/installation/",
+	"title": "Installation",
+	"tags": [],
+	"description": "",
+	"content": "Installation instructions. Installation Installation is simple!\n Enable remote controls in Kodi.\n Enter Kodi Service settings  Enable both remote controls  It is needed to operate properly, to run library update, for example, or sync the library or add repository, and other usefull things.   Download zip file for your platform here: Platforms. It is highly recommended to use the \u0026ldquo;All-in-one\u0026rdquo; package, it will detect your platform automatically.  Install addon from zip.\n Plugin will be ready to use.   Configuration Follow instructions here\n"
+},
+{
+	"uri": "/getting-started/configuration/",
+	"title": "Configuration",
+	"tags": [],
+	"description": "",
+	"content": "TODO To be added later\n"
+},
+{
+	"uri": "/contribute/",
+	"title": "Contribute",
+	"tags": [],
+	"description": "",
+	"content": " Requirements Install Kodi for your OS\n Feature Request \n Report an Issue \n Making a log file \n "
+},
+{
+	"uri": "/contribute/request-feature/",
+	"title": "Feature Request",
+	"tags": [],
+	"description": "",
+	"content": "\nWhere to go  There are separate places for reporting an issue:  For Elementum addon: https://github.com/elgatito/plugin.video.elementum/issues For Burst: https://github.com/elgatito/script.elementum.burst/issues For Context addon: https://github.com/elgatito/context.elementum/issues For Elementum binary part of addon: https://github.com/elgatito/elementum/issues For this website: https://github.com/elgatito/elementum-surge/issues   Posting a request Nothing special. - Choose appropriate repository (For Elementum addon, for Burst, for Context addin, for website) - Create an issue. - Be very descriptive to understand your wish and how you see it.\n"
+},
+{
+	"uri": "/contribute/report-issue/",
+	"title": "Report an Issue",
+	"tags": [],
+	"description": "",
+	"content": "\nWhere to go  There are separate places for reporting an issue:  For Elementum addon: https://github.com/elgatito/plugin.video.elementum/issues For Burst: https://github.com/elgatito/script.elementum.burst/issues For Context addon: https://github.com/elgatito/context.elementum/issues For Elementum binary part of addon: https://github.com/elgatito/elementum/issues For this website: https://github.com/elgatito/elementum-surge/issues   Posting an issue Before posting an issue, prepare a log file, taken, after you reproduce the bug. Follow instructions here\nPlease, always, provide a log file if you encounter a bug, even if you think if is obvious to you. Sometimes it is useful to make a screenshot of a bug, or even a screencast, if addon acts strange in your understanding.\n"
+},
+{
+	"uri": "/burst/",
+	"title": "Burst addon",
+	"tags": [],
+	"description": "",
+	"content": " About TODO\n"
+},
+{
+	"uri": "/getting-started/platforms-page/",
+	"title": "Downloads",
+	"tags": [],
+	"description": "",
+	"content": "\nElementum Downloads  It is always better to use \u0026ldquo;All-on-one\u0026rdquo; zip file to install, it includes all the platforms!\n  .platform-os { } .platform-name { } .platform-assets { } .platform-asset { }  \nUniversal  All-in-one   \nClient  Client   \nAndroid  arm arm64 x86   \nOSx  x64 x86   \nLinux  arm6 arm7 arm64 x64 x86   \nWindows  x64 x86    Burst Downloads  .platform-os { } .platform-name { } .platform-assets { } .platform-asset { }  \nUniversal  All-in-one    Context Helper Downloads  .platform-os { } .platform-name { } .platform-assets { } .platform-asset { }  \nUniversal  All-in-one   "
+},
+{
+	"uri": "/contribute/log/",
+	"title": "Making a log file",
+	"tags": [],
+	"description": "",
+	"content": "\nAbout Log file in Kodi is a kodi.log file, located in temporary directory. Location of that directory depends on the platform, and even on the same platform it can differ. Locations can be discovered here: https://kodi.wiki/view/Log_file/Advanced#Location\nPreparation First of all, log file, by default, contains only limited records, only errors or some notable actions, but, to understand the cause of an issue, we need full log. So we need to enable debugging in Kodi.\n Enter Kodi System settings  Enable Expert level of settings  Enable event logging  That is it! But you probably won\u0026rsquo;t like the onscreen information about CPU usage and so on. So you can create an advancedsettings.xml file in Kodi\u0026rsquo;s Userdata folder (https://kodi.wiki/view/Userdata), which this content:\n\u0026lt;?xml version=\u0026quot;1.0\u0026quot; ?\u0026gt; \u0026lt;advancedsettings\u0026gt; \u0026lt;loglevel\u0026gt;2\u0026lt;/loglevel\u0026gt; \u0026lt;debug\u0026gt; \u0026lt;extralogging\u0026gt;true\u0026lt;/extralogging\u0026gt; \u0026lt;showloginfo\u0026gt;false\u0026lt;/showloginfo\u0026gt; \u0026lt;/debug\u0026gt; \u0026lt;/advancedsettings\u0026gt;  It will enable logging and hide onscreen information.\n Now your Kodi records everything into the log file!\n  What we have Elementum has few HTTP links which can give you more information about torrenting status, system information, some timers of common operations (which are way too useful for developers!): - /debug/bundle will give you all the debug information + kodi.log file included. So it\u0026rsquo;s the fullest log file, and is what we\u0026rsquo;d expect from you to find the problem. - /debug/all contains all the debug information, without kodi.log, so it\u0026rsquo;s all about the system and torrent engine, but not Kodi.\nTo find proper link: - Enter Elementum addon, open Status - In the table you can see the address, that can be opened from other devices (in case you Kodi runs on a separate device in the network) Two ways of taking a log file: Easy one If your Elementum starts fine, so you can enter it, browse for something, then you can try this way, if not, please, browse for the Hard one.\nThere is bundled functionality to upload your /debug/bundle or /debug/all logs to pastebin services. All you need is to enter settings and start an upload:\n Enter Elementum settings, open Advanced tab, browse to Logging section and you can see there are Upload options.  Now you get an url of a paste. Write it down and share in your issues!  Easy enough?!\nHard one Still not so hard, but, sadly, more manual and needs some effords, at least, for the first time. So you can follow the manual here: https://kodi.wiki/view/Log_file/Easy\nShortly, you can install log uploader plugin, and run it to get pastebin link of an uploaded log file. Or you can find your log location here: https://kodi.wiki/view/Log_file/Advanced#Location and use it manually.\n"
+},
+{
+	"uri": "/context/",
+	"title": "Context addon",
+	"tags": [],
+	"description": "",
+	"content": " About Context addon adds context menu items, when you open it on movies, or TV shows in Kodi.\nJust open the menu and click \u0026ldquo;Play\u0026rdquo; and item will be searched by Elementum. Does not matter which Scraper was used for that item, is it local item, or virtual item, or added by another plugin. If Kodi treats item as Movie or Episode - you can play it!\n"
+},
+{
+	"uri": "/getting-started/updating/",
+	"title": "Updating",
+	"tags": [],
+	"description": "",
+	"content": "Update instructions. How it works Elementum has a self-hosted virtual Kodi repository. What it means?\n When installed, Elementum adds a repository to Kodi. In some cases it is added, but not enabled, so you can manually enable it like any other addon. Repository update address points to the Elementum addon, so it you Elementum cannot start - repository is not working. This was made in that way to be able to change repository source in the code, in case github in inaccessible, or something. Plugin knows which OS architecture it needs, so it\u0026rsquo;s downloading only that architecture zip file. Repository contains the Addon itself, Burst addon, Context addon, you can install or update any of them.   Please, don\u0026rsquo;t use third-party repositories to install or update the addon, unless you know they are providing you with the universal package, which contains all the architectures.\n So, if you addon works fine - you can simply update the addon as usually, or leave it to Kodi. If not, then you should re-download addon from Downloads and re-install from zip. No need to remove the addon before installing.\n"
+},
+{
+	"uri": "/",
+	"title": "Elementum Documentation",
+	"tags": [],
+	"description": "",
+	"content": " Elementum Kodi addon Elementum addon  is an addon for Kodi, that manages your virtual library, syncs with your Trakt account . Author does not take any responsibility for how users use this software!\nMain features  To be added later  Elementum Downloads  It is always better to use \u0026ldquo;All-on-one\u0026rdquo; zip file to install, it includes all the platforms!\n  .platform-os { } .platform-name { } .platform-assets { } .platform-asset { }  \nUniversal  All-in-one   \nClient  Client   \nAndroid  arm arm64 x86   \nOSx  x64 x86   \nLinux  arm6 arm7 arm64 x64 x86   \nWindows  x64 x86    Burst Downloads  .platform-os { } .platform-name { } .platform-assets { } .platform-asset { }  \nUniversal  All-in-one    Context Helper Downloads  .platform-os { } .platform-name { } .platform-assets { } .platform-asset { }  \nUniversal  All-in-one    Contribute to this documentation Feel free to update this content, just click the Edit this page link displayed on top right of each page, and pullrequest it Your modification will be deployed automatically when merged. "
+},
+{
+	"uri": "/_footer/",
+	"title": "footer",
+	"tags": [],
+	"description": "",
+	"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"
+},
+{
+	"uri": "/_header/",
+	"title": "header",
+	"tags": [],
+	"description": "",
+	"content": "Elementum Documentation\n"
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/credits/",
+	"title": "Credits",
+	"tags": [],
+	"description": "contributors and packages used by Elementum",
+	"content": " github contributors .ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start } .ghContributors  div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors  div label{ padding-left: 4px ; } .ghContributors  div span{ font-size: x-small; padding-left: 4px ; }   @scakemyer 411 commits   @elgatito 206 commits   @steeve 90 commits   @meijin007 39 commits   @i96751414 23 commits   @KillerJoeBR 14 commits   @penzinho 14 commits   @m4xc4v413r4 13 commits   @Greenbaburu 12 commits   @peer23peer 12 commits   @muzena 9 commits   @zorg1977 9 commits   @ramiro 6 commits   @lrrosa 6 commits   @Filosofos 5 commits   @abuisine 4 commits   @razer1s 4 commits   @johnnyslt 4 commits   @Lam4hound 3 commits   @dmartinpro 3 commits   @roliverosc 2 commits   @sonics007 2 commits   @trisk 1 commits   @benjamintillman 1 commits   @candrews 1 commits   @MrDini123 1 commits   @MrLegendary 1 commits   @susobaco 1 commits   @achaw 1 commits   @guidosarducci 1 commits   @likeitneverwentaway 1 commits   @tobiasvandriessel 1 commits   Other contributors  @scakemyer Quasar development   Packages and libraries  Torrent - Torrent library in Go language Quasar - Kodi plugin, forked to become Elementum  Tooling  Hugo    "
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
