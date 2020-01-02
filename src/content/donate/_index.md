@@ -25,4 +25,6 @@ Elementum is free to use, without any payments and fees, but you can donate, to 
 </span>  
 
 ### Bitcoin
-Bitcoin address: bc1qfaea67lv4e8w97fx3crmdtxryn8pkc47mf7gav
+* BTC: 1AVMRYfBUVcDoUNi3WZqPtaigbFtkHEQvP
+* BCH: qp5pt57335k44mpq9m55ajyz2err8kfv4cn58sxvt8
+* Electrum address: bc1qfaea67lv4e8w97fx3crmdtxryn8pkc47mf7gav
