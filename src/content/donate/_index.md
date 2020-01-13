@@ -9,6 +9,10 @@ weight = 5
 Elementum is free to use, without any payments and fees, but you can donate, to support further development and add functionality to the addon and surrounding projects.  
 
 
+### Yandex
+
+<iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D1%82%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%20Elementum&targets-hint=&default-sum=&button-text=14&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=41001188390666" width="100%" height="222" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+
 ### Paypal
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 <input type="hidden" name="cmd" value="_s-xclick" />
