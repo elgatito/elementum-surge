@@ -5,7 +5,7 @@ description = "contributors and packages used by Elementum"
 
 
 ## github contributors
-{{%ghcontributors "https://api.github.com/repos/elgatito/plugin.video.elementum/contributors?per_page=100" %}}
+{{<ghcontributors "https://api.github.com/repos/elgatito/plugin.video.elementum/contributors?per_page=100" >}}
 
 ### Other contributors
 <div class="ghContributors">
@@ -22,4 +22,4 @@ description = "contributors and packages used by Elementum"
 
 ## Tooling
 
-* [Hugo](https://gohugo.io/) {{%icon "fa-smile-o"%}}
+* [Hugo](https://gohugo.io/) {{<icon "fa-smile-o">}}

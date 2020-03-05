@@ -45,6 +45,9 @@ name = "<i class='fa fa-bullhorn'></i> Credits"
 url = "/credits"
 weight = 30
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [blackfriday]
   plainIDAnchors = true
   hrefTargetBlank = true

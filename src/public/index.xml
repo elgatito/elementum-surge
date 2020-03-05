@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elementum Documentation on Elementum</title>
+    <link>/</link>
+    <description>Recent content in Elementum Documentation on Elementum</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 24 Apr 2017 18:36:24 +0200</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to add provider</title>
+      <link>/burst/create/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/burst/create/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>/getting-started/installation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/getting-started/installation/</guid>
+      <description>&lt;p&gt;Installation instructions.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Configuration</title>
+      <link>/getting-started/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/getting-started/configuration/</guid>
+      <description>&lt;p&gt;TODO&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Feature Request</title>
+      <link>/contribute/request-feature/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contribute/request-feature/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>How to override provider</title>
+      <link>/burst/override/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/burst/override/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Report an Issue</title>
+      <link>/contribute/report-issue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contribute/report-issue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Downloads</title>
+      <link>/getting-started/platforms-page/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/getting-started/platforms-page/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Making a log file</title>
+      <link>/contribute/log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contribute/log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Updating</title>
+      <link>/getting-started/updating/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/getting-started/updating/</guid>
+      <description>&lt;p&gt;Update instructions.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>footer</title>
+      <link>/_footer/</link>
+      <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
+      
+      <guid>/_footer/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>header</title>
+      <link>/_header/</link>
+      <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
+      
+      <guid>/_header/</guid>
+      <description>Elementum Documentation</description>
+    </item>
+    
+    <item>
+      <title>Credits</title>
+      <link>/credits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/credits/</guid>
+      <description>github contributors Other contributors Packages and libraries  Torrent - Torrent library, used in plugin. Quasar - Kodi plugin, forked to become Elementum.  Tooling  Hugo  </description>
+    </item>
+    
+  </channel>
+</rss>

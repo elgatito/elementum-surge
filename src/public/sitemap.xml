@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>/burst/create/</loc>
+  </url>
+  
+  <url>
+    <loc>/getting-started/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>/getting-started/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>/contribute/</loc>
+  </url>
+  
+  <url>
+    <loc>/contribute/request-feature/</loc>
+  </url>
+  
+  <url>
+    <loc>/burst/override/</loc>
+  </url>
+  
+  <url>
+    <loc>/contribute/report-issue/</loc>
+  </url>
+  
+  <url>
+    <loc>/burst/</loc>
+  </url>
+  
+  <url>
+    <loc>/getting-started/platforms-page/</loc>
+  </url>
+  
+  <url>
+    <loc>/contribute/log/</loc>
+  </url>
+  
+  <url>
+    <loc>/context/</loc>
+  </url>
+  
+  <url>
+    <loc>/getting-started/updating/</loc>
+  </url>
+  
+  <url>
+    <loc>/donate/</loc>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2017-04-24T18:36:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/_footer/</loc>
+    <lastmod>2017-04-24T18:36:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/_header/</loc>
+    <lastmod>2017-04-24T18:36:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/credits/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+  </url>
+  
+</urlset>

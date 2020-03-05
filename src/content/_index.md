@@ -16,16 +16,16 @@ date = "2017-04-24T18:36:24+02:00"
 
 > It is always better to use "All-on-one" zip file to install, it includes all the platforms!
 
-{{% platforms "plugin.video.elementum" %}}
+{{< platforms "plugin.video.elementum" >}}
 
 ### Burst Downloads
 
-{{% platforms "script.elementum.burst" %}}
+{{< platforms "script.elementum.burst" >}}
 
 ### Context Helper Downloads
 
-{{% platforms "context.elementum" %}}
+{{< platforms "context.elementum" >}}
 
 ## Contribute to this documentation
 Feel free to update this content, just click the **Edit this page** link displayed on top right of each page, and pullrequest it
-{{%alert%}}Your modification will be deployed automatically when merged.{{%/alert%}}
+{{<alert>}}Your modification will be deployed automatically when merged.{{</alert>}}
