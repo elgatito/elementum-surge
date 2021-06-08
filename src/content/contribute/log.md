@@ -15,15 +15,15 @@ Locations can be discovered here: https://kodi.wiki/view/Log_file/Advanced#Locat
 ## Preparation
 
 First of all, log file, by default, contains only limited records, only errors or some notable actions, but, to understand the cause of an issue, we need full log. 
-So we need to enable debugging in Kodi.
+So we need to enable debugging in Kodi and in Elementum.
 
 - Enter Kodi System settings
     ![Enter Kodi System settings](/screenshots/log4.png)
 - Enable Expert level of settings
     ![Enable Expert level of settings](/screenshots/log6.png)
-- Enable event logging
+- Enable debug logging
     ![Enable debug logging](/screenshots/log5.png)
-- That is it! But you probably won't like the onscreen information about CPU usage and so on. So you can create an _advancedsettings.xml_ file in Kodi's Userdata folder (https://kodi.wiki/view/Userdata), which this content:
+- That is it for Kodi! But you probably won't like the onscreen information about CPU usage and so on. So you can create an _advancedsettings.xml_ file in Kodi's Userdata folder (https://kodi.wiki/view/Userdata), which this content:
 ```xml
 <?xml version="1.0" ?>
 <advancedsettings>
@@ -35,6 +35,9 @@ So we need to enable debugging in Kodi.
 </advancedsettings>
 ```
 It will enable logging and hide onscreen information.
+
+- For Elementum: open addon settings, go to "Advanced" tab, set "Log level" to "Debug"
+    ![Enable debug logging in elementum](/screenshots/log7.png)
 
 - Now your Kodi records everything into the log file!
 
