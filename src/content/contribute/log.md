@@ -22,7 +22,7 @@ So we need to enable debugging in Kodi.
 - Enable Expert level of settings
     ![Enable Expert level of settings](/screenshots/log6.png)
 - Enable event logging
-    ![Enable event logging](/screenshots/log5.png)
+    ![Enable debug logging](/screenshots/log5.png)
 - That is it! But you probably won't like the onscreen information about CPU usage and so on. So you can create an _advancedsettings.xml_ file in Kodi's Userdata folder (https://kodi.wiki/view/Userdata), which this content:
 ```xml
 <?xml version="1.0" ?>
@@ -34,7 +34,7 @@ So we need to enable debugging in Kodi.
     </debug>
 </advancedsettings>
 ```
-    It will enable logging and hide onscreen information.
+It will enable logging and hide onscreen information.
 
 - Now your Kodi records everything into the log file!
 
