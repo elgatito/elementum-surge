@@ -18,6 +18,10 @@ date = "2017-04-24T18:36:24+02:00"
 
 {{< platforms "plugin.video.elementum" >}}
 
+### LT2http Downloads
+
+{{< platforms "service.lt2http" >}}
+
 ### Burst Downloads
 
 {{< platforms "script.elementum.burst" >}}

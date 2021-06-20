@@ -132,6 +132,7 @@ func main() {
 
 	repoParts := strings.Split(repo, "/")
 	outputJSON, _ := json.Marshal(output)
+	os.MkdirAll(fmt.Sprintf("src/data/%s", repoParts[1]), os.ModePerm)
 	errWrite := ioutil.WriteFile(fmt.Sprintf("src/data/%s/platforms.json", repoParts[1]), outputJSON, 0644)
 	if errWrite != nil {
 		fmt.Printf("Can't write json: %#v \n", errWrite)

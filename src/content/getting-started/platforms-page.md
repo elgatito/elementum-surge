@@ -12,6 +12,10 @@ weight = 3
 
 {{< platforms "plugin.video.elementum" >}}
 
+### LT2http Downloads
+
+{{< platforms "service.lt2http" >}}
+
 ### Burst Downloads
 
 {{< platforms "script.elementum.burst" >}}
