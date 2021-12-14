@@ -11,7 +11,7 @@ Installation instructions.
 
 Installation is simple! 
 
-1. Enable remote controls in Kodi.
+1. Enable remote controls in Kodi.. 
     - Enter Kodi Service settings
         ![Enter Kodi Service settings](/screenshots/install1.png)
     - Enable both remote controls
