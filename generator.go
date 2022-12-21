@@ -59,7 +59,10 @@ func main() {
 		Transport: &transport,
 	}
 
-	resp, err := client.Get(fmt.Sprintf("https://api.github.com/repos/%s/releases/latest", repo))
+	req, _ := http.NewRequest("GET", fmt.Sprintf("https://api.github.com/repos/%s/releases/latest", repo), nil)
+	req.SetBasicAuth(os.Getenv("GH_TOKEN"), "x-oauth-basic")
+
+	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Printf("Can't get json: %#v \n", err)
 		os.Exit(1)
