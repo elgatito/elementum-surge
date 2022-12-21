@@ -35,7 +35,7 @@ git clone --depth=1 https://github.com/ElementumOrg/elementumorg.github.io remot
 cp -Rf ${CWD}/static/* remote/
 cd remote && \
   git add * && git commit -m "Update to ${GIT_VERSION}"
-  git remote add static https://$GH_TOKEN@github.com/ElementumOrg/elementumorg.github.io && \
+  git remote add static https://$GH_USER:$GH_TOKEN@github.com/ElementumOrg/elementumorg.github.io && \
   git push static master && \
   cd .. && \
   rm -rf remote
