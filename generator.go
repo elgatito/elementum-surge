@@ -9,6 +9,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/sanity-io/litter"
 )
 
 // Release comes from github
@@ -80,12 +82,14 @@ func main() {
 	output := []Output{}
 	osAry := map[string][]OutputAsset{}
 
+	fmt.Printf("Release information: %s \n", litter.Sdump(release))
+
 	for _, a := range release.Assets {
 		osName := "Universal"
 		arch := ""
 
 		parts := strings.Split(a.Name, ".")
-		fmt.Printf("Parts: %#v", parts)
+		fmt.Printf("Parts: %#v \n", parts)
 		subParts := strings.Split(parts[len(parts)-2], "_")
 
 		if strings.Contains(a.Name, "client") {
@@ -131,7 +135,7 @@ func main() {
 		})
 	}
 
-	fmt.Printf("Output: %#v \n", output)
+	fmt.Printf("Output: %s \n", litter.Sdump(output))
 
 	repoParts := strings.Split(repo, "/")
 	outputJSON, _ := json.Marshal(output)
