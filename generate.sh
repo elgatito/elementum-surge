@@ -5,7 +5,7 @@ GIT_VERSION=$(git rev-parse HEAD)
 
 mkdir -p static/packages
 
-for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst" "elgatito/context.elementum" "ElementumOrg/service.lt2http"; do
+for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst" "elgatito/context.elementum" "ElementumOrg/service.lt2http" "ElementumOrg/repository.elementumorg"; do
   cd ${CWD}
   go run generator.go ${plugin}
 

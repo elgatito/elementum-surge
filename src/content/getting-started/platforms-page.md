@@ -6,6 +6,12 @@ weight = 3
 
 <!--more-->
 
+### Repository Downloads
+
+> Platform-independent repository, that can work without Elementum addon.
+
+{{< platforms "repository.elementumorg" >}}
+
 ### Elementum Downloads
 
 > It is always better to use "All-on-one" zip file to install, it includes all the platforms!
