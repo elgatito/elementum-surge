@@ -19,11 +19,10 @@ Installation is simple!
     - It is needed to operate properly, to run library update, for example, or sync the library or add repository, and other usefull things.
 
 2. 
-    - Download zip file for your platform here: [Platforms]({{%relref "platforms-page.md"%}}). 
-    - It is highly recommended to use the "All-in-one" package, it will detect your platform automatically.
+    - Install Kodi repository `repository.elementumorg`, by downloading zip file here: [Platforms]({{%relref "platforms-page.md"%}}). 
+    - Install Elementum addon from installed repository, or by manually downloading and installing `plugin.video.elementum` addon from here: [Platforms]({{%relref "platforms-page.md"%}}). 
 
-3. Install addon from zip.
-4. Plugin will be ready to use.
+3. Plugin will be ready to use.
     ![Enable both remote controls](/screenshots/install3.png)
 
 ## Configuration
