@@ -39,11 +39,12 @@
         {{ $.Scratch.Set "name" .arch }}
         {{ $mname := .name }}
         {{ $name := .arch }}
+        {{ $u := path.Split .url }}
 
         {{ if eq $os "Client" }}
           {{ $.Scratch.Set "name" "Client" }}
         {{ else if eq $name "" }}
-          {{ $.Scratch.Set "name" "All-in-one" }}
+          {{ $.Scratch.Set "name" (printf "All-in-one (%s)" $u.File ) }}
         {{ end }}
         <div class="platform-asset"><a href="{{ .url }}" title="{{ $os}} {{ .arch }}">{{ $.Scratch.Get "name" }}</a></div>
       {{ end }}
