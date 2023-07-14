@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net"
 	"net/http"
 	"os"
@@ -69,7 +70,7 @@ func main() {
 		os.Exit(1)
 	}
 	defer resp.Body.Close()
-	body, _ := os.ReadAll(resp.Body)
+	body, _ := io.ReadAll(resp.Body)
 
 	var release Release
 	errJSON := json.Unmarshal(body, &release)
