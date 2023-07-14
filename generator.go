@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
@@ -70,7 +69,7 @@ func main() {
 		os.Exit(1)
 	}
 	defer resp.Body.Close()
-	body, _ := ioutil.ReadAll(resp.Body)
+	body, _ := os.ReadAll(resp.Body)
 
 	var release Release
 	errJSON := json.Unmarshal(body, &release)
@@ -140,7 +139,7 @@ func main() {
 	repoParts := strings.Split(repo, "/")
 	outputJSON, _ := json.Marshal(output)
 	os.MkdirAll(fmt.Sprintf("src/data/%s", repoParts[1]), os.ModePerm)
-	errWrite := ioutil.WriteFile(fmt.Sprintf("src/data/%s/platforms.json", repoParts[1]), outputJSON, 0644)
+	errWrite := os.WriteFile(fmt.Sprintf("src/data/%s/platforms.json", repoParts[1]), outputJSON, 0644)
 	if errWrite != nil {
 		fmt.Printf("Can't write json: %#v \n", errWrite)
 		os.Exit(1)
