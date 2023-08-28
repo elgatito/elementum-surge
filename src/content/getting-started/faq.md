@@ -45,3 +45,7 @@ With NTFS it will take decent amount of time to create new big file, that's why 
 * Add `elementum_library/Movies/` as a Movies source in the library
 * Add `elementum_library/Shows/` as a Shows source in the library
 * You might find ["context.elementum"]({{%relref "platforms-page.md#context-helper-downloads"%}}) useful as well
+
+### How to use elementum on Android 4.4
+
+You have to use old version [0.1.41](https://github.com/elgatito/plugin.video.elementum/releases/tag/v0.1.41). More details [here](https://github.com/elgatito/plugin.video.elementum/issues/576).
