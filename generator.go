@@ -90,11 +90,11 @@ func main() {
 
 		parts := strings.Split(a.Name, ".")
 		fmt.Printf("Parts: %#v \n", parts)
-		subParts := strings.SplitN(parts[len(parts)-2], "_", 1)
+		subParts := strings.Split(parts[len(parts)-2], "_")
 
 		if strings.Contains(a.Name, "client") {
 			osName = "Client"
-		} else if len(subParts) == 2 {
+		} else if len(subParts) >= 2 {
 			// Universal
 			osName = strings.Title(subParts[0])
 			arch = subParts[1]
