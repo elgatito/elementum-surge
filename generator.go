@@ -90,7 +90,7 @@ func main() {
 
 		parts := strings.Split(a.Name, ".")
 		fmt.Printf("Parts: %#v \n", parts)
-		subParts := strings.Split(parts[len(parts)-2], "_")
+		subParts := strings.SplitN(parts[len(parts)-2], "_", 1)
 
 		if strings.Contains(a.Name, "client") {
 			osName = "Client"
