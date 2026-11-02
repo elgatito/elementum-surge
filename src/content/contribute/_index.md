@@ -13,6 +13,8 @@ Elementum is a community-driven open-source project. Pull requests are welcome i
 | [elementum](https://github.com/elgatito/elementum) | The daemon (Go): torrent streaming, library, tracking services. |
 | [script.elementum.burst](https://github.com/elgatito/script.elementum.burst) | Burst search add-on and its providers, see [How to add a provider]({{% relref "/burst/create.md" %}}). |
 | [context.elementum](https://github.com/elgatito/context.elementum) | Context menu add-on. |
+| [lt2http](https://github.com/ElementumOrg/lt2http) | [LT2http]({{% relref "/lt2http/_index.md" %}}) engine (C++). |
+| [service.lt2http](https://github.com/ElementumOrg/service.lt2http) | LT2http Kodi add-on (Python). |
 | [elementum-surge](https://github.com/elgatito/elementum-surge) | This website. |
 
 ## Translations
