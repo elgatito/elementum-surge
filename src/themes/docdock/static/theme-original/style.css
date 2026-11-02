@@ -1061,6 +1061,7 @@ td {
   background-color: #f8efd1; }
 
 .clippy-icon {
+  width: 14px;
   padding-left: 6px;
   padding-right: 4px;
   padding-bottom: 1px;
