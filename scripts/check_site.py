@@ -32,6 +32,10 @@ for f in root.rglob("*.html"):
         target = root / url[len(base):]
         check(target.is_file() or (target / "index.html").is_file(), f"{f.relative_to(root)}: broken link {url}")
 
+# Linked from the add-ons (settings, README), must keep working after restructuring
+for path in ("donate", "context", "contribute/log"):
+    page(path)
+
 settings = page("configuration/kodi-settings")
 check(settings.count("<code>") > 100, "kodi-settings: too few settings rendered")
 check(not re.search(r"(<tr><td>|<th colspan=\"5\">|<h2>)\d{5}<", settings), "kodi-settings: unresolved string id in labels")

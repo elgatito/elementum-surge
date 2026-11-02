@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "rtl"
+
+[Versioning-warning]
+other = 'این صفحه نسخه {{.pageVersion.title}} را نشان میدهد. نسخه فعلی را میتوان در <a href="{{.latestUrl}}">اینجا</a> یافت.'
+
+[Search]
+other = "جستجو"
+
+[Search-placeholder]
+other = "جستجو..."
+
+[Clear-search]
+other = "پاک کردن جستجو"
+
+[No-results-found]
+other = "نتیجه‌ای برای \"{0}\" یافت نشد"
+
+[N-results-found]
+other = "{1} نتیجه برای \"{0}\" یافت شد"
+
+[Clear-History]
+other = "پاک کردن تاریخچه"
+
+[History-cleared]
+other = "تاریخچه پاک شد"
+
+[Enlarge-graph]
+other = "بزرگ‌نمایی نمودار"
+
+[Close-graph]
+other = "بستن نمودار بزرگ‌شده"
+
+[Reset-view]
+other = "بازنشانی نمایش"
+
+[View-reset]
+other = "نمایش بازنشانی شد!"
+
+[Attachments-label]
+other = "پیوست‌ها"
+
+[title-404]
+other = "یافت نشد"
+
+[message-404]
+other = "اوه! به نظر می‌رسد این صفحه وجود ندارد ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "رفتن به صفحه اصلی"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "ویرایش"
+
+[Show-Markdown]
+other = "نمایش Markdown"
+
+[Show-source]
+other = "نمایش کد منبع"
+
+[Print-this-chapter]
+other = "چاپ کل فصل"
+
+[More-action]
+other = "بیشتر"
+
+[shortcuts-menuTitle]
+other = "بیشتر"
+
+[Navigation-toggle]
+other = "منو"
+
+[Toc-toggle]
+other = "فهرست مطالب"
+
+[Byte-symbol]
+other = "بایت"
+
+[Kilobyte-symbol]
+other = "کیلوبایت"
+
+[Megabyte-symbol]
+other = "مگابایت"
+
+[caution]
+other = "احتیاط"
+
+[important]
+other = "مهم"
+
+[info]
+other = "اطلاعات"
+
+[note]
+other = "یادداشت"
+
+[tip]
+other = "نکته"
+
+[warning]
+other = "هشدار"
+
+[Copy-to-clipboard]
+other = "کپی متن به کلیپ‌بورد"
+
+[Copied-to-clipboard]
+other = "متن به کلیپ‌بورد کپی شد!"
+
+[Copy-link-to-clipboard]
+other = "کپی لینک به کلیپ‌بورد"
+
+[Link-copied-to-clipboard]
+other = "لینک به کلیپ‌بورد کپی شد!"
+
+[Chapter]
+other = "فصل {{.}}"
+
+[Language]
+other = "زبان"
+
+[Theme]
+other = "پوسته"
+
+[Submenu]
+other = "زیرمنو {{.}}"
+
+[Subsections]
+other = "زیرقسمت‌های {{.}}"
+
+[tags]
+other = "برچسب‌ها"
+
+[tag]
+other = "برچسب"
+
+[categories]
+other = "دسته‌بندی‌ها"
+
+[category]
+other = "دسته‌بندی"
+
+[Details]
+other = "جزئیات"
+
+[Version]
+other = "نسخه"
+
+[Browser-unsupported-feature]
+other = "این مرورگر از این ویژگی پشتیبانی نمی‌کند"
+
+[Pages-group-fallback]
+other = "سایر"
+
+[Skip-to-content]
+other = "پرش به محتوای اصلی"
+
+[Breadcrumbs]
+other = "مسیر راهنما"
+
+[Search-page]
+other = "باز کردن صفحه جستجو"
+
+[Close-image]
+other = "بستن تصویر بزرگ‌شده"
+
+[Expand-all]
+other = "باز کردن همه"
+
+[Collapse-all]
+other = "بستن همه"
+
+[Inserted-text-start]
+other = "شروع متن درج‌شده"
+
+[Inserted-text-end]
+other = "پایان متن درج‌شده"
+
+[Deleted-text-start]
+other = "شروع متن حذف‌شده"
+
+[Deleted-text-end]
+other = "پایان متن حذف‌شده"
+
+[N-matches-on-page]
+other = "{1} مورد برای \"{0}\" در این صفحه یافت شد"
+
+[Sortable-columns]
+other = "سرستون‌های دارای دکمه قابل مرتب‌سازی هستند."
+
+[Sort-key-ascending]
+other = "مرتب‌شده در جایگاه {0}، صعودی"
+
+[Sort-key-descending]
+other = "مرتب‌شده در جایگاه {0}، نزولی"
+
+[Sorted-by-ascending]
+other = "مرتب‌شده بر اساس \"{0}\"، صعودی"
+
+[Sorted-by-descending]
+other = "مرتب‌شده بر اساس \"{0}\"، نزولی"
+
+[Unsorted-by]
+other = "دیگر بر اساس \"{0}\" مرتب نشده است"
+
+[Change-sorting]
+other = "تغییر مرتب‌سازی"
+
+[Reset-sorting]
+other = "بازنشانی مرتب‌سازی"
+
+[Sorting-reset]
+other = "مرتب‌سازی بازنشانی شد!"

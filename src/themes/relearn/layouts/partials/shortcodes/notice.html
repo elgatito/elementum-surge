@@ -1,0 +1,15 @@
+{{- $page := .page }}
+{{- if and (not $page) .context }}
+  {{- $page = .context }}
+  {{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+  {{- warnf "%q: DEPRECATED parameter 'context' for shortcode 'notice' found, use 'page' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/5/#5-18-0" $filepath }}
+{{- end }}
+{{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+{{- warnf "%q: DEPRECATED shortcode 'notice' found, use 'callout' instead; see https://mcshelby.github.io/hugo-theme-relearn/shortcodes/notice#migration" $filepath }}
+
+{{- /* the shortcode is an alias for the `callout` shortcode */}}
+{{- /* keeps the class of the `notice` shortcode, so existing styles still apply */}}
+{{- partial "shortcodes/callout.html" (merge . (dict
+  "page"  $page
+  "class" (.class | default "notices")
+)) }}

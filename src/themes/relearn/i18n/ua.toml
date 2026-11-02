@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Ця сторінка показує версію {{.pageVersion.title}}. Актуальну версію можна знайти <a href="{{.latestUrl}}">тут</a>.'
+
+[Search]
+other = "Пошук"
+
+[Search-placeholder]
+other = "Пошук..."
+
+[Clear-search]
+other = "Почистити пошук"
+
+[No-results-found]
+other = "Збіги для \"{0}\" відсутні"
+
+[N-results-found]
+other = "{1} збігів знайдено для \"{0}\""
+
+[Clear-History]
+other = "Почистити історію"
+
+[History-cleared]
+other = "Історію почищено"
+
+[Enlarge-graph]
+other = "Збільшити графік"
+
+[Close-graph]
+other = "Закрити збільшений графік"
+
+[Reset-view]
+other = "Скинути вигляд"
+
+[View-reset]
+other = "Проглянути скинуте!"
+
+[Attachments-label]
+other = "Додати файли"
+
+[title-404]
+other = "Не знайдено"
+
+[message-404]
+other = "Ой! Щось пішло не так. Схоже що цю сторінку ще не написано ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "Повернутися до початкової сторінки"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Редагувати"
+
+[Show-Markdown]
+other = "Відобразити Markdown"
+
+[Show-source]
+other = "Відобразити джерельний код"
+
+[Print-this-chapter]
+other = "Друк всього розділу"
+
+[More-action]
+other = "Більше"
+
+[shortcuts-menuTitle]
+other = "Більше"
+
+[Navigation-toggle]
+other = "Меню"
+
+[Toc-toggle]
+other = "Зміст"
+
+[Byte-symbol]
+other = "Б"
+
+[Kilobyte-symbol]
+other = "КБ"
+
+[Megabyte-symbol]
+other = "МБ"
+
+[caution]
+other = "Увага"
+
+[important]
+other = "Важливо"
+
+[info]
+other = "Інформація"
+
+[note]
+other = "Нотатка"
+
+[tip]
+other = "Порада"
+
+[warning]
+other = "Увага"
+
+[Copy-to-clipboard]
+other = "Копіювати текст у буфер обміну"
+
+[Copied-to-clipboard]
+other = "Текст скопійовано у буфер обміну!"
+
+[Copy-link-to-clipboard]
+other = "Копіювати посилання у буфер обміну"
+
+[Link-copied-to-clipboard]
+other = "Посилання скопійовано у буфер обміну!"
+
+[Chapter]
+other = "Глава {{.}}"
+
+[Language]
+other = "Мова"
+
+[Theme]
+other = "Тема"
+
+[Submenu]
+other = "Підменю {{.}}"
+
+[Subsections]
+other = "Суброзділ {{.}}"
+
+[tags]
+other = "Теги"
+
+[tag]
+other = "Тег"
+
+[categories]
+other = "Категорії"
+
+[category]
+other = "Категорія"
+
+[Details]
+other = "Деталі"
+
+[Version]
+other = "Версія"
+
+[Browser-unsupported-feature]
+other = "Цей браузер не підтримує цю функцію"
+
+[Pages-group-fallback]
+other = "Інше"
+
+[Skip-to-content]
+other = "Перейти до основного вмісту"
+
+[Breadcrumbs]
+other = "Навігаційний ланцюжок"
+
+[Search-page]
+other = "Відкрити сторінку пошуку"
+
+[Close-image]
+other = "Закрити збільшене зображення"
+
+[Expand-all]
+other = "Розгорнути все"
+
+[Collapse-all]
+other = "Згорнути все"
+
+[Inserted-text-start]
+other = "Початок вставленого тексту"
+
+[Inserted-text-end]
+other = "Кінець вставленого тексту"
+
+[Deleted-text-start]
+other = "Початок видаленого тексту"
+
+[Deleted-text-end]
+other = "Кінець видаленого тексту"
+
+[N-matches-on-page]
+other = "{1} збігів для \"{0}\" на цій сторінці"
+
+[Sortable-columns]
+other = "Заголовки стовпців із кнопками дозволяють сортування."
+
+[Sort-key-ascending]
+other = "сортування на позиції {0}, за зростанням"
+
+[Sort-key-descending]
+other = "сортування на позиції {0}, за спаданням"
+
+[Sorted-by-ascending]
+other = "Відсортовано за \"{0}\", за зростанням"
+
+[Sorted-by-descending]
+other = "Відсортовано за \"{0}\", за спаданням"
+
+[Unsorted-by]
+other = "Більше не відсортовано за \"{0}\""
+
+[Change-sorting]
+other = "Змінити сортування"
+
+[Reset-sorting]
+other = "Скинути сортування"
+
+[Sorting-reset]
+other = "Сортування скинуто!"

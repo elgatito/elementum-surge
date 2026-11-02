@@ -1,0 +1,32 @@
+{{- $alerttype := .AlertType }}
+{{- if eq $alerttype "details"}}
+  {{- $alerttype = "transparent" }}
+{{- end }}
+{{- $alerttitle := "" }}
+{{- $alertsign := "" }}
+{{- if $alerttype }}
+  {{- $alerttitle = .AlertTitle }}
+  {{- $alertsign = .AlertSign }}
+{{- end }}
+{{- $text := .Text }}
+{{- if $alerttype }}
+  {{- partial "shortcodes/callout.html" (dict
+    "page" .Page
+    "content"  $text
+    "color"    .Attributes.color
+    "expanded" (cond (eq $alertsign "+") true (cond (eq $alertsign "-") false ""))
+    "groupid"  .Attributes.groupid
+    "hint"     .Attributes.hint
+    "icon"     .Attributes.icon
+    "style"    $alerttype
+    "title"    $alerttitle
+  ) }}
+{{ else }}
+  {{- partial "shortcodes/blockquote.html" (dict
+    "page"    .Page
+    "author"  .Attributes.author
+    "content" $text
+    "href"    .Attributes.href
+    "source"  .Attributes.source
+  ) }}
+{{ end }}

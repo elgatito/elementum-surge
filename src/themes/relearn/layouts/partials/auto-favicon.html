@@ -1,0 +1,32 @@
+    {{- $faviconMatch := false }}
+    {{- $svg := dict "ext" "svg" "type" "image/svg+xml" }}
+    {{- $png := dict "ext" "png" "type" "image/png" }}
+    {{- $ico := dict "ext" "ico" "type" "image/x-icon" "sizes" "any" }}
+    {{- $faviconTypes := slice $svg $png $ico }}
+    {{- $faviconNames := slice "favicon" "logo" }}
+    {{- $normal := dict "suffix" ""  "media" "" }}
+    {{- $light := dict "suffix" "-light" "media" "(prefers-color-scheme: light)" }}
+    {{- $dark := dict "suffix" "-dark" "media" "(prefers-color-scheme: dark)" }}
+    {{- $faviconVariants := slice $normal $light $dark }}
+    {{- range $faviconNames }}
+      {{- $faviconName := . }}
+      {{- range $faviconTypes }}
+        {{- $faviconType := . }}
+        {{- range $faviconVariants }}
+          {{- $faviconVariant := . }}
+          {{- /* never minified: a favicon is an image and images are published as they are, whether or not Hugo happens to have a minifier for the format */}}
+          {{- with partial "asset.gotmpl" (dict "res" (printf "/images/%s%s.%s" $faviconName $faviconVariant.suffix $faviconType.ext) "minify" false) }}
+            {{- $faviconMatch = true }}
+    <link href="{{ .RelPermalink }}" rel="icon" type="{{ $faviconType.type }}"{{ with $faviconType.sizes }} sizes="{{ . }}"{{ end }}{{ with $faviconVariant.media }} media="{{ . }}"{{ end }}>
+          {{- else }}
+            {{- with (partial "_relearn/staticResource.gotmpl" (printf "images/%s%s.%s" $faviconName $faviconVariant.suffix $faviconType.ext)) }}
+              {{- $faviconMatch = true }}
+    <link href="{{ (partial "asset.gotmpl" (dict "res" . "minify" false)).RelPermalink }}" rel="icon" type="{{ $faviconType.type }}"{{ with $faviconType.sizes }} sizes="{{ . }}"{{ end }}{{ with $faviconVariant.media }} media="{{ . }}"{{ end }}>
+            {{- end }}
+          {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- if $faviconMatch }}
+        {{- break }}
+      {{- end }}
+    {{- end }}

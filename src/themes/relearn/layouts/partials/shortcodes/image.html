@@ -1,0 +1,91 @@
+{{- /* based on Hugo 0.125.5 render-image.html */}}
+{{- $page := .page }}
+{{- if and (not $page) .context }}
+  {{- $page = .context }}
+  {{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+  {{- warnf "%q: DEPRECATED parameter 'context' for shortcode 'image' found, use 'page' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/5/#5-18-0" $filepath }}
+{{- end }}
+{{- $title := .title }}
+{{- $alt := .alt }}
+{{- $attributes := .attributes | default dict }}
+{{- $resolved := partial "_relearn/urlResolve.gotmpl" (dict "url" .url "page" $page "param" "image") }}
+{{- $linkObject := $resolved.linkObject }}
+{{- $src := $resolved.href }}
+{{- /* the enlarged image is named by where the image is, so a link to it holds
+  between builds however the author wrote its URL; an image that is no resource
+  only has that URL. Its position tells apart an image that is used more than once */}}
+{{- $idPath := .url }}
+{{- with $linkObject }}
+  {{- $idPath = .RelPermalink }}
+{{- end }}
+{{- $id := cond (or (eq .id nil) (eq .id "")) (md5 (print $idPath " " (.ordinal | default 0))) .id }}
+{{- $attributes = merge $attributes (partial "_relearn/imageAttributes.gotmpl" (dict "url" $src "page" $page "linkObject" $linkObject "attributes" $attributes)) }}
+{{- $attributes = merge $attributes (dict "title" $title) }}
+{{- /* an image without alt text is taken as decorative and gets an empty one;
+  one the caller marks as not decorative, like the content of a figure, gets none */}}
+{{- $altText := $alt | default $attributes.alt | default "" }}
+{{- if or $altText (ne .decorative false) }}
+  {{- $attributes = merge $attributes (dict "alt" $altText) }}
+{{- end }}
+{{- $classes := split $attributes.class " " }}
+{{- $isLightbox := in $classes "lightbox" }}
+{{- if $isLightbox -}}
+<a href="#R-image-{{ $id }}" class="lightbox-link" id="R-image-{{ $id }}-link">
+{{- end }}
+{{- $attributes_figure := $attributes }}
+{{- $attributes_figure = merge $attributes_figure (dict "class" (delimit ((split $attributes_figure.class " ") | append "figure-image") " ")) }}
+{{- $attributes_figure = merge $attributes_figure (dict "style" (index $attributes_figure "style")) -}}
+{{- partial "inline/img" (dict "attributes" $attributes_figure) }}
+{{- if $isLightbox -}}
+</a>
+{{- /* the enlarged copy is a dialog named by the image; all of it is the link that closes it.
+  as it can take the focus, the browser hands it over once the dialog is the target of the URL */}}
+<span class="lightbox-back" id="R-image-{{ $id }}" role="dialog" aria-modal="true"{{ with $alt }} aria-label="{{ . }}"{{ end }} tabindex="-1"><a href="#R-image-{{ $id }}-link" class="lightbox-close" aria-label="{{ T "Close-image" }}">
+{{- $attributes_lightbox := $attributes }}
+{{- $attributes_lightbox = merge $attributes_lightbox (dict "class" (delimit ((split $attributes_lightbox.class " ") | append "lightbox-image") " ")) }}
+{{- /* the enlarged copy is sized by CSS alone; intrinsic dimensions would be
+	clamped against `max-width`/`max-height` one axis at a time and stretch it */}}
+{{- $attributes_lightbox = merge $attributes_lightbox (dict "style" "" "width" "" "height" "") -}}
+{{- partial "inline/img" (dict "attributes" $attributes_lightbox) }}</a></span>
+{{- end }}
+
+{{- define "partials/inline/img" }}
+  {{- /* only the attribute names are declared safe; their values are plain text
+    and escaped by the template */}}
+  {{- $svg := "" }}
+  {{- with .attributes.content }}
+    {{- $svg = findRESubmatch `(?s)^<svg([^>]*)>(.*)$` . 1 }}
+  {{- end }}
+  {{- if $svg }}
+    {{- /* our attributes go in front of those the SVG brings along */ -}}
+    <svg
+    {{- range $k, $v := .attributes }}
+      {{- if eq $k "content" }}
+      {{- else if eq $k "alt" }}
+        {{- /* an inlined SVG has no `alt`; it is named like an image or taken out
+          of the accessibility tree if it is decorative */}}
+        {{- if $v }} role="img" aria-label="{{ $v }}"
+        {{- else }} aria-hidden="true"
+        {{- end }}
+      {{- else if $v }}
+        {{- if eq (printf "%T" $v) "bool" }} {{ $k | safeHTMLAttr }}
+        {{- else }} {{ $k | safeHTMLAttr }}="{{ $v }}"
+        {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- index $svg 0 1 | safeHTMLAttr }}>{{ index $svg 0 2 | safeHTML }}
+  {{- else if .attributes.content }}
+    {{- .attributes.content | safeHTML }}
+  {{- else -}}
+    <img
+      {{- range $k, $v := .attributes }}
+        {{- /* an image without `alt` is announced by its file name; an empty one
+          marks it as decorative */}}
+        {{- if or $v (eq $k "alt") }}
+          {{- if eq (printf "%T" $v) "bool" }} {{ $k | safeHTMLAttr }}
+          {{- else }} {{ $k | safeHTMLAttr }}="{{ $v }}"
+          {{- end }}
+        {{- end }}
+      {{- end }}>
+  {{- end }}
+{{- end }}

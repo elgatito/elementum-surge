@@ -1,0 +1,14 @@
+{{- $versions := slice }}
+{{- with site.Params.versions }}
+	{{- warnf "DEPRECATED option 'versions' configured in your project configuration, use Hugo's 'versions' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/9/#9-2-0" }}
+{{- end }}
+{{- range site.Params.versions | default slice }}
+	{{- $version := . }}
+	{{- $isAbs := (urls.Parse .baseURL).IsAbs }}
+	{{- $url := trim .baseURL "/" }}
+	{{- $version = merge $version (dict "isAbs" $isAbs) }}
+	{{- $version = merge $version (dict "value" (.identifier | anchorize)) }}
+	{{- $version = merge $version (dict "baseURL" (cond (or $isAbs (not $url)) $url (print "/" $url))) }}
+	{{- $versions = $versions | append $version }}
+{{- end -}}
+{{- return $versions }}

@@ -1,0 +1,21 @@
+{{- $taxonomy := .taxonomy }}
+{{- $raw := .raw | default false }}
+{{- if eq "string" (printf "%T" $taxonomy) }}
+  {{- $taxonomy = .page.GetPage $taxonomy }}
+{{- end }}
+{{- with $taxonomy }}
+  {{- .Content }}
+  {{- $call := dict "page" . }}
+  {{- with $.headingdepth }}
+    {{- $call = merge $call (dict "headinglevel" .) }}
+  {{- end }}
+  {{- $params := partial "_relearn/pagesParams.gotmpl" $call }}
+  {{- $output := partial "shortcodes/pages.html" $call }}
+  {{- if $raw  }}
+    {{- $output }}
+  {{- else if eq $params.display "cards" }}
+    {{- $output | safeHTML }}
+  {{- else }}
+    {{- $output | .RenderString }}
+  {{- end }}
+{{- end }}

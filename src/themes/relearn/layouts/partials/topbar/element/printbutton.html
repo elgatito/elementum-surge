@@ -1,0 +1,31 @@
+{{- $onwidths := cond (isset . "onwidths") .onwidths "area-more" }}
+{{- $onwidthm := cond (isset . "onwidthm") .onwidthm "show" }}
+{{- $onwidthl := cond (isset . "onwidthl") .onwidthl "show" }}
+{{- with .page }}
+	{{- $format := .OutputFormats.Get "print" }}
+	{{- $show := and $format (not (.Param "disablePrintButton")) }}
+	{{- if $show }}
+		{{- if eq . (site.GetPage "_relearn_searchpage") }}
+			{{- /* of the pages of the theme itself only the search page can be
+				printed; without explicit outputs it follows the home page */}}
+			{{- if not (and (reflect.IsMap site.Params.search) (reflect.IsMap site.Params.search.page) site.Params.search.page.outputs) }}
+				{{- $show = site.Home.OutputFormats.Get "print" }}
+			{{- end }}
+		{{- else }}
+			{{- $show = not (partial "_relearn/pageIsSpecial.gotmpl" .) }}
+		{{- end }}
+	{{- end }}
+	{{- if $show }}
+		{{- $href := printf "%s?format=print" (partial "_relearn/pathToUrl.gotmpl" .Path) }}
+		{{- partial "topbar/func/button.html" (dict
+			"page" .
+			"class" "topbar-button-print"
+			"href" $href
+			"icon" "print"
+			"onwidths" $onwidths
+			"onwidthm" $onwidthm
+			"onwidthl" $onwidthl
+			"hint" (printf "%s (CTRL+ALT+p)" (T "Print-this-chapter"))
+		)}}
+	{{- end }}
+{{- end }}

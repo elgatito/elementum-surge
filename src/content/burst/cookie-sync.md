@@ -8,7 +8,7 @@ weight = 3
 
 ## What it is
 
-Some trackers can't be logged in from Kodi: they use captchas, Cloudflare checks or two-factor login.
+Burst can't log in to some trackers by itself: they use captchas, Cloudflare checks or two-factor login.
 With cookie sync you log in to the tracker in your browser, and Burst uses the same cookies (and the same browser User-Agent) for searches and torrent downloads.
 
 Cookies travel through a private GitHub Gist:
@@ -37,11 +37,11 @@ In _Burst settings → Cookie sync_:
 | File name (optional) | `kevast-gist-default.json` (the extension's default). |
 | File url (optional) | Leave empty, Burst fills it in. |
 
-Cookie sync is used only by providers that support it (they have `login_cookie` in their definition, see [How to add provider]({{%relref "create.md#other-keys"%}})).
+Cookie sync is used only by providers that support it (they have `login_cookie` in their definition, see [How to add a provider]({{%relref "create.md#other-keys"%}})).
 For such a provider, when the cookie is there, Burst skips the login form.
 
 ## Troubleshooting
 
 - Expired cookies are skipped. Burst then logs _"Skipping expired cookie ..., re-sync cookies in the browser"_, and falls back to the login form if the provider has one. Log in in the browser again and push.
-- Errors of cookie sync and provider logins are shown in the search notification and written to the log.
+- Cookie sync and provider login errors are shown in the search notification and written to the log.
 - _Burst settings → Maintenance → Remove cookies_ clears all cookies Burst has stored.

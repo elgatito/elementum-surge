@@ -1,0 +1,70 @@
+{{- $page := .page }}
+{{- $location := .location }}
+{{- if eq $location "default" }}
+  {{- with $page }}
+    {{- $filepath := "[virtual file]" }}{{ with and .File .File.Filename }}{{ $filepath = . }}{{ end }}
+    {{- if and (isset .Params "customopenapiurl") .Params.customOpenapiURL }}
+      {{- warnf "%q: DEPRECATED front matter 'customOpenapiURL' found, replace the shipped library with your own files in 'assets/js/swagger-ui' and 'assets/css/swagger-ui' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/9/#9-2-0" $filepath }}
+    {{- end }}
+    {{- if and .IsHome (isset .Site.Params "customopenapiurl") .Site.Params.customOpenapiURL }}
+      {{- warnf "DEPRECATED option 'customOpenapiURL' found, replace the shipped library with your own files in 'assets/js/swagger-ui' and 'assets/css/swagger-ui' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/9/#9-2-0" }}
+    {{- end }}
+  {{- end }}
+{{- else if eq $location "footer" }}
+  {{- with $page }}
+    {{- $themevariantsdata := partialCached "_relearn/themeVariants.gotmpl" site.Home }}
+    {{- $themecss := $themevariantsdata.css }}
+    {{- $themeintegrity := $themevariantsdata.integrity }}
+    {{- $swaggeruicss := "" }}
+    {{- $swaggeruiintegrity := "" }}
+    {{- $urlOpenapi := "" }}
+    {{- with partial "asset.gotmpl" "/js/js-yaml/js-yaml.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- if and (isset .Params "customopenapiurl") .Params.customOpenapiURL }}
+      {{- $swaggeruicss = .Params.customOpenapiURL }}
+      {{- $swaggeruicss = replace $swaggeruicss "swagger-ui-bundle" "swagger-ui" }}
+      {{- /* only the trailing `.js` is the extension; a host like
+        `cdn.jsdelivr.net` carries one too and must be left alone */}}
+      {{- $swaggeruicss = replaceRE "\\.js$" ".css" $swaggeruicss }}
+      {{- $urlOpenapi = .Params.customOpenapiURL }}
+    <script src="{{ $urlOpenapi }}" defer></script>
+      {{- $urlOpenapi = replace $urlOpenapi "swagger-ui-bundle" "swagger-ui-standalone-preset" }}
+    <script src="{{ $urlOpenapi }}" defer></script>
+    {{- else if and (isset .Site.Params "customopenapiurl") .Site.Params.customOpenapiURL }}
+      {{- $swaggeruicss = .Site.Params.customOpenapiURL }}
+      {{- $swaggeruicss = replace $swaggeruicss "swagger-ui-bundle" "swagger-ui" }}
+      {{- /* only the trailing `.js` is the extension; a host like
+        `cdn.jsdelivr.net` carries one too and must be left alone */}}
+      {{- $swaggeruicss = replaceRE "\\.js$" ".css" $swaggeruicss }}
+      {{- $urlOpenapi = .Site.Params.customOpenapiURL }}
+    <script src="{{ $urlOpenapi }}" defer></script>
+      {{- $urlOpenapi = replace $urlOpenapi "swagger-ui-bundle" "swagger-ui-standalone-preset" }}
+    <script src="{{ $urlOpenapi }}" defer></script>
+    {{- else }}
+      {{- /* the swagger-ui distribution arrives built but is not named `.min` */}}
+      {{- with resources.Get "/css/swagger-ui/swagger-ui.css" }}
+        {{- /* the library switches to its dark mode by a class on the root element of
+          the document, which a stylesheet inside a shadow tree can not reach; the
+          host of that tree takes its place */}}
+        {{- $cssres := replace .Content "html.dark-mode" ":host(.dark-mode)" | resources.FromString "css/swagger-ui/swagger-ui.css" }}
+        {{- with partial "asset.gotmpl" (dict "res" $cssres "minify" false) }}
+          {{- /* the following code causes Hugo to generate our file in public */}}
+          {{- $swaggeruicss = .RelPermalink }}
+          {{- $swaggeruiintegrity = (partial "_relearn/integrity.gotmpl" .) }}
+        {{- end }}
+      {{- end }}
+      {{- with partial "asset.gotmpl" (dict "res" "/js/swagger-ui/swagger-ui-bundle.js" "minify" false) }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+      {{- end }}
+      {{- with partial "asset.gotmpl" (dict "res" "/js/swagger-ui/swagger-ui-standalone-preset.js" "minify" false) }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+      {{- end }}
+    {{- end }}
+    {{- /* the shadow tree we render the spec into takes no styles from the page and has to
+      be handed every stylesheet it needs, together with its integrity; these are
+      attributes and not JSON keys because Hugo only rewrites a value for `relativeURLs`
+      where the text `url=` precedes it */}}
+    <script type="application/json" id="R-openapi-config" data-openapi-css-url="{{ $swaggeruicss }}"{{ with $swaggeruiintegrity }}{{ printf " data-openapi-css-integrity=%q" . | safeHTMLAttr }}{{ end }} data-swagger-css-url="{{ index $themecss "swagger" }}"{{ with (index $themeintegrity "swagger") }}{{ printf " data-swagger-css-integrity=%q" . | safeHTMLAttr }}{{ end }}>{}</script>
+  {{- end }}
+{{- end }}

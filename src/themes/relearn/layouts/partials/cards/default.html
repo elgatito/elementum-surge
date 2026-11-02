@@ -1,0 +1,67 @@
+{{- $page := .page }}
+{{- $renderedtitle := .title | $page.RenderString }}
+{{- $renderedcontent := .content | $page.RenderString }}
+{{- $itemid := printf "R-card-%s" (printf "%s%s" $renderedtitle $renderedcontent | plainify | md5) }}
+{{- $isButton := or .action .onclick }}
+{{- $popout := or .href .hrefattributes $isButton }}
+<li>
+  <article class="card{{ if $popout }} card-popout{{ end }}"{{if .title}} aria-labelledby="{{ $itemid }}"{{end}}>
+      {{- if or $renderedtitle $renderedcontent }}
+    <div class="card-content">
+        {{- if $renderedtitle }}
+      <div class="card-title" id="{{ $itemid }}">
+        {{- if $isButton }}
+        <button type="button"{{ with .action }} data-button-action="{{ . }}"{{ end }}{{ with .onclick }} onclick="{{ . | safeJS }}"{{ end }}>
+        {{- else if .hrefattributes }}
+        <a
+          {{- range $k, $v := .hrefattributes }}
+            {{- if $v }}
+              {{- if eq (printf "%T" $v) "bool" }} {{ $k | safeHTMLAttr }}
+              {{- else }} {{ $k | safeHTMLAttr }}="{{ $v }}"
+              {{- end }}
+            {{- end }}
+          {{- end }}>
+        {{- else if .href }}
+        <a href="{{ .href | safeURL }}">
+        {{- end }}
+        {{ $renderedtitle | safeHTML }}
+        {{- if $isButton }}
+        </button>
+        {{- else if or .hrefattributes .href }}
+        </a>
+        {{- end }}
+      </div>
+        {{- end }}
+        {{- with .content }}
+      <div class="card-content-text">
+          {{ $renderedcontent | safeHTML }}
+      </div>
+        {{- end }}
+    </div>
+      {{- end }}
+      {{- if .image }}
+    <div class="card-image">
+        {{- if and (not $renderedtitle) $isButton }}
+      <button type="button"{{ with .action }} data-button-action="{{ . }}"{{ end }}{{ with .onclick }} onclick="{{ . | safeJS }}"{{ end }}>
+        {{- else if and (not $renderedtitle) .hrefattributes }}
+      <a
+          {{- range $k, $v := .hrefattributes }}
+            {{- if $v }}
+              {{- if eq (printf "%T" $v) "bool" }} {{ $k | safeHTMLAttr }}
+              {{- else }} {{ $k | safeHTMLAttr }}="{{ $v }}"
+              {{- end }}
+            {{- end }}
+          {{- end }}>
+        {{- else if and (not $renderedtitle) .href }}
+      <a href="{{ .href | safeURL }}">
+        {{- end }}
+        <img src="{{ .image | safeURL }}" alt="{{ .imagealt }}">
+        {{- if and (not $renderedtitle) $isButton }}
+      </button>
+        {{- else if and (not $renderedtitle) (or .hrefattributes .href) }}
+      </a>
+        {{- end }}
+    </div>
+      {{- end }}
+  </article>
+</li>

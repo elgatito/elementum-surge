@@ -1,30 +1,44 @@
 +++
 title = "Installation"
-description = ""
+description = "Install Elementum in Kodi"
 weight = 1
 +++
 
-Installation instructions.
-<!--more-->
+## 1. Allow remote control in Kodi
 
-## Installation
+Elementum talks to Kodi through its remote control interface (to update the library, add the repository and more).
 
-Installation is simple! 
+Open _Settings → Services → Control_ and enable both **Application control** options.
 
-1. Enable remote controls in Kodi.
-    - Enter Kodi Service settings
-        ![Enter Kodi Service settings](/screenshots/install1.png)
-    - Enable both remote controls
-        ![Enable both remote controls](/screenshots/install2.png)
-    - It is needed to operate properly, to run library update, for example, or sync the library or add repository, and other usefull things.
+![Kodi Services settings](/screenshots/install1.png)
 
-2. 
-    - Install Kodi repository `repository.elementumorg`, by downloading zip file here: [Platforms]({{%relref "platforms-page.md"%}}). 
-    - Install Elementum addon from installed repository, or by manually downloading and installing `plugin.video.elementum` addon from here: [Platforms]({{%relref "platforms-page.md"%}}). 
+![Both remote control options enabled](/screenshots/install2.png)
 
-3. Plugin will be ready to use.
-    ![Enable both remote controls](/screenshots/install3.png)
+> [!NOTE]
+> If one of the options was off, restart Kodi after enabling it.
 
-## Configuration
+## 2. Install the repository
 
-See [Configuration]({{%relref "/configuration/_index.md"%}}) for all addon settings and command-line options.
+Download the **ElementumOrg repository** zip from [Downloads]({{% relref "platforms-page.md" %}}),
+then in Kodi open _Add-ons → Install from zip file_ and choose the downloaded file.
+
+The repository works on any platform and keeps Elementum, Burst and Context up to date.
+
+## 3. Install the add-ons
+
+Open _Add-ons → Install from repository → ElementumOrg repository_ and install:
+
+- **Elementum** (_Video add-ons_): the add-on itself.
+- **Elementum Burst** (_Program add-ons_): searches torrent providers. Without it Elementum finds nothing.
+- **Elementum Context** (_Context menus_, optional): adds "Elementum" items to the context menu of your Kodi library.
+
+You can also install the Elementum zip from [Downloads]({{% relref "platforms-page.md" %}}) directly. Use the _all-in-one_ zip, it works on every platform.
+
+Elementum is now in _Add-ons → Video add-ons_:
+
+![Elementum main menu](/screenshots/install3.png)
+
+## Next steps
+
+- Go through the [settings]({{% relref "/configuration/kodi-settings.md" %}}), especially _General → Storage_ and the _Tracking_ service.
+- If something doesn't work, check the [FAQ]({{% relref "/help/faq.md" %}}) or [get help]({{% relref "/help/_index.md" %}}).

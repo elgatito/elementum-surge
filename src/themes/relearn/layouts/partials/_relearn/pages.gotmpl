@@ -1,0 +1,31 @@
+{{- $page := .page }}
+{{- $by := partial "_relearn/sortOrder.gotmpl" (dict "page" $page "by" .by) }}
+
+{{- $pages := slice }}
+
+{{- if eq $by "weight" }}
+	{{- $pages = $page.Pages.ByWeight }}
+{{- else if eq $by "linktitle" }}
+	{{- $pages = $page.Pages.ByLinkTitle }}
+{{- else if eq $by "lastmod" }}
+	{{- $pages = $page.Pages.ByLastmod }}
+{{- else if eq $by "expirydate" }}
+	{{- $pages = $page.Pages.ByExpiryDate }}
+{{- else if eq $by "publishdate" }}
+	{{- $pages = $page.Pages.ByPublishDate }}
+{{- else if eq $by "date" }}
+	{{- $pages = $page.Pages.ByDate }}
+{{- else if eq $by "length" }}
+	{{- $pages = $page.Pages.ByLength }}
+{{- else }}
+	{{- $pages = $page.Pages }}
+{{- end }}
+
+{{- $filtered_pages := slice }}
+{{- range $pages }}
+	{{- if not (partial "_relearn/pageIsSpecial.gotmpl" .) }}
+		{{- $filtered_pages = $filtered_pages | append . }}
+	{{- end }}
+{{- end }}
+
+{{- return $filtered_pages }}

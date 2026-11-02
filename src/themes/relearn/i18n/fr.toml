@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Cette page affiche la version {{.pageVersion.title}}. La version actuelle peut être trouvée <a href="{{.latestUrl}}">ici</a>.'
+
+[Search]
+other = "Rechercher"
+
+[Search-placeholder]
+other = "Rechercher..."
+
+[Clear-search]
+other = "Recherche claire"
+
+[No-results-found]
+other = "Aucun résultat trouvé pour \"{0}\""
+
+[N-results-found]
+other = "{1} résultats trouvés pour \"{0}\""
+
+[Clear-History]
+other = "Supprimer l'historique"
+
+[History-cleared]
+other = "Historique supprimé"
+
+[Enlarge-graph]
+other = "Agrandir le graphique"
+
+[Close-graph]
+other = "Fermer le graphique agrandi"
+
+[Reset-view]
+other = "Réinitialiser la vue"
+
+[View-reset]
+other = "Vue réinitialisée!"
+
+[Attachments-label]
+other = "Pièces jointes"
+
+[title-404]
+other = "Non localisé"
+
+[message-404]
+other = "Oups. On dirait que cette page n'existe pas ¯\\_(ツ)_/¯"
+
+[Go-to-homepage]
+other = "Vers la page d'accueil"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Éditer"
+
+[Show-Markdown]
+other = "Afficher Markdown"
+
+[Show-source]
+other = "Afficher le code source"
+
+[Print-this-chapter]
+other = "Imprimer le chapitre entier"
+
+[More-action]
+other = "Aller plus loin"
+
+[shortcuts-menuTitle]
+other = "Aller plus loin"
+
+[Navigation-toggle]
+other = "Menu"
+
+[Toc-toggle]
+other = "Table des matières"
+
+[Byte-symbol]
+other = "o"
+
+[Kilobyte-symbol]
+other = "ko"
+
+[Megabyte-symbol]
+other = "Mo"
+
+[caution]
+other = "Attention"
+
+[important]
+other = "Important"
+
+[info]
+other = "Information"
+
+[note]
+other = "Remarque"
+
+[tip]
+other = "Astuce"
+
+[warning]
+other = "Avertissement"
+
+[Copy-to-clipboard]
+other = "Copier le texte dans le presse-papiers"
+
+[Copied-to-clipboard]
+other = "Texte copié dans le presse-papiers!"
+
+[Copy-link-to-clipboard]
+other = "Copier le lien dans le presse-papiers"
+
+[Link-copied-to-clipboard]
+other = "Lien copié dans le presse-papiers!"
+
+[Chapter]
+other = "Chapitre {{.}}"
+
+[Language]
+other = "Langue"
+
+[Theme]
+other = "Thème"
+
+[Submenu]
+other = "Sous-menu {{.}}"
+
+[Subsections]
+other = "Sous-sections de {{.}}"
+
+[tags]
+other = "Mots-clés"
+
+[tag]
+other = "Mot-clé"
+
+[categories]
+other = "Catégories"
+
+[category]
+other = "Catégorie"
+
+[Details]
+other = "Détails"
+
+[Version]
+other = "Version"
+
+[Browser-unsupported-feature]
+other = "Ce navigateur ne prend pas en charge cette fonctionnalité"
+
+[Pages-group-fallback]
+other = "Autres"
+
+[Skip-to-content]
+other = "Aller au contenu principal"
+
+[Breadcrumbs]
+other = "Fil d'Ariane"
+
+[Search-page]
+other = "Ouvrir la page de recherche"
+
+[Close-image]
+other = "Fermer l'image agrandie"
+
+[Expand-all]
+other = "Tout développer"
+
+[Collapse-all]
+other = "Tout réduire"
+
+[Inserted-text-start]
+other = "Début du texte inséré"
+
+[Inserted-text-end]
+other = "Fin du texte inséré"
+
+[Deleted-text-start]
+other = "Début du texte supprimé"
+
+[Deleted-text-end]
+other = "Fin du texte supprimé"
+
+[N-matches-on-page]
+other = "{1} occurrences de \"{0}\" sur cette page"
+
+[Sortable-columns]
+other = "Les en-têtes de colonne avec des boutons permettent le tri."
+
+[Sort-key-ascending]
+other = "trié en position {0}, croissant"
+
+[Sort-key-descending]
+other = "trié en position {0}, décroissant"
+
+[Sorted-by-ascending]
+other = "Trié par \"{0}\", croissant"
+
+[Sorted-by-descending]
+other = "Trié par \"{0}\", décroissant"
+
+[Unsorted-by]
+other = "N'est plus trié par \"{0}\""
+
+[Change-sorting]
+other = "Modifier le tri"
+
+[Reset-sorting]
+other = "Réinitialiser le tri"
+
+[Sorting-reset]
+other = "Tri réinitialisé!"

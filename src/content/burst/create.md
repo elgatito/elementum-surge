@@ -1,39 +1,34 @@
 +++
-title = "How to add provider"
-description = ""
+title = "How to add a provider"
+description = "Write a provider definition for Burst"
 weight = 1
 +++
 
-<!--more-->
-
 ## Preparation
 
-Each provider consists of a definition in _providers.json_ file in _/burst/providers/_ folder and an icon in _/burst/providers/icons/_ folder.
+Each provider consists of a definition in the _providers.json_ file in the _/burst/providers/_ folder, and an icon in the _/burst/providers/icons/_ folder.
 
-Icon is optional, but very much desired. It is easier to quickly find relevant search result, when you visually differ providers.
+The icon is optional, but very welcome: it is easier to find a relevant search result when providers look different.
 
-If you want to try adding new provider, the workflow is about that:
+To add a new provider:
 
-- Fork Github repository from https://github.com/elgatito/script.elementum.burst
-- Clone the Github repository: `git clone git@github.com:yourusername/script.elementum.burst.git`
-- Change the branch from _master_ to anything else like `git checkout -b my_provider` 
-- Do your changes to _providers.json_ 
-- Push changes to Github with `git push origin my_provider` 
-- Github will give you a note that you can make a Pull Request, so your changes are included in the Burst code.
-- Done!
+- Fork the [script.elementum.burst](https://github.com/elgatito/script.elementum.burst) repository on GitHub.
+- Clone your fork: `git clone git@github.com:yourusername/script.elementum.burst.git`
+- Create a new branch, e.g. `git checkout -b my_provider`
+- Make your changes to _providers.json_.
+- Push them to GitHub with `git push origin my_provider`
+- GitHub will offer to open a pull request, so your changes can be included in Burst.
 
-> Please, try not to make changes in the Python code of Burst. 
-
-> If you feel you have no other option - run `flake8` before you commit. 
-
-> It will do basic syntax and code checks. Should run without errors.
+> [!NOTE]
+> Please try not to change the Python code of Burst.
+> If you have no other option, run `flake8` before you commit: it does basic syntax and code checks and should finish without errors.
 
 ### Definition
 
-Definitions are a JSON object of a smaller parts, each of them describes separate providers. 
-There are no inherited settings, or default settings, each provider's setting should be explicitly setted.
+Definitions are a JSON object, where each entry describes one provider.
+There are no inherited or default settings: every setting of a provider has to be set explicitly.
 
-Example of provider definition:
+Example of a provider definition:
 ```json
     "ilcorsaroblu": {
         "enabled": true,
@@ -88,45 +83,45 @@ This part is very important:
     "languages": "it",
 ```
 
-Where columns mean:
+The keys mean:
 
-- `enabled`: _boolean_, defines if provider is available (not selected to search, but available for selection).
-- `predefined`: _boolean_, defines if provider is enabled by default upon installation of Burst (default providers).
-- `private`: _boolean_, defines if provider is private, so login should be executed.
-- `name`: _string_, name of provider, no special characters, name will be shown in Kodi settings and search results.
-- `languages`: _string_, languages used on the tracker, 2-char codes list of languages (like `it, fr, en, es`), can be ommited.
-- `anime_extra`: _string_, text, later replaced into EXTRA keyword in search url.
+- `enabled`: _boolean_, whether the provider is available (available for selection, not necessarily selected for searching).
+- `predefined`: _boolean_, whether the provider is enabled by default when Burst is installed (default providers).
+- `private`: _boolean_, whether the provider is private, so Burst has to log in.
+- `name`: _string_, name of the provider without special characters, shown in Kodi settings and search results.
+- `languages`: _string_, languages used on the tracker, as a list of 2-letter codes (like `it, fr, en, es`). Can be omitted.
+- `anime_extra`: _string_, text that replaces the `EXTRA` keyword in the search URL.
 - `anime_keywords`: _string_, query for anime searches.
-- `anime_query`: _string_, part of url, added to `base_url`.
-- `base_url`: _string_, URL, used for further uses in searches.
-- `color`: _string_, Kodi color code. Can be substituted with word representation. See: https://s3.amazonaws.com/f.cl.ly/items/1A3S2n0l103n460Y1I0e/chart.jpg .
-- `general_extra`: _string_, text, later replaced into EXTRA keyword in search url.
+- `anime_query`: _string_, part of the URL, added to `base_url`.
+- `base_url`: _string_, URL used for searches.
+- `color`: _string_, Kodi color code, or a color name. See the [color chart](https://s3.amazonaws.com/f.cl.ly/items/1A3S2n0l103n460Y1I0e/chart.jpg).
+- `general_extra`: _string_, text that replaces the `EXTRA` keyword in the search URL.
 - `general_keywords`: _string_, query for general searches (when you type the query).
-- `general_query`: _string_, part of url, added to `base_url`.
-- `language`: _string_, 2-char language definition, which language is used to searches.
-- `login_failed`: _string_, text to search, to identify we failed with loggin (or better a unique text that indicates we are not logged in).
-- `login_object`: _string_, object to use for logging in. _USERNAME_ and _PASSWORD_ are substituted.
-- `login_path`: _string_, url, used to _POST_ login object to.
-- `movie_extra`: _string_, text, later replaced into EXTRA keyword in search url.
+- `general_query`: _string_, part of the URL, added to `base_url`.
+- `language`: _string_, 2-letter code of the language used for searches.
+- `login_failed`: _string_, text that shows the login failed (best a unique text that only appears when not logged in).
+- `login_object`: _string_, object used to log in. `USERNAME` and `PASSWORD` are replaced with the credentials.
+- `login_path`: _string_, URL the login object is sent to with _POST_.
+- `movie_extra`: _string_, text that replaces the `EXTRA` keyword in the search URL.
 - `movie_keywords`: _string_, query for movie searches.
-- `movie_query`: _string_, part of url, added to `base_url`.
-- `parser`: _array_, defines how to parse result page.
-    - `row`: query searches for rows, each of them will be parsed for torrent information.
+- `movie_query`: _string_, part of the URL, added to `base_url`.
+- `parser`: _object_, defines how to parse the result page.
+    - `row`: query for result rows, each of them is parsed for torrent information.
     - `name`: query for torrent name.
     - `seeds`: query for seeds count.
     - `peers`: query for peers count.
     - `size`: query for torrent size.
     - `torrent`: query for torrent file link or magnet link.
-- `season_extra`: _string_, text, later replaced into EXTRA keyword in search url.
-- `season_extra2`: _string_, text, later replaced into EXTRA keyword in search url.
+- `season_extra`: _string_, text that replaces the `EXTRA` keyword in the search URL.
+- `season_extra2`: _string_, text that replaces the `EXTRA` keyword in the search URL.
 - `season_keywords`: _string_, query for season searches.
 - `season_keywords2`: _string_, query for season searches.
-- `season_query`: _string_, part of url, added to `base_url`.
-- `separator`: _string_, chars, used to separate words in the query (like `%20` or `-`).
-- `show_query`: _string_, string that is added to the `base_url` for episodes searches.
-- `subpage`: _boolean_, defines if provider needs a separate request to get _parser->torrent_ link and find magnet/torrent there.
-- `tv_extra`: _string_, text, later replaced into EXTRA keyword in search url.
-- `tv_extra2`: _string_, text, later replaced into EXTRA keyword in search url.
+- `season_query`: _string_, part of the URL, added to `base_url`.
+- `separator`: _string_, characters used to separate words in the query (like `%20` or `-`).
+- `show_query`: _string_, string added to `base_url` for episode searches.
+- `subpage`: _boolean_, whether the provider needs a separate request to open the _parser → torrent_ link and find the magnet or torrent link there.
+- `tv_extra`: _string_, text that replaces the `EXTRA` keyword in the search URL.
+- `tv_extra2`: _string_, text that replaces the `EXTRA` keyword in the search URL.
 - `tv_keywords`: _string_, query for episode searches.
 - `tv_keywords2`: _string_, query for episode searches.
 
@@ -190,49 +185,45 @@ Some sites have a JSON API instead of HTML pages. For them set `"is_api": true`,
 
 ### Icon
 
-Icon requirements are pretty easy:
+Icon requirements are simple:
 
 - 256x256 size
-- Transparent  background
+- Transparent background
 - _PNG_ format
 
-Place it with `provider_id.png` file name and it will be used everywhere.
+Name it `provider_id.png` and it will be used everywhere.
 
 ## Parsing rules
 
-Our parser is `ehp.py`, it's not an XPath parser, but it gives you fine speed and is pretty fault-tolerant to broken html code.
+Burst uses the [ehp](https://github.com/iogf/ehp) parser. It is not an XPath parser, but it is fast and tolerant to broken HTML.
 
-Project code: https://github.com/iogf/ehp
+See existing definitions for examples. Usually you need:
 
-You can see examples in existing definitions. Basically you will need:
-
-* `find_once` if you need to fine one item;
-* `find_all` if you need a list of results (like rows);
-* `item` if you need something specific (like name or specific link).
+* `find_once` to find one item;
+* `find_all` to find a list of items (like rows);
+* `item` to get something specific (like the name or a link).
 
 ## Debugging
 
-Kodi Locations can be discovered here: https://kodi.wiki/view/Log_file/Advanced#Location
+See [where Kodi keeps its files](https://kodi.wiki/view/Log_file/Advanced#Location).
 
-### Python Code 
+### Python code
 
-You can copy your cloned git repository into Kodi path and just run search from Kodi, it will use the new code without need to restart Kodi. So you can easily run and track results.
+Copy your cloned repository into Kodi's add-on folder and run a search from Kodi: it uses the new code without restarting Kodi,
+so you can quickly try changes and check the results.
 
-In Linux it's something like:
+On Linux it's something like:
 
 `cp -rf /path/to/your/repo/* ~/.kodi/addons/script.elementum.burst/`
 
 ### Parser
 
-Then, if you also want to debug the parser, you can enable excessive debugging:
-
-`Burst Kodi settings -> Advanced -> Log debug messages for parsing`
-
-You will see what parser rule we run, and what we match. 
+To debug the parser, enable verbose logging in _Burst settings → Advanced → Log debug messages for parsing_.
+The log then shows which parser rules run and what they match.
 
 ### Enabling providers
 
-Added provider is not enabled for searching by default, you have to enable it in Kodi settings.
-So you can run `./scripts/generate_settings.py` to regenerate _settings.xml_ file, then copy it to Kodi and restart Kodi (_settings.xml_ are read on load or addon installation only).
+A new provider is not enabled for searching by default, you have to enable it in Kodi settings.
+Run `./scripts/generate_settings.py` to regenerate the _settings.xml_ file, copy it to Kodi and restart Kodi (Kodi reads _settings.xml_ only on start or when the add-on is installed).
 
-Only custom providers (not provided with Burst) are enabled by default and you cannon enable or disable them.
+Custom providers (not shipped with Burst) are always enabled, and can't be enabled or disabled in settings.

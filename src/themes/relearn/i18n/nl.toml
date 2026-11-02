@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Deze pagina toont versie {{.pageVersion.title}}. De huidige versie is te vinden <a href="{{.latestUrl}}">hier</a>.'
+
+[Search]
+other = "Zoeken"
+
+[Search-placeholder]
+other = "Zoeken..."
+
+[Clear-search]
+other = "Zoekopdracht wissen"
+
+[No-results-found]
+other = "Geen resultaten gevonden voor \"{0}\""
+
+[N-results-found]
+other = "{1} resultaten gevonden voor \"{0}\""
+
+[Clear-History]
+other = "Wis geschiedenis"
+
+[History-cleared]
+other = "Geschiedenis gewist"
+
+[Enlarge-graph]
+other = "Grafiek vergroten"
+
+[Close-graph]
+other = "Vergrote grafiek sluiten"
+
+[Reset-view]
+other = "Weergave opnieuw instellen"
+
+[View-reset]
+other = "Opnieuw instellen weergeven!"
+
+[Attachments-label]
+other = "Bijlagen"
+
+[title-404]
+other = "Niet gelokaliseerd"
+
+[message-404]
+other = "Blijkbaar bestaat deze pagina niet ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "Naar startpagina"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Bewerken"
+
+[Show-Markdown]
+other = "Afprijzing weergeven"
+
+[Show-source]
+other = "Broncode weergeven"
+
+[Print-this-chapter]
+other = "Het hele hoofdstuk afdrukken"
+
+[More-action]
+other = "Snelkoppelingen"
+
+[shortcuts-menuTitle]
+other = "Snelkoppelingen"
+
+[Navigation-toggle]
+other = "Menu"
+
+[Toc-toggle]
+other = "Inhoudsopgave"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "Let op"
+
+[important]
+other = "Belangrijk"
+
+[info]
+other = "Info"
+
+[note]
+other = "Notitie"
+
+[tip]
+other = "Tip"
+
+[warning]
+other = "Waarschuwing"
+
+[Copy-to-clipboard]
+other = "Tekst naar klembord kopiëren"
+
+[Copied-to-clipboard]
+other = "Tekst gekopieerd naar klembord!"
+
+[Copy-link-to-clipboard]
+other = "Link naar klembord kopiëren"
+
+[Link-copied-to-clipboard]
+other = "Link gekopieerd naar klembord!"
+
+[Chapter]
+other = "Hoofdstuk {{.}}"
+
+[Language]
+other = "Taal"
+
+[Theme]
+other = "Thema"
+
+[Submenu]
+other = "Submenu {{.}}"
+
+[Subsections]
+other = "Subsecties van {{.}}"
+
+[tags]
+other = "Tags"
+
+[tag]
+other = "Tag"
+
+[categories]
+other = "Categorieën"
+
+[category]
+other = "Categorie"
+
+[Details]
+other = "Details"
+
+[Version]
+other = "Versie"
+
+[Browser-unsupported-feature]
+other = "Deze browser ondersteunt deze functie niet"
+
+[Pages-group-fallback]
+other = "Overig"
+
+[Skip-to-content]
+other = "Ga naar hoofdinhoud"
+
+[Breadcrumbs]
+other = "Kruimelpad"
+
+[Search-page]
+other = "Zoekpagina openen"
+
+[Close-image]
+other = "Vergrote afbeelding sluiten"
+
+[Expand-all]
+other = "Alles uitklappen"
+
+[Collapse-all]
+other = "Alles inklappen"
+
+[Inserted-text-start]
+other = "Begin van ingevoegde tekst"
+
+[Inserted-text-end]
+other = "Einde van ingevoegde tekst"
+
+[Deleted-text-start]
+other = "Begin van verwijderde tekst"
+
+[Deleted-text-end]
+other = "Einde van verwijderde tekst"
+
+[N-matches-on-page]
+other = "{1} overeenkomsten voor \"{0}\" op deze pagina"
+
+[Sortable-columns]
+other = "Kolomkoppen met knoppen zijn sorteerbaar."
+
+[Sort-key-ascending]
+other = "gesorteerd op positie {0}, oplopend"
+
+[Sort-key-descending]
+other = "gesorteerd op positie {0}, aflopend"
+
+[Sorted-by-ascending]
+other = "Gesorteerd op \"{0}\", oplopend"
+
+[Sorted-by-descending]
+other = "Gesorteerd op \"{0}\", aflopend"
+
+[Unsorted-by]
+other = "Niet meer gesorteerd op \"{0}\""
+
+[Change-sorting]
+other = "Sortering wijzigen"
+
+[Reset-sorting]
+other = "Sortering herstellen"
+
+[Sorting-reset]
+other = "Sortering hersteld!"

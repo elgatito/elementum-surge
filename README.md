@@ -1,7 +1,7 @@
-# Surge website for Elementum addon
+# Elementum documentation website
 
-How do test changes
-------------
+How to test changes
+-------------------
 
 1. Install Hugo **0.169.0** or newer (https://gohugo.io/installation/). CI uses the version from `HUGO_VERSION` in `.github/workflows/build.yml`.
 2. Install `go`, `jq` and `curl`, and run `scripts/fetch_upstream.sh` to get data of the latest releases (see below).
@@ -10,6 +10,13 @@ How do test changes
 Once you change any page, it will be automatically regenerated.
 
 To run the same checks as CI (`.github/workflows/build.yml`), from `src/` run `hugo -d /tmp/site && python3 ../scripts/check_site.py /tmp/site`.
+
+Theme
+-----
+
+The site uses the [Relearn](https://mcshelby.github.io/hugo-theme-relearn/) theme, vendored in `src/themes/relearn/` (version in `VERSION`, without its docs).
+To update it, replace that folder with the new release (keep only `archetypes assets content i18n layouts LICENSE README.md theme.toml hugo.yaml go.mod`).
+Site-specific templates are in `src/layouts/`, the logo and favicon in `src/assets/images/`.
 
 Preview
 -------
@@ -21,12 +28,12 @@ It is updated on every push to `master`. To preview another branch, run the "Bui
 Release
 -------
 
-Release is done by running `release.sh` script, that generates static files and then pushes them to surge and github.
+To release, run the `release.sh` script: it generates the static files and pushes them to Surge and GitHub.
 
 Generated pages
 ---------------
 
-Docs are always built from the latest releases of all addons. `scripts/fetch_upstream.sh` (run by `generate.sh` and by CI) fetches:
+Docs are always built from the latest releases of all add-ons. `scripts/fetch_upstream.sh` (run by `generate.sh` and by CI) fetches:
 
 - download links of every addon → `src/data/<addon>/platforms.json` (`generator.go`, `platforms` shortcode);
 - `addon.xml` and release tag → `static/packages/<repo>/`, served to Kodi by the Elementum repository;

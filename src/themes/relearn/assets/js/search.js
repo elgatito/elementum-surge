@@ -1,0 +1,263 @@
+(function () {
+  function ready(fn) {
+    if (document.readyState == 'complete') {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+
+  function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  window.relearn = window.relearn || {};
+
+  window.relearn.executeInitialSearch = function executeInitialSearch() {
+    if (window.relearn.isSearchInterfaceReady && window.relearn.isSearchEngineReady) {
+      var input = document.querySelector('#R-search-by-detail');
+      if (!input) {
+        return;
+      }
+      var value = input.value;
+      executeSearch(value);
+    }
+  };
+
+  window.relearn.executeTriggeredSearch = function executeTriggeredSearch() {
+    var input = document.querySelector('#R-search-by-detail');
+    if (!input) {
+      return;
+    }
+    var value = input.value;
+    executeSearch(value);
+
+    // add a new entry to the history after the user
+    // changed the term; this does not reload the page
+    // but will add to the history and update the address bar URL
+    var url = new URL(window.location);
+    var oldValue = url.searchParams.get('search-by');
+    if (value != oldValue) {
+      var state = window.history.state || {};
+      state = Object.assign({}, typeof state === 'object' ? state : {});
+      url.searchParams.set('search-by', value);
+      state.search = url.toString();
+      // with normal pages, this is handled by the 'pagehide' event, but this
+      // doesn't fire in case of pushState, so we have to do the same thing
+      // here, too; we only need a simplified version of transferScrollToHistory
+      // as the scroll position can be directly taken from the content element
+      state.contentScrollTop = +elc.scrollTop;
+      var scrollPositionKey = window.relearn.absBaseUri + '/scroll-position/' + document.querySelector('body').dataset.origin;
+      window.history.pushState(state, '', url);
+      window.sessionStorage.removeItem(scrollPositionKey);
+    }
+  };
+
+  function executeHistorySearch(event) {
+    // restart search if browsed through history
+    if (event.state) {
+      var state = window.history.state || {};
+      state = Object.assign({}, typeof state === 'object' ? state : {});
+      if (state.search) {
+        var url = new URL(state.search);
+        if (url.searchParams.has('search-by')) {
+          var search = url.searchParams.get('search-by');
+
+          // we have to insert the old search term into the inputs
+          var inputs = document.querySelectorAll('input.search-by');
+          inputs.forEach(function (e) {
+            e.value = search;
+            e.dispatchEvent(new Event('input'));
+          });
+
+          // recreate the last search results and eventually
+          // restore the previous scrolling position
+          executeSearch(search);
+        }
+      }
+    }
+  }
+
+  function renderItem(item) {
+    var page = item.page;
+    var context = [];
+    if (item.matches && item.matches.length) {
+      var numContextWords = 2;
+      var contextPattern = '(?:\\S+ +){0,' + numContextWords + '}\\S*\\b(?:' + escapeRegex(item.matches[0]) + ')\\b\\S*(?: +\\S+){0,' + numContextWords + '}';
+      context = page.content.match(new RegExp(contextPattern, 'i'));
+      if (!context) {
+        item.matches.shift();
+        var contextPattern = '(?:\\S+ +){0,' + numContextWords + '}\\S*\\b(?:' + item.matches.map(escapeRegex).join('|') + ')\\b\\S*(?: +\\S+){0,' + numContextWords + '}';
+        context = page.content.match(new RegExp(contextPattern, 'i'));
+      }
+    }
+    var divsuggestion = document.createElement('a');
+    divsuggestion.className = 'autocomplete-suggestion';
+    divsuggestion.setAttribute('href', window.relearn.relBaseUri + page.uri);
+    var divlink = document.createElement('span');
+    divlink.className = 'link';
+    divlink.innerText = page.title;
+    var divtitle = document.createElement('div');
+    divtitle.className = 'title';
+    // the mark in front of the title is decoration
+    var spanmark = document.createElement('span');
+    spanmark.setAttribute('aria-hidden', 'true');
+    spanmark.innerText = '» ';
+    divtitle.appendChild(spanmark);
+    divtitle.appendChild(divlink);
+    divsuggestion.appendChild(divtitle);
+    var divbreadcrumb = document.createElement('div');
+    divbreadcrumb.className = 'breadcrumbs';
+    divbreadcrumb.innerText = page.breadcrumb || '';
+    divsuggestion.appendChild(divbreadcrumb);
+    if (context) {
+      var divcontext = document.createElement('div');
+      divcontext.className = 'context';
+      divcontext.innerText = context || '';
+      divsuggestion.appendChild(divcontext);
+    }
+    return divsuggestion;
+  }
+
+  function resolvePlaceholders(s, args) {
+    var args = args || [];
+    // use replace to iterate over the string
+    // select the match and check if the related argument is present
+    // if yes, replace the match with the argument
+    return s.replace(/{([0-9]+)}/g, function (match, index) {
+      // check if the argument is present
+      return typeof args[index] == 'undefined' ? match : args[index];
+    });
+  }
+
+  // how many suggestions there are is told without having to look at them
+  function initStatus(list) {
+    var status = document.createElement('div');
+    status.className = 'a11y-only';
+    status.setAttribute('role', 'status');
+    list.insertAdjacentElement('afterend', status);
+    return status;
+  }
+
+  function executeSearch(value) {
+    var input = document.querySelector('#R-search-by-detail');
+
+    var results = document.querySelector('#R-searchresults');
+    var hint = document.querySelector('.searchhint');
+    hint.innerText = '';
+    results.textContent = '';
+    // the print version searches for the term it is given with its URL
+    var print = document.querySelector('.topbar-button-print a');
+    if (print) {
+      var printUrl = new URL(print.href);
+      printUrl.searchParams.delete('search-by');
+      if (value.length) {
+        printUrl.searchParams.set('search-by', value);
+      }
+      print.href = printUrl;
+    }
+    (async function () {
+      var a = await window.relearn.search.adapter.search(value);
+      if (a.length) {
+        hint.innerText = resolvePlaceholders(window.T_N_results_found, [value, a.length]);
+        a.forEach(function (item) {
+          results.appendChild(renderItem(item));
+        });
+        window.relearn.markSearch();
+      } else if (value.length) {
+        hint.innerText = resolvePlaceholders(window.T_No_results_found, [value]);
+      }
+      input.focus();
+
+      // if we are initiating search because of a browser history
+      // operation, we have to restore the scrolling postion the
+      // user previously has used; if this search isn't initiated
+      // by a browser history operation, it simply does nothing
+      var state = window.history.state || {};
+      state = Object.assign({}, typeof state === 'object' ? state : {});
+      if (Object.hasOwn(state, 'contentScrollTop')) {
+        window.setTimeout(function () {
+          elc.scrollTop = +state.contentScrollTop;
+        }, 10);
+        return;
+      }
+    })();
+  }
+
+  function initSearchAfterLoad() {
+    if (!window.relearn.search || !window.relearn.search.adapter) {
+      return;
+    }
+    // the adapters expect the index URL and its integrity as globals; our data block
+    // is the same for every page, so it knows the index's path from the site's root
+    // and we put the page's own way up there in front of it
+    var config = JSON.parse(document.querySelector('#R-search-config').textContent);
+    window.relearn.index_js_url = window.relearn.relBasePath + '/' + config.indexFile;
+    window.relearn.index_js_integrity = config.indexIntegrity;
+    window.relearn.search.adapter.init();
+
+    var input = document.querySelector('#R-search-by-detail');
+    if (input) {
+      var state = window.history.state || {};
+      state = Object.assign({}, typeof state === 'object' ? state : {});
+      state.search = window.location.toString();
+      window.history.replaceState(state, '');
+    }
+
+    // each search box gets its own suggestions and its own status
+    document.querySelectorAll('.searchbox input.search-by').forEach(function (box) {
+      var status = null;
+      new autoComplete({
+        /* selector for the search box element */
+        selectorToInsert: 'search:has(.searchbox)',
+        selector: box,
+        /* source is the callback to perform the search */
+        source: async function (term, response) {
+          let a = await window.relearn.search.adapter.search(term);
+          response(a);
+          if (status) {
+            status.innerText = resolvePlaceholders(a.length ? window.T_N_results_found : window.T_No_results_found, [term, a.length]);
+          }
+        },
+        /* renderItem displays individual search results */
+        renderItem: function (item, _term) {
+          return renderItem(item).outerHTML;
+        },
+        /* onSelect callback fires when a search suggestion is chosen */
+        onSelect: function (e, term, item) {
+          location.href = item.getAttribute('href');
+          e.preventDefault();
+        },
+      });
+      if (box.sc) {
+        status = initStatus(box.sc);
+      }
+    });
+  }
+
+  function initSearch() {
+    window.addEventListener('popstate', executeHistorySearch);
+
+    var input = document.querySelector('#R-search-by-detail');
+    if (input) {
+      // search in place instead of reloading the page with the term in its URL
+      input.form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        window.relearn.executeTriggeredSearch();
+      });
+      input.addEventListener('keydown', function (event) {
+        // if we are pressing ESC in the searchdetail our focus will
+        // be stolen by the other event handlers, so we have to refocus
+        // here after a short while
+        if (event.key == 'Escape') {
+          setTimeout(function () {
+            input.focus();
+          }, 0);
+        }
+      });
+    }
+    ready(initSearchAfterLoad);
+  }
+
+  initSearch();
+})();

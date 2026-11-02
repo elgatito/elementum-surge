@@ -1,0 +1,35 @@
+{{- $page := .page }}
+{{- $class := .class | default "" }}
+{{- $href := (trim .href " ") | default "" }}
+{{- $onempty := cond (isset . "onempty") .onempty "disable" }}
+{{- $onwidths := cond (isset . "onwidths") .onwidths "show" }}
+{{- $onwidthm := cond (isset . "onwidthm") .onwidthm "show" }}
+{{- $onwidthl := cond (isset . "onwidthl") .onwidthl "show" }}
+{{- $type := .type | default "" }}
+{{- $action := (trim .action " ") | default "" }}
+{{- $title := (trim .title " ") | default "" }}
+{{- $hint := (trim .hint " ") | default "" }}
+{{- $icon := (trim .icon " ") | default "" }}
+{{- $content := .content }}
+{{- $istoggle := .istoggle | default false }}
+            <div class="topbar-button {{ $class }} default-animation" data-content-empty="{{ $onempty }}" data-width-s="{{ $onwidths }}" data-width-m="{{ $onwidthm }}" data-width-l="{{ $onwidthl }}">
+{{ partial "shortcodes/button.html" (dict
+  "page" $page
+  "action" $action
+  "istoggle" $istoggle
+  "href" $href
+  "style" "link"
+  "icon" $icon
+  "borderless" true
+  "type" $type
+  "content" $title
+  "hint" $hint
+)}}
+{{- if $content }}
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper" tabindex="-1">
+                  {{- $content }}
+                </div>
+              </div>
+{{- end }}
+            </div>

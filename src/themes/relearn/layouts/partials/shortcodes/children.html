@@ -1,0 +1,40 @@
+{{- $page := .page }}
+{{- if and (not $page) .context }}
+  {{- $page = .context }}
+  {{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+  {{- warnf "%q: DEPRECATED parameter 'context' for shortcode 'children' found, use 'page' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/5/#5-18-0" $filepath }}
+{{- end }}
+{{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+
+{{- $defaultType := "tree" }}
+{{- if or .containerstyle .style }}
+  {{- if or (eq .containerstyle "ul") (eq .style "li") }}
+    {{- $defaultType = "tree" }}
+  {{- else if hasPrefix .style "h" }}
+    {{- $defaultType = "list" }}
+  {{- else }}
+    {{- $defaultType = "flat" }}
+  {{- end }}
+  {{- warnf "%q: DEPRECATED parameter 'containerstyle' or 'style' for shortcode 'children' found, use 'type=%s' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/8/#8-1-0" $filepath $defaultType }}
+{{- end }}
+
+{{- /* the shortcode is a translation layer over the `pages` shortcode */}}
+{{- $type := .type | default $defaultType }}
+{{- $sort := .sort }}
+{{- if in (slice "taxonomy" "term") $page.Kind }}
+  {{- $type = .type | default $page.Params.children.type | default "group" }}
+  {{- $sort = .sort | default $page.Params.children.sort }}
+{{- end }}
+{{- $params := partial "_relearn/pagesLegacy.gotmpl" (dict "page" $page "params" (merge . (dict "type" $type))) }}
+
+{{- $equivalent := "" }}
+{{- range $name, $value := $params }}
+  {{- $equivalent = printf "%s %s=%q" $equivalent $name (printf "%v" $value) }}
+{{- end }}
+{{- warnf "%q: DEPRECATED shortcode 'children' found, use '{{%% pages%s %%}}' instead; see https://mcshelby.github.io/hugo-theme-relearn/shortcodes/children#migration" $filepath $equivalent }}
+
+{{- /* keeps the classes of the `children` shortcode, so existing styles still apply */}}
+{{- partial "shortcodes/pages.html" (merge $params (dict
+  "page"  $page
+  "class" (printf "children children-type-%s children-sort-%s" $type (lower (printf "%v" ($sort | default ""))))
+)) }}

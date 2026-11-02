@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "rtl"
+
+[Versioning-warning]
+other = 'تعرض هذه الصفحة الإصدار {{.pageVersion.title}}. يمكن العثور على الإصدار الحالي <a href="{{.latestUrl}}">هنا</a>.'
+
+[Search]
+other = "البحث"
+
+[Search-placeholder]
+other = "...البحث"
+
+[Clear-search]
+other = "مسح البحث"
+
+[No-results-found]
+other = "لم يتم العثور على نتائج لـ \"{0}\""
+
+[N-results-found]
+other = "تم العثور على {1} نتيجة لـ \"{0}\""
+
+[Clear-History]
+other = "مسح السجل"
+
+[History-cleared]
+other = "تم مسح السجل"
+
+[Enlarge-graph]
+other = "تكبير الرسم البياني"
+
+[Close-graph]
+other = "إغلاق الرسم البياني المكبّر"
+
+[Reset-view]
+other = "إعادة تعيين طريقة العرض"
+
+[View-reset]
+other = "عرض إعادة تعيين!"
+
+[Attachments-label]
+other = "مرفقات"
+
+[title-404]
+other = "غير محدد"
+
+[message-404]
+other = ".¯\\_(ツ)_/¯أوبس. يبدو أن هذه الصفحة غير موجودة"
+
+[Go-to-homepage]
+other = "الذهاب إلى الصفحة الرئيسية"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "حرر"
+
+[Show-Markdown]
+other = "إظهار Markdown"
+
+[Show-source]
+other = "إظهار شفرة المصدر"
+
+[Print-this-chapter]
+other = "طباعة الفصل بأكمله"
+
+[More-action]
+other = "المزيد"
+
+[shortcuts-menuTitle]
+other = "المزيد"
+
+[Navigation-toggle]
+other = "قائمة"
+
+[Toc-toggle]
+other = "جدول المحتويات"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "الحذر"
+
+[important]
+other = "مهم"
+
+[info]
+other = "معلومات"
+
+[note]
+other = "ملاحظة"
+
+[tip]
+other = "نصيحة"
+
+[warning]
+other = "تحذير"
+
+[Copy-to-clipboard]
+other = "نسخ النص إلى الحافظة"
+
+[Copied-to-clipboard]
+other = "تم نسخ النص إلى الحافظة!"
+
+[Copy-link-to-clipboard]
+other = "نسخ الرابط إلى الحافظة"
+
+[Link-copied-to-clipboard]
+other = "تم نسخ الرابط إلى الحافظة!"
+
+[Chapter]
+other = "{{.}} الفصل"
+
+[Language]
+other = "اللغة"
+
+[Theme]
+other = "موضوع"
+
+[Submenu]
+other = "{{.}} القائمة الفرعية"
+
+[Subsections]
+other = "{{.}} الأقسام الفرعية"
+
+[tags]
+other = "الكلمات الدالة"
+
+[tag]
+other = "وسم"
+
+[categories]
+other = "فئات"
+
+[category]
+other = "فئة"
+
+[Details]
+other = "التفاصيل"
+
+[Version]
+other = "إصدار"
+
+[Browser-unsupported-feature]
+other = "هذا المتصفح لا يدعم هذه الميزة"
+
+[Pages-group-fallback]
+other = "أخرى"
+
+[Skip-to-content]
+other = "تخطي إلى المحتوى الرئيسي"
+
+[Breadcrumbs]
+other = "مسار التنقل"
+
+[Search-page]
+other = "فتح صفحة البحث"
+
+[Close-image]
+other = "إغلاق الصورة المكبّرة"
+
+[Expand-all]
+other = "توسيع الكل"
+
+[Collapse-all]
+other = "طي الكل"
+
+[Inserted-text-start]
+other = "بداية النص المُدرج"
+
+[Inserted-text-end]
+other = "نهاية النص المُدرج"
+
+[Deleted-text-start]
+other = "بداية النص المحذوف"
+
+[Deleted-text-end]
+other = "نهاية النص المحذوف"
+
+[N-matches-on-page]
+other = "تم العثور على {1} تطابق لـ \"{0}\" في هذه الصفحة"
+
+[Sortable-columns]
+other = "رؤوس الأعمدة التي تحتوي على أزرار قابلة للفرز."
+
+[Sort-key-ascending]
+other = "مرتب في الموضع {0}، تصاعدي"
+
+[Sort-key-descending]
+other = "مرتب في الموضع {0}، تنازلي"
+
+[Sorted-by-ascending]
+other = "تم الفرز حسب \"{0}\"، تصاعديًا"
+
+[Sorted-by-descending]
+other = "تم الفرز حسب \"{0}\"، تنازليًا"
+
+[Unsorted-by]
+other = "لم يعد مفروزًا حسب \"{0}\""
+
+[Change-sorting]
+other = "تغيير الفرز"
+
+[Reset-sorting]
+other = "إعادة تعيين الفرز"
+
+[Sorting-reset]
+other = "تمت إعادة تعيين الفرز!"

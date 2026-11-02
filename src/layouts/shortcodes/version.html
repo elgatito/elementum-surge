@@ -1,0 +1,2 @@
+{{- /* Latest release tag of an addon, fetched by scripts/fetch_upstream.sh. Usage: {{< version "plugin.video.elementum" >}} */ -}}
+{{- readFile (printf "upstream/%s/version" (.Get 0)) -}}

@@ -1,31 +1,40 @@
 +++
 title = "Downloads"
-description = ""
+description = "Zip files of all add-ons for every platform"
 weight = 3
 +++
 
-<!--more-->
+Install zip files in Kodi with _Add-ons → Install from zip file_. Usually you only need the repository, see [Installation]({{% relref "installation.md" %}}).
 
-### Repository Downloads
+## ElementumOrg repository {#repository-downloads}
 
-> Platform-independent repository, that can work without Elementum addon.
+Works on any platform and installs and updates all add-ons below. Version **{{< version "repository.elementumorg" >}}**.
 
 {{< platforms "repository.elementumorg" >}}
 
-### Elementum Downloads
+## Elementum {#elementum-downloads}
 
-> It is always better to use "All-on-one" zip file to install, it includes all the platforms!
+The add-on itself. Version **{{< version "plugin.video.elementum" >}}**.
+
+- **All platforms** zip contains binaries for every platform. Use it if you are not sure which one you need.
+- **Client only** zip has no binary, for [client-server mode]({{% relref "/configuration/command-line.md#client-server-mode" %}}).
 
 {{< platforms "plugin.video.elementum" >}}
 
-### LT2http Downloads
+## Burst {#burst-downloads}
 
-{{< platforms "service.lt2http" >}}
-
-### Burst Downloads
+Torrent search add-on, required to find anything. Version **{{< version "script.elementum.burst" >}}**.
 
 {{< platforms "script.elementum.burst" >}}
 
-### Context Helper Downloads
+## Context {#context-helper-downloads}
+
+Optional context menu add-on, see [Context add-on]({{% relref "/context/_index.md" %}}). Version **{{< version "context.elementum" >}}**.
 
 {{< platforms "context.elementum" >}}
+
+## LT2http {#lt2http-downloads}
+
+Optional, separate from Elementum: a [LibTorrent-to-HTTP](https://github.com/ElementumOrg/lt2http) streaming service for Kodi. Version **{{< version "service.lt2http" >}}**.
+
+{{< platforms "service.lt2http" >}}

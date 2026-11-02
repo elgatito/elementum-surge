@@ -1,0 +1,19 @@
+{{- $url := "" }}
+{{- /* because Hugo can not resolve a pageRef if it contains URL query params or
+	fragments, we simply don't access the .Page here; an entry from the
+	configuration is the same on every page showing it, so it is resolved once,
+	and names no file */}}
+{{- with and . .menu }}
+	{{- $entry := or .KeyName .Identifier .Name .Title }}
+	{{- $url = partialCached "_relearn/menuUrl.gotmpl" (dict
+		"page"         $.page
+		"ref"          .PageRef
+		"url"          .URL
+		"refObject"    .Page
+		"hideFilepath" true
+		"refName"      (printf "config option 'pageRef' %q for 'menu' entry %q" .PageRef $entry)
+		"urlName"      (printf "config option 'url' %q for 'menu' entry %q" .URL $entry)
+		"refParam"     "pageRef"
+	) .Menu $entry .PageRef .URL }}
+{{- end }}
+{{- return $url }}

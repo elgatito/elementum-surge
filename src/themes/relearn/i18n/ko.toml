@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = '이 페이지는 {{.pageVersion.title}} 버전을 표시합니다. 현재 버전을 <a href="{{.latestUrl}}">여기서</a> 찾을 수 있습니다.'
+
+[Search]
+other = "검색"
+
+[Search-placeholder]
+other = "검색어를 입력하세요"
+
+[Clear-search]
+other = "검색 지우기"
+
+[No-results-found]
+other = "\"{0}\"에 대한 결과가 없습니다."
+
+[N-results-found]
+other = "\"{0}\"에 대해 {1}개의 결과가 검색되었습니다."
+
+[Clear-History]
+other = "방문 기록 삭제"
+
+[History-cleared]
+other = "방문 기록이 삭제되었습니다"
+
+[Enlarge-graph]
+other = "그래프 확대"
+
+[Close-graph]
+other = "확대된 그래프 닫기"
+
+[Reset-view]
+other = "보기 재설정"
+
+[View-reset]
+other = "보기 초기화!"
+
+[Attachments-label]
+other = "첨부파일"
+
+[title-404]
+other = "위치 없음"
+
+[message-404]
+other = "존재하지 않는 페이지입니다."
+
+[Go-to-homepage]
+other = "메인화면"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "편집"
+
+[Show-Markdown]
+other = "마크다운 표시"
+
+[Show-source]
+other = "소스 코드 표시"
+
+[Print-this-chapter]
+other = "전체 장 인쇄"
+
+[More-action]
+other = "외부 링크"
+
+[shortcuts-menuTitle]
+other = "외부 링크"
+
+[Navigation-toggle]
+other = "메뉴"
+
+[Toc-toggle]
+other = "목차"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "주의"
+
+[important]
+other = "중요"
+
+[info]
+other = "참고"
+
+[note]
+other = "주"
+
+[tip]
+other = "도움말"
+
+[warning]
+other = "주의"
+
+[Copy-to-clipboard]
+other = "텍스트를 클립보드에 복사"
+
+[Copied-to-clipboard]
+other = "텍스트가 클립보드에 복사됐습니다!"
+
+[Copy-link-to-clipboard]
+other = "링크를 클립보드에 복사"
+
+[Link-copied-to-clipboard]
+other = "링크가 클립보드에 복사됐습니다!"
+
+[Chapter]
+other = "{{.}}장"
+
+[Language]
+other = "언어"
+
+[Theme]
+other = "주제"
+
+[Submenu]
+other = "하위 메뉴 {{.}}"
+
+[Subsections]
+other = "{{.}}의 하위 섹션"
+
+[tags]
+other = "태그"
+
+[tag]
+other = "태그"
+
+[categories]
+other = "카테고리"
+
+[category]
+other = "카테고리"
+
+[Details]
+other = "세부 정보"
+
+[Version]
+other = "버전"
+
+[Browser-unsupported-feature]
+other = "이 브라우저는 이 기능을 지원하지 않습니다"
+
+[Pages-group-fallback]
+other = "기타"
+
+[Skip-to-content]
+other = "본문으로 건너뛰기"
+
+[Breadcrumbs]
+other = "이동 경로"
+
+[Search-page]
+other = "검색 페이지 열기"
+
+[Close-image]
+other = "확대된 이미지 닫기"
+
+[Expand-all]
+other = "모두 펼치기"
+
+[Collapse-all]
+other = "모두 접기"
+
+[Inserted-text-start]
+other = "삽입된 텍스트 시작"
+
+[Inserted-text-end]
+other = "삽입된 텍스트 끝"
+
+[Deleted-text-start]
+other = "삭제된 텍스트 시작"
+
+[Deleted-text-end]
+other = "삭제된 텍스트 끝"
+
+[N-matches-on-page]
+other = "이 페이지에서 \"{0}\"에 대해 {1}개의 일치 항목이 검색되었습니다."
+
+[Sortable-columns]
+other = "버튼이 있는 열 머리글로 정렬할 수 있습니다."
+
+[Sort-key-ascending]
+other = "{0}번째로 정렬, 오름차순"
+
+[Sort-key-descending]
+other = "{0}번째로 정렬, 내림차순"
+
+[Sorted-by-ascending]
+other = "\"{0}\" 기준 정렬, 오름차순"
+
+[Sorted-by-descending]
+other = "\"{0}\" 기준 정렬, 내림차순"
+
+[Unsorted-by]
+other = "\"{0}\" 기준 정렬 해제"
+
+[Change-sorting]
+other = "정렬 변경"
+
+[Reset-sorting]
+other = "정렬 초기화"
+
+[Sorting-reset]
+other = "정렬 초기화!"

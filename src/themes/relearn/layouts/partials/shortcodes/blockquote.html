@@ -1,0 +1,39 @@
+{{- $page := .page }}
+{{- $content := .content }}
+{{- $author := .author | default "" }}
+{{- $source := .source | default "" }}
+{{- /* the address is resolved the same way as for the link shortcode;
+  with `relativeURLs=true` Hugo rewrites it in the `href` of the caption's link but not in the `cite` attribute
+  of the quote, which stays relative to the root of the server; this is Hugo's to fix, so the theme does not
+  work around it */}}
+{{- $cite := "" }}
+{{- with .href }}
+  {{- /* already checked, so it is written with `safeURL`; the template alone would
+    only let `http`, `https` and `mailto` through */}}
+  {{- $cite = (partial "_relearn/urlResolve.gotmpl" (dict "url" . "page" $page "param" "link")).href }}
+{{- end }}
+{{- if or $author $source }}
+{{- /* the attribution must not be part of the quoted content, so it is the caption of a figure wrapping the quote; `cite` marks the title of a work, never a person */ -}}
+<figure class="quote">
+  <blockquote{{ with $cite }} cite="{{ . | safeURL }}"{{ end }}>
+{{ $content | safeHTML }}</blockquote>
+  <figcaption>
+  {{- if $cite }}
+    {{- $attributes := partial "_relearn/linkAttributes.gotmpl" (dict "url" $cite "page" $page "attributes" dict) -}}
+    <a
+    {{- range $k, $v := $attributes }}
+      {{- if $v }}
+        {{- if eq (printf "%T" $v) "bool" }} {{ $k | safeHTMLAttr }}
+        {{- else }} {{ $k | safeHTMLAttr }}="{{ $v }}"
+        {{- end }}
+      {{- end }}
+    {{- end }}>
+  {{- end }}
+  {{- with $author }}{{ . | $page.RenderString }}{{ end }}{{ if and $author $source }}, {{ end }}{{ with $source }}<cite>{{ . | $page.RenderString }}</cite>{{ end }}
+  {{- if $cite }}</a>{{ end -}}
+  </figcaption>
+</figure>
+{{- else -}}
+<blockquote{{ with $cite }} cite="{{ . | safeURL }}"{{ end }}>
+{{ $content | safeHTML }}</blockquote>
+{{- end }}

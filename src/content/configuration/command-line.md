@@ -4,11 +4,11 @@ description = "Running the Elementum daemon yourself: flags, config file, client
 weight = 2
 +++
 
-Normally the Kodi addon starts the `elementum` binary itself, and you don't need any of this.
+Normally the Kodi add-on starts the `elementum` binary itself, and you don't need any of this.
 You need it when you run the daemon **separately from Kodi**: on a NAS, in [Docker](https://github.com/ElementumOrg/elementum-docker),
 as a Linux daemon or Windows service, or on a platform that has no Elementum binary.
 
-The binary is inside the addon zip, in `resources/bin/<platform>/elementum` (`elementum.exe` on Windows).
+The binary is inside the add-on zip, in `resources/bin/<platform>/elementum` (`elementum.exe` on Windows).
 
 ## Flags
 
@@ -30,8 +30,8 @@ The easiest way to get such a file is to export it from a working setup:
 2. Start the daemon once with `-exportConfig=/path/to/elementum.yml` (plus `-remoteHost` if Kodi is on another device). It reads the settings from Kodi, writes them to the file and keeps running; stop it afterwards.
 3. Edit the file if needed and start the daemon with `-configPath=/path/to/elementum.yml`.
 
-The file has the addon info, the platform and a `settings` map. Keys in `settings` are the
-IDs from [Kodi addon settings]({{%relref "kodi-settings.md"%}}), for example:
+The file has the add-on info, the platform and a `settings` map. Keys in `settings` are the
+IDs from [Kodi add-on settings]({{%relref "kodi-settings.md"%}}), for example:
 
 ```yaml
 settings:
@@ -45,7 +45,7 @@ Flags still win over the file: e.g. `-downloadsPath` overrides `download_path`.
 
 ## Client-server mode
 
-Kodi runs the addon in **client mode** and talks to a daemon running elsewhere.
+Kodi runs the add-on in **client mode** and talks to a daemon running elsewhere.
 
 On the server (where the daemon runs):
 

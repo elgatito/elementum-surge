@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = '此页面显示版本 {{.pageVersion.title}}。当前版本可以在<a href="{{.latestUrl}}">这里</a>找到。'
+
+[Search]
+other = "搜索"
+
+[Search-placeholder]
+other = "搜索..."
+
+[Clear-search]
+other = "清除搜索"
+
+[No-results-found]
+other = "找不到\"{0}\"的结果"
+
+[N-results-found]
+other = "为\"{0}\"找到 {1} 个结果"
+
+[Clear-History]
+other = "清理历史记录"
+
+[History-cleared]
+other = "历史记录已清理"
+
+[Enlarge-graph]
+other = "放大图表"
+
+[Close-graph]
+other = "关闭放大的图表"
+
+[Reset-view]
+other = "重置视图"
+
+[View-reset]
+other = "查看重置！"
+
+[Attachments-label]
+other = "附件"
+
+[title-404]
+other = "未定位"
+
+[message-404]
+other = "哎哟。 看起来这个页面不存在 ¯\\_(ツ)_/¯。"
+
+[Go-to-homepage]
+other = "转到主页"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "编辑"
+
+[Show-Markdown]
+other = "显示 Markdown"
+
+[Show-source]
+other = "显示源代码"
+
+[Print-this-chapter]
+other = "打印整章"
+
+[More-action]
+other = "更多"
+
+[shortcuts-menuTitle]
+other = "更多"
+
+[Navigation-toggle]
+other = "导航"
+
+[Toc-toggle]
+other = "目录"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "注意事项"
+
+[important]
+other = "重要"
+
+[info]
+other = "信息"
+
+[note]
+other = "注释"
+
+[tip]
+other = "提示"
+
+[warning]
+other = "警告"
+
+[Copy-to-clipboard]
+other = "复制文本到剪贴板"
+
+[Copied-to-clipboard]
+other = "文本已复制到剪贴板！"
+
+[Copy-link-to-clipboard]
+other = "复制链接到剪贴板"
+
+[Link-copied-to-clipboard]
+other = "链接已复制到剪贴板！"
+
+[Chapter]
+other = "第{{.}}章"
+
+[Language]
+other = "语言"
+
+[Theme]
+other = "主题"
+
+[Submenu]
+other = "子菜单{{.}}"
+
+[Subsections]
+other = "{{.}} 的子部分"
+
+[tags]
+other = "标签"
+
+[tag]
+other = "标签"
+
+[categories]
+other = "类别"
+
+[category]
+other = "类别"
+
+[Details]
+other = "详情"
+
+[Version]
+other = "版本"
+
+[Browser-unsupported-feature]
+other = "此浏览器不支持此功能"
+
+[Pages-group-fallback]
+other = "其他"
+
+[Skip-to-content]
+other = "跳转到主要内容"
+
+[Breadcrumbs]
+other = "面包屑导航"
+
+[Search-page]
+other = "打开搜索页面"
+
+[Close-image]
+other = "关闭放大的图片"
+
+[Expand-all]
+other = "全部展开"
+
+[Collapse-all]
+other = "全部折叠"
+
+[Inserted-text-start]
+other = "插入文本开始"
+
+[Inserted-text-end]
+other = "插入文本结束"
+
+[Deleted-text-start]
+other = "删除文本开始"
+
+[Deleted-text-end]
+other = "删除文本结束"
+
+[N-matches-on-page]
+other = "在此页面中为\"{0}\"找到 {1} 处匹配"
+
+[Sortable-columns]
+other = "带按钮的列标题可用于排序。"
+
+[Sort-key-ascending]
+other = "第 {0} 级排序，升序"
+
+[Sort-key-descending]
+other = "第 {0} 级排序，降序"
+
+[Sorted-by-ascending]
+other = "已按\"{0}\"排序，升序"
+
+[Sorted-by-descending]
+other = "已按\"{0}\"排序，降序"
+
+[Unsorted-by]
+other = "已取消按\"{0}\"排序"
+
+[Change-sorting]
+other = "更改排序"
+
+[Reset-sorting]
+other = "重置排序"
+
+[Sorting-reset]
+other = "排序已重置！"

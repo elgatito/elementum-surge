@@ -1,15 +1,13 @@
 +++
 title = "Donate"
-description = ""
-weight = 7
+description = "Support Elementum development"
+weight = 8
+menuPre = "<i class='fas fa-fw fa-mug-hot'></i> "
 +++
 
+Elementum is free to use, with no payments or fees. You can donate to support further development of the add-on and its related projects.
 
-## Donations
-Elementum is free to use, without any payments and fees, but you can donate, to support further development and add functionality to the addon and surrounding projects.  
-
-
-### Paypal
+### PayPal
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 <input type="hidden" name="cmd" value="_s-xclick" />
 <input type="hidden" name="hosted_button_id" value="R2M3FCJCJDJLU" />
@@ -19,7 +17,7 @@ Elementum is free to use, without any payments and fees, but you can donate, to 
 <img alt="" border="0" src="https://www.paypal.com/en_PL/i/scr/pixel.gif" width="1" height="1" />
 </form>
 
-### Bitcoin
+### Crypto
 * BTC: 1AVMRYfBUVcDoUNi3WZqPtaigbFtkHEQvP
 * BCH: qp5pt57335k44mpq9m55ajyz2err8kfv4cn58sxvt8
 * Electrum address: bc1qfaea67lv4e8w97fx3crmdtxryn8pkc47mf7gav

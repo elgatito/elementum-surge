@@ -1,0 +1,142 @@
+{{- /* 1. set standard effects */}}
+{{- $effects := dict "border" false "dataurl" false "inlinecontent" false "lazy" true "lightbox" true "rounded" true "shadow" false "left" false "right" false "inline" false }}
+{{- $attributes := .attributes | default dict }}
+
+{{- /* 2. stack configured site effects */}}
+{{- if .page.Site.Params.imageeffects }}
+	{{- $effects = merge $effects .page.Site.Params.imageeffects }}
+{{- end }}
+
+{{- /* 3. stack pages frontmatter effects */}}
+{{- if .page.Params.imageeffects }}
+	{{- $effects = merge $effects .page.Params.imageeffects }}
+{{- end }}
+
+{{- /* 4. stack URL query parameter */}}
+{{- $height := "" }}
+{{- $width := "" }}
+{{- $u := urls.Parse .url }}
+{{- if $u.RawQuery }}
+
+	{{- /* 4.1 stack "classes" parameter effects; handle "no" prefix */}}
+	{{- if $u.Query.Has "classes" }}
+		{{- $classes := slice | append (split ($u.Query.Get "classes") ",") }}
+		{{- range $classes }}
+			{{- $k := . }}
+			{{- $v := true }}
+			{{- if strings.HasPrefix $k "no" }}
+				{{- $k = strings.TrimPrefix "no" $k }}
+				{{- $v = false }}
+			{{- end }}
+			{{- if isset $effects $k }}
+				{{- $effects = merge $effects (dict $k $v) }}
+			{{- end }}
+		{{- end }}
+	{{- end }}
+
+	{{- /* 4.2 stack other effect parameter; no handling for "no" prefix */}}
+	{{- range $k, $v := $effects }}
+		{{- if $u.Query.Has $k }}
+			{{- $paramValue := $u.Query.Get $k }}
+			{{- $newValue := true }}
+			{{- if eq $paramValue "" }}
+				{{- $newValue = true }}
+			{{- else if eq $paramValue "true" }}
+				{{- $newValue = true }}
+			{{- else if eq $paramValue "false" }}
+				{{- $newValue = false }}
+			{{- else }}
+				{{- $newValue = $paramValue }}
+			{{- end }}
+			{{- $effects = merge $effects (dict $k $newValue) }}
+		{{- end }}
+	{{- end }}
+
+	{{- /* 4.3 special case parameter */}}
+	{{- if $u.Query.Has "featherlight" }}
+		{{- $filepath := "[virtual file]" }}{{ with and .page .page.File .page.File.Filename }}{{ $filepath = . }}{{ end }}
+		{{- warnf "%q: DEPRECATED usage of 'featherlight' image CSS class found, use 'lightbox' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/5/#5-11-0" $filepath }}
+		{{- $attributes = merge $attributes (dict "lightbox" (ne ($u.Query.Get "featherlight") "false")) }}
+	{{- end }}
+	{{- with $u.Query.Get "height" }}
+		{{- $height = . }}
+	{{- end }}
+	{{- with $u.Query.Get "width" }}
+		{{- $width = . }}
+	{{- end }}
+{{- end }}
+
+{{- /* 5. stack caller-provided attributes.class parameter; handle "no" prefix */}}
+{{- $attributeClasses := slice }}
+{{- if $attributes.class }}
+	{{- $classes := split $attributes.class " " }}
+	{{- range $classes }}
+		{{- $k := . }}
+		{{- $v := true }}
+		{{- if strings.HasPrefix $k "no" }}
+			{{- $k = strings.TrimPrefix "no" $k }}
+			{{- $v = false }}
+		{{- end }}
+		{{- if isset $effects $k }}
+			{{- $effects = merge $effects (dict $k $v) }}
+		{{- else }}
+			{{- $attributeClasses = $attributeClasses | append $k }}
+		{{- end }}
+	{{- end }}
+{{- end }}
+
+{{- /* manually translate effects to HTML attributes */}}
+{{- /* "class" should only contain boolean effects if they are true */}}
+{{- range $k, $v := $effects }}
+	{{- if $v }}
+		{{- if eq (printf "%T" $v) "bool" }}
+			{{- $attributeClasses = $attributeClasses | append $k }}
+		{{- end }}
+	{{- end }}
+{{- end }}
+{{- $attributeClasses = delimit $attributeClasses " " }}
+{{- $attributes = merge $attributes (dict "class" $attributeClasses) }}
+
+{{- /* a size is only written if one was asked for; the stylesheet gives every
+	image `height: auto`, so it follows its width against the `height` attribute.
+	An unasked-for width is left out instead of set to `auto`; `auto` would
+	override the width the `width` attribute presents, and a browser needs one
+	definite side to compute the other from the aspect ratio before the image has
+	loaded. Once a height is asked for, `auto` comes back: the width has to stay
+	free to follow it, or the image is stretched to the given height */}}
+{{- $styles := slice }}
+{{- with $height }}
+	{{- $styles = $styles | append (printf "height: %s" .) }}
+{{- end }}
+{{- if or $width $height }}
+	{{- $styles = $styles | append (printf "width: %s" (or $width "auto")) }}
+{{- end }}
+{{- if $attributes.style }}{{ $styles = $styles | append (split $attributes.style ";") }}{{ end }}
+{{- $styles = delimit $styles ";" }}
+{{- if $styles }}{{ $styles = print $styles ";" }}{{ end }}
+{{- $attributes = merge $attributes (dict "style" $styles) }}
+
+{{- /* the resource's own dimensions, so a browser can reserve the space an image
+	will take before it has arrived. Only a resource Hugo can decode has any, and
+	asking one that cannot - an SVG, a page - fails the build rather than
+	answering zero, hence the `try`. A caller that set its own outranks the file */}}
+{{- if and .linkObject (not $attributes.width) (not $attributes.height) }}
+	{{- $intrinsicWidth := try .linkObject.Width }}
+	{{- $intrinsicHeight := try .linkObject.Height }}
+	{{- if and $intrinsicWidth.Value $intrinsicHeight.Value }}
+		{{- $attributes = merge $attributes (dict "width" (string $intrinsicWidth.Value) "height" (string $intrinsicHeight.Value)) }}
+	{{- end }}
+{{- end }}
+
+{{- if and .linkObject $effects.inlinecontent (eq .linkObject.MediaType.Type "image/svg+xml") }}
+	{{- $content := .linkObject.Content | replaceRE `(?s)^\s*<\?.*?\?>\s*` "" }}
+	{{- $attributes = merge $attributes (dict "content" $content) }}
+{{- else if and .linkObject $effects.dataurl }}
+	{{- $src := printf "data:%s;base64,%s" .linkObject.MediaType.Type (.linkObject.Content | base64Encode) }}
+	{{- $attributes = merge $attributes (dict "src" $src) }}
+{{- else }}
+	{{- $attributes = merge $attributes (dict "src" .url) }}
+	{{- if $effects.lazy }}{{ $attributes = merge $attributes (dict "loading" "lazy") }}{{ end }}
+{{- end }}
+
+{{- return $attributes }}

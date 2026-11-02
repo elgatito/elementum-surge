@@ -1,0 +1,7 @@
+{{- $id := "" }}
+{{- partial "shortcodes/openapi.html" (dict
+  "page"    .Page
+  "src"     (.Get "src")
+  "lang"    (.Get "lang")
+  "id"      $id
+) }}

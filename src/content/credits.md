@@ -1,25 +1,16 @@
 +++
 title = "Credits"
-description = "contributors and packages used by Elementum"
+description = "Contributors and projects Elementum is built on"
 +++
 
+## Contributors
 
-## github contributors
-{{<ghcontributors "https://api.github.com/repos/elgatito/plugin.video.elementum/contributors?per_page=100" >}}
+{{< ghcontributors "elgatito/plugin.video.elementum" >}}
 
-### Other contributors
-<div class="ghContributors">
-    <div>
-      <img src="https://avatars2.githubusercontent.com/u/16550008?v=3" class="inline" width="32" height="32" style="height: 32px;height: 32px;margin-bottom:.25em; vertical-align:middle; ">
-      <label>@<a href="https://github.com/scakemyer">scakemyer</a></label>
-      <span class="contributions">Quasar development</span>
-    </div>
-</div>
+Elementum started as a fork of [Quasar](https://github.com/scakemyer/plugin.video.quasar) by [@scakemyer](https://github.com/scakemyer),
+which itself came from [Pulsar](https://github.com/steeve/plugin.video.pulsar) by [@steeve](https://github.com/steeve).
 
-## Packages and libraries
-* [Torrent](https://github.com/arvidn/libtorrent) - Torrent library, used in plugin.
-* [Quasar](https://github.com/scakemyer/plugin.video.quasar) - Kodi plugin, forked to become Elementum.
+## Projects
 
-## Tooling
-
-* [Hugo](https://gohugo.io/) {{<icon "fa-smile-o">}}
+* [libtorrent](https://github.com/arvidn/libtorrent): the torrent library behind the streaming.
+* [Hugo](https://gohugo.io/) and the [Relearn theme](https://github.com/McShelby/hugo-theme-relearn): this website.

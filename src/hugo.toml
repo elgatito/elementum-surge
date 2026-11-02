@@ -1,0 +1,30 @@
+baseURL = "/"
+locale = "en-us"
+title = "Elementum"
+theme = "relearn"
+enableGitInfo = false
+
+[params]
+editURL = "https://github.com/elgatito/elementum-surge/edit/master/src/content/${FilePath}"
+# Dark sidebar fits the white Elementum logo; follows the OS light/dark setting
+themeVariant = ["auto", "relearn-light", "relearn-dark"]
+collapsibleMenu = true
+disableShortcutsTitle = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[[menu.shortcuts]]
+name = "<i class='fab fa-fw fa-github'></i> Elementum on GitHub"
+url = "https://github.com/elgatito/plugin.video.elementum"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bug'></i> Report an issue"
+pageRef = "/help/report-issue"
+weight = 20
+
+[[menu.shortcuts]]
+name = "<i class='fas fa-fw fa-heart'></i> Credits"
+pageRef = "/credits"
+weight = 30

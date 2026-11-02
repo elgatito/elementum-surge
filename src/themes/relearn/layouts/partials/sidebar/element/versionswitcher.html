@@ -1,0 +1,29 @@
+{{- $pageVersions := partial "_relearn/pageVersions.gotmpl" .page }}
+{{- $versions := partialCached "_relearn/siteVersions.gotmpl" site.Home }}
+{{- if or $pageVersions $versions }}
+  {{- $pageVersion := site.Params.version | default "" }}
+  {{- $icon := .element.icon | default "code-branch" }}
+  {{- if and $icon (not (findRE ".*?\\bfa-\\w.*?" $icon)) }}
+    {{- $icon = printf "fa-fw fas fa-%s" $icon }}
+  {{- end }}
+            <li class="R-versionswitcher">
+              <div class="padding menu-control">
+                <i class="{{ $icon }}" aria-hidden="true"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <select aria-label="{{ T "Version" }}">
+                    {{- if $pageVersions }}
+                    {{- range $pageVersions }}
+                    <option value="{{ .identifier | anchorize }}" data-identifier="{{ .identifier }}" data-url="{{ .url }}"{{ if .isCurrent }} selected data-selected{{ end }}>{{ .title }}</option>
+                    {{- end }}
+                    {{- else }}
+                    {{- range $versions }}
+                    <option value="{{ .identifier | anchorize }}" data-identifier="{{ .identifier }}" data-abs="{{ .isAbs }}" data-uri="{{ .baseURL }}"{{ if eq $pageVersion .identifier }} selected data-selected{{ end }}>{{ .title }}</option>
+                    {{- end }}
+                    {{- end }}
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+{{- end }}

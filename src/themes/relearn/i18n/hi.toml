@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'यह पृष्ठ संस्करण {{.pageVersion.title}} दिखाता है। वर्तमान संस्करण <a href="{{.latestUrl}}">यहाँ</a> मिल सकता है।'
+
+[Search]
+other = "खोजे"
+
+[Search-placeholder]
+other = "खोजे..."
+
+[Clear-search]
+other = "खोज साफ़ करें"
+
+[No-results-found]
+other = "\"{0}\" के लिए कोई परिणाम नहीं मिला"
+
+[N-results-found]
+other = "\"{0}\" के लिए {1} परिणाम मिले"
+
+[Clear-History]
+other = "इतिहास मिटाएँ"
+
+[History-cleared]
+other = "इतिहास मिटा दिया गया"
+
+[Enlarge-graph]
+other = "ग्राफ़ बड़ा करें"
+
+[Close-graph]
+other = "बड़ा किया गया ग्राफ़ बंद करें"
+
+[Reset-view]
+other = "दृश्य रीसेट करें"
+
+[View-reset]
+other = "देखें रीसेट!"
+
+[Attachments-label]
+other = "संलग्नंक (अटैचमेंट)"
+
+[title-404]
+other = "अनवस्थित"
+
+[message-404]
+other = "यह पृष्ठ अभि अनुपलब्ध है!"
+
+[Go-to-homepage]
+other = "मुख्य पृष्ठ पर जाऐ"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "संपादन करना"
+
+[Show-Markdown]
+other = "मार्कडाउन दिखाएं"
+
+[Show-source]
+other = "स्रोत कोड दिखाएं"
+
+[Print-this-chapter]
+other = "पूरा अध्याय मुद्रित करें"
+
+[More-action]
+other = "अधिक सामग्री दिखाएं"
+
+[shortcuts-menuTitle]
+other = "अधिक सामग्री दिखाएं"
+
+[Navigation-toggle]
+other = "Menú"
+
+[Toc-toggle]
+other = "विषयसूची"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "सावधानी"
+
+[important]
+other = "महत्वपूर्ण"
+
+[info]
+other = "जानकारी"
+
+[note]
+other = "नोट"
+
+[tip]
+other = "नोक"
+
+[warning]
+other = "चेतावनी"
+
+[Copy-to-clipboard]
+other = "क्लिपबोर्ड पर टेक्स्ट की प्रतिलिपि बनाएँ"
+
+[Copied-to-clipboard]
+other = "टेक्स्ट क्लिपबोर्ड पर कॉपी किया गया!"
+
+[Copy-link-to-clipboard]
+other = "क्लिपबोर्ड पर लिंक की प्रतिलिपि बनाएँ"
+
+[Link-copied-to-clipboard]
+other = "लिंक क्लिपबोर्ड पर कॉपी किया गया!"
+
+[Chapter]
+other = "अध्याय {{.}}"
+
+[Language]
+other = "भाषा"
+
+[Theme]
+other = "विषय"
+
+[Submenu]
+other = "सबमेनू {{.}}"
+
+[Subsections]
+other = "{{.}} के उपखंड"
+
+[tags]
+other = "टैग"
+
+[tag]
+other = "उपनाम"
+
+[categories]
+other = "श्रेणियाँ"
+
+[category]
+other = "वर्ग"
+
+[Details]
+other = "ब्यौरा"
+
+[Version]
+other = "संस्करण"
+
+[Browser-unsupported-feature]
+other = "यह ब्राउज़र इस सुविधा का समर्थन नहीं करता है"
+
+[Pages-group-fallback]
+other = "अन्य"
+
+[Skip-to-content]
+other = "मुख्य सामग्री पर जाएं"
+
+[Breadcrumbs]
+other = "ब्रेडक्रंब"
+
+[Search-page]
+other = "खोज पृष्ठ खोलें"
+
+[Close-image]
+other = "बड़ी की गई छवि बंद करें"
+
+[Expand-all]
+other = "सभी विस्तृत करें"
+
+[Collapse-all]
+other = "सभी संक्षिप्त करें"
+
+[Inserted-text-start]
+other = "सम्मिलित पाठ का आरंभ"
+
+[Inserted-text-end]
+other = "सम्मिलित पाठ का अंत"
+
+[Deleted-text-start]
+other = "हटाए गए पाठ का आरंभ"
+
+[Deleted-text-end]
+other = "हटाए गए पाठ का अंत"
+
+[N-matches-on-page]
+other = "इस पृष्ठ पर \"{0}\" के लिए {1} मिलान मिले"
+
+[Sortable-columns]
+other = "बटन वाले कॉलम शीर्षकों से क्रमबद्ध किया जा सकता है।"
+
+[Sort-key-ascending]
+other = "स्थान {0} पर क्रमबद्ध, आरोही"
+
+[Sort-key-descending]
+other = "स्थान {0} पर क्रमबद्ध, अवरोही"
+
+[Sorted-by-ascending]
+other = "\"{0}\" के अनुसार क्रमबद्ध, आरोही"
+
+[Sorted-by-descending]
+other = "\"{0}\" के अनुसार क्रमबद्ध, अवरोही"
+
+[Unsorted-by]
+other = "अब \"{0}\" के अनुसार क्रमबद्ध नहीं"
+
+[Change-sorting]
+other = "क्रम बदलें"
+
+[Reset-sorting]
+other = "क्रम रीसेट करें"
+
+[Sorting-reset]
+other = "क्रम रीसेट हो गया!"

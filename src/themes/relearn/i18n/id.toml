@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Halaman ini menampilkan versi {{.pageVersion.title}}. Versi saat ini dapat ditemukan <a href="{{.latestUrl}}">di sini</a>.'
+
+[Search]
+other = "Telusuri"
+
+[Search-placeholder]
+other = "Telusuri..."
+
+[Clear-search]
+other = "Hapus pencarian"
+
+[No-results-found]
+other = "Tidak ada hasil yang ditemukan untuk \"{0}\""
+
+[N-results-found]
+other = "Ditemukan {1} hasil untuk \"{0}\""
+
+[Clear-History]
+other = "Bersihkan Riwayat"
+
+[History-cleared]
+other = "Riwayat dibersihkan"
+
+[Enlarge-graph]
+other = "Perbesar grafik"
+
+[Close-graph]
+other = "Tutup grafik yang diperbesar"
+
+[Reset-view]
+other = "Setel ulang tampilan"
+
+[View-reset]
+other = "Lihat ulang!"
+
+[Attachments-label]
+other = "Lampiran"
+
+[title-404]
+other = "Tidak terletak"
+
+[message-404]
+other = "Oops. Sepertinya halaman ini tidak ada ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "Ke halaman depan"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Mengedit"
+
+[Show-Markdown]
+other = "Tampilkan Markdown"
+
+[Show-source]
+other = "Tampilkan kode sumber"
+
+[Print-this-chapter]
+other = "Mencetak seluruh bab"
+
+[More-action]
+other = "Lainnya"
+
+[shortcuts-menuTitle]
+other = "Lainnya"
+
+[Navigation-toggle]
+other = "Menu"
+
+[Toc-toggle]
+other = "Daftar isi"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "Perhatian"
+
+[important]
+other = "Penting"
+
+[info]
+other = "Info"
+
+[note]
+other = "Nota"
+
+[tip]
+other = "Ujung"
+
+[warning]
+other = "Peringatan"
+
+[Copy-to-clipboard]
+other = "Salin teks ke clipboard"
+
+[Copied-to-clipboard]
+other = "Teks disalin ke clipboard!"
+
+[Copy-link-to-clipboard]
+other = "Salin link ke clipboard"
+
+[Link-copied-to-clipboard]
+other = "Link disalin ke clipboard!"
+
+[Chapter]
+other = "Bab {{.}}"
+
+[Language]
+other = "Bahasa"
+
+[Theme]
+other = "Tema"
+
+[Submenu]
+other = "Submenu {{.}}"
+
+[Subsections]
+other = "Subbagian {{.}}"
+
+[tags]
+other = "Tag"
+
+[tag]
+other = "Tag"
+
+[categories]
+other = "Kategori"
+
+[category]
+other = "Kategori"
+
+[Details]
+other = "Rincian"
+
+[Version]
+other = "Versi"
+
+[Browser-unsupported-feature]
+other = "Browser ini tidak mendukung fitur ini"
+
+[Pages-group-fallback]
+other = "Lainnya"
+
+[Skip-to-content]
+other = "Langsung ke konten utama"
+
+[Breadcrumbs]
+other = "Jejak navigasi"
+
+[Search-page]
+other = "Buka halaman pencarian"
+
+[Close-image]
+other = "Tutup gambar yang diperbesar"
+
+[Expand-all]
+other = "Bentangkan semua"
+
+[Collapse-all]
+other = "Ciutkan semua"
+
+[Inserted-text-start]
+other = "Awal teks yang disisipkan"
+
+[Inserted-text-end]
+other = "Akhir teks yang disisipkan"
+
+[Deleted-text-start]
+other = "Awal teks yang dihapus"
+
+[Deleted-text-end]
+other = "Akhir teks yang dihapus"
+
+[N-matches-on-page]
+other = "Ditemukan {1} kecocokan untuk \"{0}\" di halaman ini"
+
+[Sortable-columns]
+other = "Judul kolom dengan tombol dapat diurutkan."
+
+[Sort-key-ascending]
+other = "diurutkan pada posisi {0}, naik"
+
+[Sort-key-descending]
+other = "diurutkan pada posisi {0}, turun"
+
+[Sorted-by-ascending]
+other = "Diurutkan menurut \"{0}\", naik"
+
+[Sorted-by-descending]
+other = "Diurutkan menurut \"{0}\", turun"
+
+[Unsorted-by]
+other = "Tidak lagi diurutkan menurut \"{0}\""
+
+[Change-sorting]
+other = "Ubah urutan"
+
+[Reset-sorting]
+other = "Setel ulang urutan"
+
+[Sorting-reset]
+other = "Urutan disetel ulang!"

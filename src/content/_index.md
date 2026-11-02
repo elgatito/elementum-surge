@@ -1,42 +1,45 @@
 +++
-title = "Elementum Documentation"
-description = ""
-date = "2017-04-24T18:36:24+02:00"
-
+title = "Elementum"
+type = "home"
+description = "Elementum: torrent streaming add-on for Kodi. Installation, configuration, help and release notes."
 +++
 
-# Elementum Kodi addon
-[Elementum addon <i class='fab fa-github'></i>](https://github.com/elgatito/plugin.video.elementum) is an addon for Kodi, that streams torrents, manages your virtual library and syncs with your Trakt, Simkl or MDBList account. **Author does not take any responsibility for how users use this software!**
+# Elementum
 
-### Elementum is a community-driven open-source project
-* Source is open, so you can fork everything and contribute back.
-* Found a bug or have an idea? See [Contribute]({{%relref "/contribute/_index.md"%}}).
-* See what changed recently in [Release notes]({{%relref "/release-notes/_index.md"%}}).
+**Stream torrents in Kodi.** Elementum finds movies and TV shows with the [Burst](burst/) search add-on,
+starts playing while the torrent downloads, keeps a virtual library in Kodi and syncs your watch history with Trakt, Simkl or MDBList.
 
-### Repository Downloads
+Latest releases: Elementum **{{< version "plugin.video.elementum" >}}** · Burst **{{< version "script.elementum.burst" >}}** · Context **{{< version "context.elementum" >}}**. See [what's new](release-notes/).
 
-> Platform-independent repository, that can work without Elementum addon.
+{{< cards >}}
+{{% card title="Install" icon="download" href="getting-started/installation/" %}}
+Set up Elementum in Kodi in a few steps.
+{{% /card %}}
+{{% card title="Downloads" icon="box-archive" href="getting-started/platforms-page/" %}}
+Zip files for every platform, the repository and the add-ons.
+{{% /card %}}
+{{% card title="Configure" icon="sliders" href="configuration/" %}}
+Every add-on setting, and running the daemon on a server.
+{{% /card %}}
+{{% card title="FAQ" icon="circle-question" href="help/faq/" %}}
+Answers to the most common questions.
+{{% /card %}}
+{{% card title="Get help" icon="life-ring" href="help/" %}}
+Make a log file and report a problem.
+{{% /card %}}
+{{% card title="What's new" icon="bullhorn" href="release-notes/" %}}
+Changes in every release of Elementum, Burst and Context.
+{{% /card %}}
+{{< /cards >}}
 
-{{< platforms "repository.elementumorg" >}}
+## Quick start
 
-### Elementum Downloads
+1. In Kodi, open _Settings → Services → Control_ and enable both **Application control** options (remote control).
+2. Download the **ElementumOrg repository** zip from [Downloads](getting-started/platforms-page/) and install it with _Add-ons → Install from zip file_.
+3. Open _Add-ons → Install from repository → ElementumOrg repository_ and install **Elementum**, and **Elementum Burst** for searching.
 
-> It is always better to use "All-on-one" zip file to install, it includes all the platforms!
+More details and screenshots are in [Installation](getting-started/installation/).
 
-{{< platforms "plugin.video.elementum" >}}
-
-### LT2http Downloads
-
-{{< platforms "service.lt2http" >}}
-
-### Burst Downloads
-
-{{< platforms "script.elementum.burst" >}}
-
-### Context Helper Downloads
-
-{{< platforms "context.elementum" >}}
-
-## Contribute to this documentation
-Feel free to update this content, just click the **Edit this page** link displayed on top right of each page, and pullrequest it
-{{<alert>}}Your modification will be published with the next site release, after it is merged.{{</alert>}}
+> [!NOTE]
+> Elementum is a community-driven open-source project: the source is open, you can fork it and [contribute back](contribute/).
+> The authors do not take any responsibility for how users use this software.

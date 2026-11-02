@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Ta strona pokazuje wersję {{.pageVersion.title}}. Aktualną wersję można znaleźć <a href="{{.latestUrl}}">tu</a>.'
+
+[Search]
+other = "Szukaj"
+
+[Search-placeholder]
+other = "Szukaj..."
+
+[Clear-search]
+other = "Wyczyść wyszukiwanie"
+
+[No-results-found]
+other = "Nie znaleziono wyników dla \"{0}\""
+
+[N-results-found]
+other = "Znaleziono {1} wyników dla \"{0}\""
+
+[Clear-History]
+other = "Wyczyść historię"
+
+[History-cleared]
+other = "Historia wyczyszczona"
+
+[Enlarge-graph]
+other = "Powiększ wykres"
+
+[Close-graph]
+other = "Zamknij powiększony wykres"
+
+[Reset-view]
+other = "Resetowanie widoku"
+
+[View-reset]
+other = "Widok zresetowany!"
+
+[Attachments-label]
+other = "Załączniki"
+
+[title-404]
+other = "Niezlokalizowany"
+
+[message-404]
+other = "Ups. Wygląda na to, że strona nie istnieje ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "Idź do strony paczątkowej"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Edycja"
+
+[Show-Markdown]
+other = "Pokaż język Markdown"
+
+[Show-source]
+other = "Pokaż kod źródłowy"
+
+[Print-this-chapter]
+other = "Drukowanie całego rozdziału"
+
+[More-action]
+other = "Więcej"
+
+[shortcuts-menuTitle]
+other = "Więcej"
+
+[Navigation-toggle]
+other = "Menu"
+
+[Toc-toggle]
+other = "Spis terści"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "Ostrożność"
+
+[important]
+other = "Ważne"
+
+[info]
+other = "Info"
+
+[note]
+other = "Uwaga"
+
+[tip]
+other = "Porada"
+
+[warning]
+other = "Ostrzeżenie"
+
+[Copy-to-clipboard]
+other = "Kopiuj tekst do schowka"
+
+[Copied-to-clipboard]
+other = "Tekst skopiowano do schowka!"
+
+[Copy-link-to-clipboard]
+other = "Kopiuj link do schowka"
+
+[Link-copied-to-clipboard]
+other = "Link skopiowano do schowka!"
+
+[Chapter]
+other = "Rozdział {{.}}"
+
+[Language]
+other = "Język"
+
+[Theme]
+other = "Kompozycja"
+
+[Submenu]
+other = "Podmenu {{.}}"
+
+[Subsections]
+other = "Podsekcje z {{.}}"
+
+[tags]
+other = "Tagi"
+
+[tag]
+other = "Tag"
+
+[categories]
+other = "Kategorie"
+
+[category]
+other = "Kategoria"
+
+[Details]
+other = "Szczegóły"
+
+[Version]
+other = "Wersja"
+
+[Browser-unsupported-feature]
+other = "Ta przeglądarka nie obsługuje tej funkcji"
+
+[Pages-group-fallback]
+other = "Inne"
+
+[Skip-to-content]
+other = "Przejdź do głównej treści"
+
+[Breadcrumbs]
+other = "Ścieżka nawigacji"
+
+[Search-page]
+other = "Otwórz stronę wyszukiwania"
+
+[Close-image]
+other = "Zamknij powiększony obraz"
+
+[Expand-all]
+other = "Rozwiń wszystko"
+
+[Collapse-all]
+other = "Zwiń wszystko"
+
+[Inserted-text-start]
+other = "Początek wstawionego tekstu"
+
+[Inserted-text-end]
+other = "Koniec wstawionego tekstu"
+
+[Deleted-text-start]
+other = "Początek usuniętego tekstu"
+
+[Deleted-text-end]
+other = "Koniec usuniętego tekstu"
+
+[N-matches-on-page]
+other = "Znaleziono {1} wystąpień \"{0}\" na tej stronie"
+
+[Sortable-columns]
+other = "Nagłówki kolumn z przyciskami umożliwiają sortowanie."
+
+[Sort-key-ascending]
+other = "posortowane na pozycji {0}, rosnąco"
+
+[Sort-key-descending]
+other = "posortowane na pozycji {0}, malejąco"
+
+[Sorted-by-ascending]
+other = "Posortowano według \"{0}\", rosnąco"
+
+[Sorted-by-descending]
+other = "Posortowano według \"{0}\", malejąco"
+
+[Unsorted-by]
+other = "Nie jest już sortowane według \"{0}\""
+
+[Change-sorting]
+other = "Zmień sortowanie"
+
+[Reset-sorting]
+other = "Resetuj sortowanie"
+
+[Sorting-reset]
+other = "Sortowanie zresetowane!"

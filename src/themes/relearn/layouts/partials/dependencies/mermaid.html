@@ -1,0 +1,66 @@
+{{- $page := .page }}
+{{- $location := .location }}
+{{- if eq $location "default" }}
+  {{- with $page }}
+    {{- $filepath := "[virtual file]" }}{{ with and .File .File.Filename }}{{ $filepath = . }}{{ end }}
+    {{- if and (isset .Params "custommermaidurl") .Params.customMermaidURL }}
+      {{- warnf "%q: DEPRECATED front matter 'customMermaidURL' found, replace the shipped library with your own 'assets/js/mermaid/mermaid.min.js' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/9/#9-2-0" $filepath }}
+    {{- end }}
+    {{- if and .IsHome (isset .Site.Params "custommermaidurl") .Site.Params.customMermaidURL }}
+      {{- warnf "DEPRECATED option 'customMermaidURL' found, replace the shipped library with your own 'assets/js/mermaid/mermaid.min.js' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/9/#9-2-0" }}
+    {{- end }}
+  {{- end }}
+{{- else if eq $location "footer" }}
+  {{- with $page }}
+    {{- with partial "asset.gotmpl" "/js/js-yaml/js-yaml.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-color.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-dispatch.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-drag.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-ease.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-interpolate.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-selection.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-timer.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-transition.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- with partial "asset.gotmpl" "/js/d3/d3-zoom.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end }}
+    {{- if and (isset .Params "custommermaidurl") .Params.customMermaidURL }}
+    <script src="{{ .Params.customMermaidURL }}" defer></script>
+    {{- else if and (isset .Site.Params "custommermaidurl") .Site.Params.customMermaidURL }}
+    <script src="{{ .Site.Params.customMermaidURL }}" defer></script>
+    {{- else }}
+      {{- with partial "asset.gotmpl" "/js/mermaid/mermaid.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+      {{- end }}
+    {{- end }}
+    {{- $init := "{}" }}
+    {{- if isset .Params "mermaidinitialize" }}
+      {{- $init = .Params.mermaidInitialize }}
+    {{- else if isset .Site.Params "mermaidinitialize" }}
+      {{- $init = .Site.Params.mermaidInitialize }}
+    {{- end }}
+    {{- $jsonOptions := dict
+      "indent" "  "
+      "prefix" "    "
+    }}
+    <script type="application/json" id="R-mermaid-config">{{ $init | transform.Unmarshal | jsonify $jsonOptions | safeJS }}</script>
+  {{- end }}
+{{- end }}

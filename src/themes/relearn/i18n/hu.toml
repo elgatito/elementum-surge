@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Ez az oldal a {{.pageVersion.title}} verziót mutatja. Az aktuális verzió megtalálható <a href="{{.latestUrl}}">itt</a>.'
+
+[Search]
+other = "Keresés"
+
+[Search-placeholder]
+other = "Keresés..."
+
+[No-results-found]
+other = "Nincs találat a(z) \"{0}\" kifejezésre"
+
+[N-results-found]
+other = "{1} találat a(z) \"{0}\" kifejezésre"
+
+[Clear-History]
+other = "Előzmények törlése"
+
+[History-cleared]
+other = "Előzmények törölve"
+
+[Enlarge-graph]
+other = "Diagram nagyítása"
+
+[Close-graph]
+other = "Nagyított diagram bezárása"
+
+[Reset-view]
+other = "Nézet visszaállítása"
+
+[View-reset]
+other = "Visszaállítás megtekintése!"
+
+[Clear-search]
+other = "Keresések törlése"
+
+[Attachments-label]
+other = "Csatolmányok"
+
+[title-404]
+other = "Az oldal nem található"
+
+[message-404]
+other = "Hoppá. Úgy tűnik, hogy ez az oldal nem létezik ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "Menj a kezdőlapra"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Szerkesztés"
+
+[Show-Markdown]
+other = "Markdown megjelenítése"
+
+[Show-source]
+other = "Forráskód megjelenítése"
+
+[Print-this-chapter]
+other = "Teljes fejezet nyomtatása"
+
+[More-action]
+other = "Egyebek"
+
+[shortcuts-menuTitle]
+other = "Egyebek"
+
+[Navigation-toggle]
+other = "Menü"
+
+[Toc-toggle]
+other = "Tartalomjegyzék"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "Vigyázat"
+
+[important]
+other = "Fontos"
+
+[info]
+other = "Infó"
+
+[note]
+other = "Jegyzet"
+
+[tip]
+other = "Tipp"
+
+[warning]
+other = "Figyelem"
+
+[Copy-to-clipboard]
+other = "Szöveg vágólapra másolása"
+
+[Copied-to-clipboard]
+other = "Szöveg vágólapra másolva!"
+
+[Copy-link-to-clipboard]
+other = "Link vágólapra másolása"
+
+[Link-copied-to-clipboard]
+other = "Link vágólapra másolva!"
+
+[Chapter]
+other = "{{.}} fejezet"
+
+[Language]
+other = "Nyelv"
+
+[Theme]
+other = "Téma"
+
+[Submenu]
+other = "{{.}} almenü"
+
+[Subsections]
+other = "{{.}} alszekciói"
+
+[tags]
+other = "Címkék"
+
+[tag]
+other = "Címke"
+
+[categories]
+other = "Kategóriák"
+
+[category]
+other = "Kategória"
+
+[Details]
+other = "Részletek"
+
+[Version]
+other = "Verzió"
+
+[Browser-unsupported-feature]
+other = "Ez a böngésző nem támogatja ezt a funkciót"
+
+[Pages-group-fallback]
+other = "Egyéb"
+
+[Skip-to-content]
+other = "Ugrás a fő tartalomhoz"
+
+[Breadcrumbs]
+other = "Morzsamenü"
+
+[Search-page]
+other = "Keresőoldal megnyitása"
+
+[Close-image]
+other = "Nagyított kép bezárása"
+
+[Expand-all]
+other = "Összes kibontása"
+
+[Collapse-all]
+other = "Összes összecsukása"
+
+[Inserted-text-start]
+other = "Beszúrt szöveg kezdete"
+
+[Inserted-text-end]
+other = "Beszúrt szöveg vége"
+
+[Deleted-text-start]
+other = "Törölt szöveg kezdete"
+
+[Deleted-text-end]
+other = "Törölt szöveg vége"
+
+[N-matches-on-page]
+other = "{1} előfordulás a(z) \"{0}\" kifejezésre ezen az oldalon"
+
+[Sortable-columns]
+other = "A gombbal ellátott oszlopfejlécek szerint rendezhető."
+
+[Sort-key-ascending]
+other = "{0}. helyen rendezve, növekvő"
+
+[Sort-key-descending]
+other = "{0}. helyen rendezve, csökkenő"
+
+[Sorted-by-ascending]
+other = "Rendezve: \"{0}\", növekvő"
+
+[Sorted-by-descending]
+other = "Rendezve: \"{0}\", csökkenő"
+
+[Unsorted-by]
+other = "Már nincs rendezve: \"{0}\""
+
+[Change-sorting]
+other = "Rendezés módosítása"
+
+[Reset-sorting]
+other = "Rendezés visszaállítása"
+
+[Sorting-reset]
+other = "Rendezés visszaállítva!"

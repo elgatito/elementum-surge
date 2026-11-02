@@ -1,0 +1,81 @@
+{{- $page := .page }}
+{{- if and (not $page) .context }}
+  {{- $page = .context }}
+  {{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+  {{- warnf "%q: DEPRECATED parameter 'context' for shortcode 'resources' found, use 'page' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/5/#5-18-0" $filepath }}
+{{- end }}
+{{- /* warnings keep naming the file the shortcode was called in */}}
+{{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+{{- with .pageref }}
+  {{- /* a reference into another part of the site replaces the calling page as the bundle to list */}}
+  {{- $target := partial "_relearn/linkObject.gotmpl" (dict "url" . "page" $page "searchResource" false) }}
+  {{- if and $target (eq $target.ResourceType "page") }}
+    {{- $page = $target }}
+  {{- else if partial "_relearn/urlValid.gotmpl" (dict "url" . "page" $page) }}
+    {{- /* a value that does not parse is reported for that alone */}}
+    {{- errorf "%q: parameter 'pageref' %q for shortcode 'resources' is not a page" $filepath . }}
+  {{- end }}
+{{- end }}
+
+{{- $style := .style | default "" }}
+{{- $color := .color | default "" }}
+{{- $icon := .icon | default "" }}
+{{- $title := .title | default "" }}
+{{- $boxStyle := partial "_relearn/boxStyle.gotmpl" (dict "mode" "attachments" "style" $style "color" $color "icon" $icon "title" $title) }}
+{{- $style = $boxStyle.style }}
+{{- $color = $boxStyle.color }}
+{{- $icon = $boxStyle.icon }}
+{{- $title = $boxStyle.title }}
+
+{{- $expanded := .expanded | default "" }}
+{{- if eq (printf "%T" $expanded) "string" }}
+  {{- if ne (trim $expanded " ") "" }}
+    {{- $expanded = (eq $expanded "true") }}
+  {{- end }}
+{{- end }}
+{{- $sort := .sort | default "asc" }}
+{{- $pattern := .pattern | default "" }}
+{{- if eq $page.BundleType "" }}
+  {{- warnf "%q: UNSUPPORTED usage of 'resources' shortcode found, use a page bundle instead; see https://mcshelby.github.io/hugo-theme-relearn/shortcodes/resources" $filepath }}
+{{- end }}
+{{- $content := partial "inline/resource-list" (dict
+  "page"     $page
+  "sort"     $sort
+  "pattern"  $pattern
+) }}
+{{- /* a box without any resource to list is not shown at all */}}
+{{- if $content }}
+  {{- partial "shortcodes/callout.html" (dict
+    "page"     $page
+    "class"    "attachments"
+    "color"    $color
+    "content"  ($content | $page.RenderString)
+    "expanded" $expanded
+    "icon"     $icon
+    "style"    $style
+    "title"    $title
+  ) }}
+{{- end }}
+
+{{- define "partials/inline/resource-list" }}
+  {{- $sort := .sort }}
+  {{- $pattern := .pattern }}
+  {{- with .page }}
+    {{- range sort .Resources "Name" $sort }}
+      {{- if findRE $pattern .Name }}
+        {{- $size := len .Content }}
+        {{- $unit := "Byte-symbol" }}
+        {{- if ge $size 1024 }}
+          {{- $size = div $size 1024 }}
+          {{- $unit = "Kilobyte-symbol" }}
+        {{- end }}
+        {{- if ge $size 1024 }}
+          {{- $size = div $size 1024 }}
+          {{- $unit = "Megabyte-symbol" }}
+        {{- end }}
+        {{- $unitsymbol := $unit | T }}
+- [{{.Name}}]({{ partial "_relearn/pathToUrl.gotmpl" .Name }}) ({{$size}} {{$unitsymbol}})
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

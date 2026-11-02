@@ -1,0 +1,34 @@
+{{- $page := .page }}
+{{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+{{- if and
+	(or .page.Params.urlExternalCheck site.Params.urlExternalCheck)
+	(partial "_relearn/urlErrorCheck.gotmpl" (dict "page" $page "url" .url)) }}
+	{{- /* One store key per URL, never a map: hugo.Store.Get hands back the
+	underlying map by reference, so reading it with isset while a sibling
+	goroutine writes through SetInMap crashes Hugo with "concurrent map read
+	and map write". Get and Set are individually locked, so per-URL keys are
+	safe. */}}
+	{{- $checkedKey := printf "r-checked-url-%s" .url }}
+	{{- if not (hugo.Store.Get $checkedKey) }}
+		{{- hugo.Store.Set $checkedKey true }}
+		{{- with try (resources.GetRemote .url) }}
+			{{- with .Value }}
+				{{- with .Data }}
+					{{- if not (and (ge .StatusCode 200) (lt .StatusCode 400)) }}
+						{{- $msg := printf "Remote resource couldn't be fetched for URL '%s': %s" $.url .Status }}
+						{{- partial "_relearn/urlErrorReport.gotmpl" (dict "url" $.url "page" $page "param" $.type "msg" $msg) }}
+					{{- end }}
+				{{- else }}
+					{{- $msg := printf "Remote resource couldn't be fetched for URL '%s'" $.url }}
+					{{- partial "_relearn/urlErrorReport.gotmpl" (dict "url" $.url "page" $page "param" $.type "msg" $msg) }}
+				{{- end }}
+			{{- else with .Err }}
+				{{- $msg := printf "Remote resource couldn't be fetched for URL '%s': %s" $.url . }}
+				{{- partial "_relearn/urlErrorReport.gotmpl" (dict "url" $.url "page" $page "param" $.type "msg" $msg) }}
+			{{- else }}
+				{{- $msg := printf "Remote resource couldn't be fetched for URL '%s'" $.url }}
+				{{- partial "_relearn/urlErrorReport.gotmpl" (dict "url" $.url "page" $page "param" $.type "msg" $msg) }}
+			{{- end }}
+		{{- end }}
+	{{- end }}
+{{- end }}

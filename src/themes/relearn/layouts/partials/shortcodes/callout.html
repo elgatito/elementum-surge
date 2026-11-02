@@ -1,0 +1,79 @@
+{{- $page := .page }}
+{{- if and (not $page) .context }}
+  {{- $page = .context }}
+  {{- $filepath := "[virtual file]" }}{{ with and $page $page.File $page.File.Filename }}{{ $filepath = . }}{{ end }}
+  {{- warnf "%q: DEPRECATED parameter 'context' for shortcode 'callout' found, use 'page' instead; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/5/#5-18-0" $filepath }}
+{{- end }}
+{{- $content := trim .content "\n\r\t " }}
+{{- $hasContent := ne (strings.TrimPrefix "<p>" $content) "" }}
+{{- $groupid := .groupid }}
+
+{{- $style := .style | default "" }}
+{{- $color := .color | default "" }}
+{{- $icon := .icon | default "" }}
+{{- $title := .title | default "" }}
+{{- $boxStyle := partial "_relearn/boxStyle.gotmpl" (dict "mode" "callout" "style" $style "color" $color "icon" $icon "title" $title) }}
+{{- $style = $boxStyle.style }}
+{{- $color = $boxStyle.color }}
+{{- $icon = $boxStyle.icon }}
+{{- $title = $boxStyle.title }}
+
+{{- $expander := false }}
+{{- $expanded := .expanded | default "" }}
+{{- if $hasContent }}
+  {{- if eq (printf "%T" $expanded) "string" }}
+    {{- if ne (trim $expanded " ") "" }}
+      {{- $expander = true }}
+      {{- $expanded = (eq $expanded "true") }}
+    {{- end }}
+  {{- else }}
+    {{- $expander = true }}
+  {{- end }}
+{{- end }}
+
+{{- $params := dict }}
+{{- $classes := slice }}
+{{- $classes = $classes | append "box" }}
+{{- $classes = $classes | append "cstyle" }}
+{{- $classes = $classes | append (.class | default "callout") }}
+{{- $classes = $classes | append $style }}
+{{- if $expander }}
+  {{- $classes = $classes | append "expand" }}
+{{- else }}
+  {{- $expanded = true }}
+{{- end }}
+{{- $params = dict "class" (delimit $classes " ") | merge $params }}
+
+{{ if and $groupid $expander }}
+  {{- $params = dict "name" $groupid | merge $params }}
+{{- end }}
+{{- with .hint }}
+  {{- $params = dict "title" . | merge $params }}
+{{- end }}
+
+{{- /* only a box that can be collapsed is a disclosure; any other is a note, named by its title */}}
+{{- $labelid := "" }}
+{{- if and (not $expander) $title }}
+  {{- $labelid = printf "R-box-label-%s" (partial "_relearn/makeRandomMd5.gotmpl" $page) }}
+{{- end }}
+{{- with $page }}
+  {{- if or $icon $title $hasContent -}}
+{{ if $expander }}<details{{ if $expanded }} open{{ end }}{{ else }}<div role="note"{{ with $labelid }} aria-labelledby="{{ . }}"{{ end }}{{ end }}
+  {{- range $k, $v := $params }}
+    {{- if and $v (not (in (slice "open" "summary") $k)) }} {{ $k | safeHTMLAttr }}="{{ $v }}"
+    {{- end }}
+  {{- end }}{{ with $color }} style="--VARIABLE-BOX-color: {{ . | safeCSS }};"{{ end }}>
+  {{ if $expander }}<summary{{ else }}<div{{ with $labelid }} id="{{ . }}"{{ end }}{{ end }} class="box-label{{ if and (not $expander) (not $icon) (not $title) }} a11y-only{{ end }}">{{ if $expander }}
+    <i class="expander-icon fa-fw fas fa-chevron-right" aria-hidden="true"></i> {{ end }}{{ if $icon }}
+    <i class="{{ $icon }}" aria-hidden="true"></i> {{ end }}{{ if $title }}
+    {{ $title | .RenderString }}{{ else }}
+    <span class="a11y-only">{{ T "Details" }}</span>{{ end }}
+  {{ if $expander }}</summary>{{ else }}</div>{{ end }}
+    {{- if $hasContent }}
+  <div class="box-content"{{ if $.hint }} title=""{{ end }}>
+{{ $content | safeHTML }}
+  </div>
+    {{- end }}
+{{ if $expander }}</details>{{ else }}</div>{{ end }}
+  {{- end }}
+{{- end }}

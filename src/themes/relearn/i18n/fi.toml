@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Tämä sivu näyttää version {{.pageVersion.title}}. Nykyinen versio löytyy <a href="{{.latestUrl}}">täällä</a>.'
+
+[Search]
+other = "Etsi"
+
+[Search-placeholder]
+other = "Etsi..."
+
+[Clear-search]
+other = "Tyhjennä haku"
+
+[No-results-found]
+other = "Ei tuloksia haulle \"{0}\""
+
+[N-results-found]
+other = "{1} tulosta löytyi haulle \"{0}\""
+
+[Clear-History]
+other = "Tyhjennä historia"
+
+[History-cleared]
+other = "Historia tyhjennetty"
+
+[Enlarge-graph]
+other = "Suurenna kaavio"
+
+[Close-graph]
+other = "Sulje suurennettu kaavio"
+
+[Reset-view]
+other = "Palauta näkymä"
+
+[View-reset]
+other = "Näkymä nollattu!"
+
+[Attachments-label]
+other = "Liitteet"
+
+[title-404]
+other = "Paikantamaton"
+
+[message-404]
+other = "Sivua ei ole ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "Etusivulle"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Muokkaa"
+
+[Show-Markdown]
+other = "Näytä Markdown"
+
+[Show-source]
+other = "Näytä lähdekoodi"
+
+[Print-this-chapter]
+other = "Tulosta koko luku"
+
+[More-action]
+other = "Lisää"
+
+[shortcuts-menuTitle]
+other = "Lisää"
+
+[Navigation-toggle]
+other = "Valikko"
+
+[Toc-toggle]
+other = "Sisältö"
+
+[Byte-symbol]
+other = "T"
+
+[Kilobyte-symbol]
+other = "KT"
+
+[Megabyte-symbol]
+other = "MT"
+
+[caution]
+other = "Varoitus"
+
+[important]
+other = "Tärkeä"
+
+[info]
+other = "Info"
+
+[note]
+other = "Huom"
+
+[tip]
+other = "Vihje"
+
+[warning]
+other = "Varoitus"
+
+[Copy-to-clipboard]
+other = "Kopioi teksti leikepöydälle"
+
+[Copied-to-clipboard]
+other = "Teksti kopioitu leikepöydälle!"
+
+[Copy-link-to-clipboard]
+other = "Kopioi linkki leikepöydälle"
+
+[Link-copied-to-clipboard]
+other = "Linkki kopioitu leikepöydälle!"
+
+[Chapter]
+other = "Luku {{.}}"
+
+[Language]
+other = "Kieli"
+
+[Theme]
+other = "Teema"
+
+[Submenu]
+other = "Alavalikko {{.}}"
+
+[Subsections]
+other = "Osa {{.}}"
+
+[tags]
+other = "Tunnisteet"
+
+[tag]
+other = "Tag"
+
+[categories]
+other = "Luokat"
+
+[category]
+other = "Kategoria"
+
+[Details]
+other = "Tiedot"
+
+[Version]
+other = "Versio"
+
+[Browser-unsupported-feature]
+other = "Tämä selain ei tue tätä ominaisuutta"
+
+[Pages-group-fallback]
+other = "Muut"
+
+[Skip-to-content]
+other = "Siirry pääsisältöön"
+
+[Breadcrumbs]
+other = "Murupolku"
+
+[Search-page]
+other = "Avaa hakusivu"
+
+[Close-image]
+other = "Sulje suurennettu kuva"
+
+[Expand-all]
+other = "Laajenna kaikki"
+
+[Collapse-all]
+other = "Tiivistä kaikki"
+
+[Inserted-text-start]
+other = "Lisätyn tekstin alku"
+
+[Inserted-text-end]
+other = "Lisätyn tekstin loppu"
+
+[Deleted-text-start]
+other = "Poistetun tekstin alku"
+
+[Deleted-text-end]
+other = "Poistetun tekstin loppu"
+
+[N-matches-on-page]
+other = "{1} osumaa haulle \"{0}\" tällä sivulla"
+
+[Sortable-columns]
+other = "Painikkeelliset sarakeotsikot ovat lajiteltavissa."
+
+[Sort-key-ascending]
+other = "lajiteltu {0}. sijalla, nouseva"
+
+[Sort-key-descending]
+other = "lajiteltu {0}. sijalla, laskeva"
+
+[Sorted-by-ascending]
+other = "Lajiteltu sarakkeen \"{0}\" mukaan, nouseva"
+
+[Sorted-by-descending]
+other = "Lajiteltu sarakkeen \"{0}\" mukaan, laskeva"
+
+[Unsorted-by]
+other = "Ei enää lajiteltu sarakkeen \"{0}\" mukaan"
+
+[Change-sorting]
+other = "Muuta lajittelua"
+
+[Reset-sorting]
+other = "Palauta lajittelu"
+
+[Sorting-reset]
+other = "Lajittelu palautettu!"

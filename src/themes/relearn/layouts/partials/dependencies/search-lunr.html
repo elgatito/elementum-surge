@@ -1,0 +1,69 @@
+{{- $page := .page }}
+{{- $location := .location }}
+
+{{- if eq $location "header" }}
+  {{- with $page }}
+    {{- $pageBaseLang := replaceRE "([a-z]+).*" "${1}" .Page.Language.Locale }}
+    {{- $additionalContentLanguage := slice }}
+    {{- with and (reflect.IsMap site.Params.search) (reflect.IsMap site.Params.search.adapter) (reflect.IsMap site.Params.search.adapter.params) site.Params.search.adapter.params }}
+      {{- $additionalContentLanguage = .additionalContentLanguage | default $additionalContentLanguage }}
+    {{- end }}
+    {{- $contentlangs := (union (slice | append $additionalContentLanguage) (slice $pageBaseLang)) }}
+    {{- $searchIndexUrl := "" }}
+    {{- $disableSearchIndex := false }}
+    {{- with and (reflect.IsMap site.Params.search) (reflect.IsMap site.Params.search.index) site.Params.search.index.disable }}
+      {{- $disableSearchIndex = . }}
+    {{- end }}
+    {{- if not $disableSearchIndex }}
+      {{- with partial "asset.gotmpl" "/js/lunr/lunr.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+      {{- end }}
+      {{- with partial "asset.gotmpl" "/js/lunr/lunr.stemmer.support.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+      {{- end }}
+      {{- with partial "asset.gotmpl" "/js/lunr/lunr.multi.min.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+      {{- end }}
+      {{- $missingcontentlangs := slice }}
+      {{- $tinyseg := false }}
+      {{- $wordcut := false }}
+      {{- range $contentlangs }}
+        {{- $lang := . }}
+        {{- with partial "asset.gotmpl" (printf "/js/lunr/lunr.%s.min.js" $lang) }}
+          {{- $lunrlang := . }}
+          {{- if and (not $tinyseg) (or (eq $lang "ja")) }}
+            {{- $tinyseg = true }}
+            {{- /* built segmenters that are not named `.min` */}}
+            {{- with partial "asset.gotmpl" (dict "res" "/js/lunr/tinyseg.js" "minify" false) }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+            {{- end }}
+          {{- end }}
+          {{- if and (not $wordcut) (or (eq $lang "hi") (eq $lang "th")) }}
+            {{- $wordcut = true }}
+            {{- with partial "asset.gotmpl" (dict "res" "/js/lunr/wordcut.js" "minify" false) }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+            {{- end }}
+          {{- end }}
+    <script src="{{ $lunrlang.RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" $lunrlang }} defer></script>
+        {{- else }}
+          {{- $missingcontentlangs = $missingcontentlangs | append . }}
+        {{- end }}
+      {{- end }}
+      {{- with $missingcontentlangs }}
+        {{- warnf "UNSUPPORTED search language %v found, content of this language will not be findable by the lunr search adapter; see https://mcshelby.github.io/hugo-theme-relearn/configuration/sidebar/search#supported-languages" . }}
+      {{- end }}
+      {{- $contentlangs = $contentlangs | complement $missingcontentlangs }}
+    {{- end }}
+    {{- /* with partial "asset.gotmpl" "/js/search-lunr.js" }}
+    <script src="{{ .RelPermalink }}"{{ partial "_relearn/integrityAttribute.gotmpl" . }} defer></script>
+    {{- end */}}
+    {{- $config := dict
+      "contentLangs" $contentlangs
+    }}
+    {{- $jsonOptions := dict
+      "indent" "  "
+      "prefix" "    "
+    }}
+    <script type="application/json" id="R-search-lunr-config">{{ $config | jsonify $jsonOptions | safeJS }}</script>
+  {{- end }}
+{{- end }}

@@ -1,0 +1,215 @@
+[Reading-direction]
+other = "ltr"
+
+[Versioning-warning]
+other = 'Această pagină afișează versiunea {{.pageVersion.title}}. Versiunea curentă poate fi găsită <a href="{{.latestUrl}}">aici</a>.'
+
+[Search]
+other = "Caută"
+
+[Search-placeholder]
+other = "Caută..."
+
+[Clear-search]
+other = "Şterge căutarea"
+
+[No-results-found]
+other = "Nu s-au găsit rezultate pentru \"{0}\""
+
+[N-results-found]
+other = "{1} rezultate găsite pentru \"{0}\""
+
+[Clear-History]
+other = "Șterge istoricul"
+
+[History-cleared]
+other = "Istoric șters"
+
+[Enlarge-graph]
+other = "Mărește graficul"
+
+[Close-graph]
+other = "Închide graficul mărit"
+
+[Reset-view]
+other = "Resetează vizualizarea"
+
+[View-reset]
+other = "Vizualizare resetată!"
+
+[Attachments-label]
+other = "Atașamente"
+
+[title-404]
+other = "Negăsit"
+
+[message-404]
+other = "Ups. Se pare că această pagină nu există ¯\\_(ツ)_/¯."
+
+[Go-to-homepage]
+other = "Mergi la pagina principală"
+
+[home-button]
+other = "Home"
+
+[Edit-this-page]
+other = "Editează"
+
+[Show-Markdown]
+other = "Afișează Markdown"
+
+[Show-source]
+other = "Afișați codul sursă"
+
+[Print-this-chapter]
+other = "Tipărește întregul capitol"
+
+[More-action]
+other = "Mai mult"
+
+[shortcuts-menuTitle]
+other = "Mai mult"
+
+[Navigation-toggle]
+other = "Meniu"
+
+[Toc-toggle]
+other = "Cuprins"
+
+[Byte-symbol]
+other = "B"
+
+[Kilobyte-symbol]
+other = "KB"
+
+[Megabyte-symbol]
+other = "MB"
+
+[caution]
+other = "Atenție"
+
+[important]
+other = "Important"
+
+[info]
+other = "Info"
+
+[note]
+other = "Notă"
+
+[tip]
+other = "Sfat"
+
+[warning]
+other = "Avertizare"
+
+[Copy-to-clipboard]
+other = "Copiază textul în clipboard"
+
+[Copied-to-clipboard]
+other = "Text copiat în clipboard!"
+
+[Copy-link-to-clipboard]
+other = "Copiază linkul în clipboard"
+
+[Link-copied-to-clipboard]
+other = "Link copiat în clipboard!"
+
+[Chapter]
+other = "Capitolul {{.}}"
+
+[Language]
+other = "Limbă"
+
+[Theme]
+other = "Temă"
+
+[Submenu]
+other = "Submeniu {{.}}"
+
+[Subsections]
+other = "Subsecțiuni ale {{.}}"
+
+[tags]
+other = "Etichete"
+
+[tag]
+other = "Etichetă"
+
+[categories]
+other = "Categorii"
+
+[category]
+other = "Categorie"
+
+[Details]
+other = "Detalii"
+
+[Version]
+other = "Versiune"
+
+[Browser-unsupported-feature]
+other = "Acest browser nu acceptă această funcționalitate"
+
+[Pages-group-fallback]
+other = "Altele"
+
+[Skip-to-content]
+other = "Sari la conținutul principal"
+
+[Breadcrumbs]
+other = "Fir de navigare"
+
+[Search-page]
+other = "Deschide pagina de căutare"
+
+[Close-image]
+other = "Închide imaginea mărită"
+
+[Expand-all]
+other = "Extinde tot"
+
+[Collapse-all]
+other = "Restrânge tot"
+
+[Inserted-text-start]
+other = "Începutul textului inserat"
+
+[Inserted-text-end]
+other = "Sfârșitul textului inserat"
+
+[Deleted-text-start]
+other = "Începutul textului șters"
+
+[Deleted-text-end]
+other = "Sfârșitul textului șters"
+
+[N-matches-on-page]
+other = "{1} potriviri pentru \"{0}\" pe această pagină"
+
+[Sortable-columns]
+other = "Anteturile de coloană cu butoane permit sortarea."
+
+[Sort-key-ascending]
+other = "sortat pe poziția {0}, crescător"
+
+[Sort-key-descending]
+other = "sortat pe poziția {0}, descrescător"
+
+[Sorted-by-ascending]
+other = "Sortat după \"{0}\", crescător"
+
+[Sorted-by-descending]
+other = "Sortat după \"{0}\", descrescător"
+
+[Unsorted-by]
+other = "Nu mai este sortat după \"{0}\""
+
+[Change-sorting]
+other = "Schimbă sortarea"
+
+[Reset-sorting]
+other = "Resetează sortarea"
+
+[Sorting-reset]
+other = "Sortare resetată!"
