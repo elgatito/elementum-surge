@@ -1,0 +1,9 @@
+/* relearn-dark with a blue header instead of green */
+@import "theme-relearn-dark.css";
+
+:root {
+  --PRIMARY-color: rgba( 37, 99, 235, 1 ); /* brand primary color, menu header background */
+  --PRIMARY-HOVER-color: rgba( 96, 165, 250, 1 ); /* brand primary hover color */
+  --MENU-HOME-LINK-color: rgba( 219, 234, 254, 1 ); /* home link on the blue header */
+  --MENU-HOME-LINK-HOVER-color: rgba( 255, 255, 255, 1 );
+}

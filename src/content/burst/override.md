@@ -1,7 +1,7 @@
 +++
 title = "How to override a provider"
 description = "Change a provider or add your own, without changing Burst"
-weight = 2
+weight = 3
 +++
 
 There are a few ways to change a provider or add your own locally.
@@ -11,7 +11,7 @@ See [where to find the USERDATA folder](https://kodi.wiki/view/Log_file/Advanced
 ### Add a custom provider with a JSON file
 
 Put JSON files into _USERDATA/addon_data/script.elementum.burst/providers/_, each of them with provider definitions.
-See [How to add a provider]({{% relref "create.md" %}}) for the definition format.
+See the [Provider definition reference]({{% relref "definition.md" %}}) for the format.
 
 > [!NOTE]
 > These providers are always _enabled_: Kodi add-on settings are static, so Burst can't add switches for them.

@@ -1,7 +1,7 @@
 +++
 title = "Cookie sync"
 description = "Log in to trackers with cookies from your browser"
-weight = 3
+weight = 4
 +++
 
 <!--more-->
@@ -37,7 +37,7 @@ In _Burst settings → Cookie sync_:
 | File name (optional) | `kevast-gist-default.json` (the extension's default). |
 | File url (optional) | Leave empty, Burst fills it in. |
 
-Cookie sync is used only by providers that support it (they have `login_cookie` in their definition, see [How to add a provider]({{%relref "create.md#other-keys"%}})).
+Cookie sync is used only by providers that support it (they have `login_cookie` in their definition, see [Login]({{% relref "definition.md#login-private-trackers" %}})).
 For such a provider, when the cookie is there, Burst skips the login form.
 
 ## Troubleshooting

@@ -4,8 +4,6 @@ type = "home"
 description = "Elementum: torrent streaming add-on for Kodi. Installation, configuration, help and release notes."
 +++
 
-# Elementum
-
 **Stream torrents in Kodi.** Elementum finds movies and TV shows with the [Burst](burst/) search add-on,
 starts playing while the torrent downloads, keeps a virtual library in Kodi and syncs your watch history with Trakt, Simkl or MDBList.
 
