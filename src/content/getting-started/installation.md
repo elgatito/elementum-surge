@@ -27,4 +27,4 @@ Installation is simple!
 
 ## Configuration
 
-[Follow instructions here]({{%relref "configuration.md"%}})
+See [Configuration]({{%relref "/configuration/_index.md"%}}) for all addon settings and command-line options.

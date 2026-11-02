@@ -62,7 +62,9 @@ func main() {
 	}
 
 	req, _ := http.NewRequest("GET", fmt.Sprintf("https://api.github.com/repos/%s/releases/latest", repo), nil)
-	req.SetBasicAuth(os.Getenv("GH_TOKEN"), "x-oauth-basic")
+	if token := os.Getenv("GH_TOKEN"); token != "" {
+		req.Header.Set("Authorization", "token "+token)
+	}
 
 	resp, err := client.Do(req)
 	if err != nil {
@@ -71,6 +73,10 @@ func main() {
 	}
 	defer resp.Body.Close()
 	body, _ := io.ReadAll(resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		fmt.Printf("Can't get release: %s %s \n", resp.Status, body)
+		os.Exit(1)
+	}
 
 	var release Release
 	errJSON := json.Unmarshal(body, &release)

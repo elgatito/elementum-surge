@@ -8,7 +8,7 @@ weight = 1
 
 ## Preparation
 
-Each provider consists of a definition in _definitions.json_ file in _/burst/providers/_ folder and an icon in _/burst/providers/icons/_ folder.
+Each provider consists of a definition in _providers.json_ file in _/burst/providers/_ folder and an icon in _/burst/providers/icons/_ folder.
 
 Icon is optional, but very much desired. It is easier to quickly find relevant search result, when you visually differ providers.
 
@@ -17,7 +17,7 @@ If you want to try adding new provider, the workflow is about that:
 - Fork Github repository from https://github.com/elgatito/script.elementum.burst
 - Clone the Github repository: `git clone git@github.com:yourusername/script.elementum.burst.git`
 - Change the branch from _master_ to anything else like `git checkout -b my_provider` 
-- Do your changes to _definitions.json_ 
+- Do your changes to _providers.json_ 
 - Push changes to Github with `git push origin my_provider` 
 - Github will give you a note that you can make a Pull Request, so your changes are included in the Burst code.
 - Done!
@@ -30,7 +30,7 @@ If you want to try adding new provider, the workflow is about that:
 
 ### Definition
 
-Definitions are a JSON list of a smaller parts, each of them describes separate providers. 
+Definitions are a JSON object of a smaller parts, each of them describes separate providers. 
 There are no inherited settings, or default settings, each provider's setting should be explicitly setted.
 
 Example of provider definition:
@@ -132,6 +132,61 @@ Where columns mean:
 
 
 
+
+### Search queries and fallbacks
+
+Each search type (`movie`, `season`, `tv`, `anime`, `general`) can have several queries:
+
+- `<type>_keywords`, `<type>_keywords2`, `<type>_keywords3`, `<type>_keywords4`: all of them are searched.
+- `<type>_keywords_fallback`, `<type>_keywords_fallback2`, ... `_fallback4`: searched one by one, only while there are no results yet.
+- `<type>_extra2`, `<type>_extra_fallback`, ... : the `EXTRA` text for the query with the same suffix.
+
+Keywords such as `{title}`, `{title:original}`, `{title:en}`, `{year}`, `{season:2}`, `{episode:2}` are replaced with the item's data
+(`:2` pads the number to two digits, `:en`/`:original` pick the title language).
+
+### Other keys
+
+Optional keys used by some providers:
+
+- `root_url`: _string_, base address of the site, prepended to relative links and to `login_path`.
+- `charset`: _string_, encoding of the query in the search URL, for sites that are not UTF-8 (e.g. `windows-1251`).
+- `response_charset`: _string_, encoding of the site's pages, when it can't be detected.
+- `post_data`: _string_, Python dict, sends the search as a POST request. `QUERY` in values is replaced with the query.
+- `headers`: _string_, Python dict of extra HTTP headers for search requests.
+- `login_headers`: _string_, Python dict of extra HTTP headers for the login request.
+- `login_prerequest`: _string_, path to open before logging in (to get session cookies).
+- `login_cookie`: _string_, name of the cookie that means "logged in". If it comes from [Cookie sync]({{%relref "cookie-sync.md"%}}), Burst skips the login form.
+- `csrf_token`: _boolean_, take `csrf_token` from the login page and put it instead of `CSRF_TOKEN` in `login_object`.
+- `filter_title`: _boolean_, drop results whose name doesn't match the searched title.
+- `parser.infohash`: query for the info hash, lets Burst make a magnet link without opening the torrent.
+- `parser.description`: query for extra text, added to the result name.
+- `parser.referer`: query for the Referer header, used when opening the subpage.
+
+### API providers
+
+Some sites have a JSON API instead of HTML pages. For them set `"is_api": true`, and instead of `parser` describe the JSON with `api_format`:
+
+```json
+    "is_api": true,
+    "base_url": "https://movies-api.example/api/v2/list_movies.json?query_term=QUERY",
+    "api_format": {
+        "results": "data.movies",
+        "subresults": "torrents",
+        "name": "title_long",
+        "description": "type",
+        "quality": "quality",
+        "torrent": "url",
+        "info_hash": "hash",
+        "size": "size",
+        "seeds": "seeds",
+        "peers": "peers"
+    }
+```
+
+- `results`: dotted path to the list of results in the response. Empty if the response itself is the list.
+- `subresults`: key of a nested list inside each result (e.g. several torrents of one movie), each of them becomes a separate result.
+- `name`, `description`, `quality`: name of the result, and texts added to the name. `name`, `description` and `quality` accept dotted paths.
+- `torrent`, `info_hash`, `size`, `seeds`, `peers`: keys of the torrent link, hash, size and counters.
 
 ### Icon
 

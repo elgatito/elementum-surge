@@ -1,2 +1,4 @@
 /static/
 /src/dist/
+/src/.hugo_build.lock
+/src/upstream/

@@ -1,7 +1,7 @@
 +++
 title = "Contribute"
 description = ""
-weight = 2
+weight = 6
 alwaysopen = true
 +++
 

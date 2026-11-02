@@ -1,0 +1,33 @@
+{{- /* Renders daemon flags from the Args struct in src/upstream/elementum/config.go (fetched by scripts/fetch_upstream.sh). */ -}}
+{{- /* shortcut: parses gofmt-ed Go source with regexps, check_site.py fails the build if it stops matching */ -}}
+{{- $src := readFile "upstream/elementum/config.go" -}}
+{{- $block := index (findRE `(?s)Args = struct \{.*?\n\t\}\{.*?\n\t\}` $src 1) 0 -}}
+{{- $defaults := index (split $block "}{") 1 }}
+<p><em>From elementum {{ readFile "upstream/plugin.video.elementum/version" }}.</em></p>
+<table>
+<thead><tr><th>Flag</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+<tbody>
+{{- range findRE "(?m)^\\s+\\w+\\s+\\S+\\s+`help:\"[^\"]*\"`" $block -}}
+  {{- $field := replaceRE `^\s+(\w+).*` "$1" . -}}
+  {{- $type := replaceRE `^\s+\w+\s+(\S+).*` "$1" . -}}
+  {{- $help := replaceRE `.*help:"([^"]*)".*` "$1" . -}}
+  {{- $default := "" -}}
+  {{- with findRE (printf `\b%s:\s*[^,\n]+` $field) $defaults 1 }}{{ $default = replaceRE `^\w+:\s*` "" (index . 0) }}{{ end -}}
+  {{- /* tagflag naming: lowercase the first letter, and each capital between capitals or at the end ("ServerExternalIP" -> "serverExternalIp") */ -}}
+  {{- $runes := split $field "" -}}
+  {{- $last := sub (len $runes) 1 -}}
+  {{- $name := "" -}}
+  {{- range $i, $c := $runes -}}
+    {{- $low := eq $i 0 -}}
+    {{- if gt $i 0 -}}
+      {{- $prev := index $runes (sub $i 1) -}}
+      {{- if ne $prev (lower $prev) -}}
+        {{- if eq $i $last }}{{ $low = true }}{{ else }}{{ $next := index $runes (add $i 1) }}{{ if ne $next (lower $next) }}{{ $low = true }}{{ end }}{{ end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $name = print $name (cond $low (lower $c) $c) -}}
+  {{- end }}
+<tr><td><code>-{{ $name }}</code></td><td>{{ if eq $type "[]string" }}string, repeat the flag for several values{{ else }}{{ $type }}{{ end }}</td><td>{{ $default }}</td><td>{{ $help }}</td></tr>
+{{- end }}
+</tbody>
+</table>

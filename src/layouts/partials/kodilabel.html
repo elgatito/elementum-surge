@@ -1,0 +1,6 @@
+{{- /* Resolves a Kodi string id ("30587") to its English text from strings.po; non-numeric labels are returned as is. */ -}}
+{{- $l := .label -}}
+{{- with findRE (printf `msgctxt "#%s"\nmsgid ".*"` $l) .po 1 -}}
+  {{- $l = replaceRE `(?s).*msgid "(.*)"` "$1" (index . 0) | replaceRE `\\"` `"` | replaceRE `\[CR\]` " " | replaceRE `\[/?[A-Z]+[^\]]*\]` "" -}}
+{{- end -}}
+{{- return $l -}}

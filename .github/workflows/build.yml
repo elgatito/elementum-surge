@@ -1,0 +1,60 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  # docdock theme uses Page.Hugo and Page.URL, removed in Hugo 0.93
+  HUGO_VERSION: 0.92.2
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Go
+        run: |
+          test -z "$(gofmt -l generator.go)" || { gofmt -d generator.go; exit 1; }
+          go vet ./...
+
+      - name: Shell scripts
+        run: shellcheck -S warning generate.sh release.sh scripts/fetch_upstream.sh
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      # Docs are always built from the latest releases of all addons
+      - name: Fetch latest releases
+        run: ./scripts/fetch_upstream.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install Hugo
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/hugo.deb" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb"
+          sudo dpkg -i "$RUNNER_TEMP/hugo.deb"
+
+      - name: Build
+        working-directory: src
+        run: hugo -d "$RUNNER_TEMP/site"
+
+      - name: Check site
+        run: python3 scripts/check_site.py "$RUNNER_TEMP/site"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: ${{ runner.temp }}/site

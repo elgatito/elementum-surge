@@ -3,27 +3,12 @@
 CWD=$(pwd)
 GIT_VERSION=$(git rev-parse HEAD)
 
-mkdir -p static/packages
+# Data of the latest releases of all addons
+./scripts/fetch_upstream.sh || exit 1
 
-for plugin in "elgatito/plugin.video.elementum" "elgatito/script.elementum.burst" "elgatito/context.elementum" "ElementumOrg/service.lt2http" "ElementumOrg/repository.elementumorg"; do
-  cd ${CWD}
-  go run generator.go ${plugin}
-
-  cd ${CWD}/static/packages
-  mkdir -p ${plugin}
-  cd ${plugin}
-
-  rm -f *
-
-  VERSION=$(curl -H "Authorization: token $GH_TOKEN" https://api.github.com/repos/${plugin}/releases/latest -s | jq .name -r)
-  VERSION="v${VERSION}"
-
-  wget --header="Authorization: token $GH_TOKEN" https://raw.githubusercontent.com/${plugin}/${VERSION}/addon.xml
-  echo -n ${VERSION} >> release
-done
-
-cd ${CWD}/src/
-hugo -d dist/ && cp -Rf dist/* ../static/
+cd "${CWD}/src/" || exit 1
+hugo --cleanDestinationDir -d dist/ && python3 ../scripts/check_site.py dist/ || exit 1
+cp -Rf dist/* ../static/
 
 # Upload to Surge
 surge -p ${CWD}/static/ -d elementum.surge.sh

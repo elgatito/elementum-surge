@@ -1,0 +1,13 @@
+{{/* Renders a Kodi-formatted whatsnew.txt/changelog.txt from src/upstream/ (fetched by generate.sh). Usage: {{< kodinotes "plugin.video.elementum/whatsnew.txt" >}} */}}
+{{- $t := readFile (printf "upstream/%s" (.Get 0)) -}}
+{{- /* drop the intro text before the first version header */ -}}
+{{- $t = replaceRE `(?s)\A.*?\n(\[B\](?:\[COLOR [^\]]+\])?v?\d)` "\n$1" $t -}}
+{{- /* "[B][COLOR red]0.1.116[/COLOR][/B]" or "[B]v0.0.100[/B] - 2026-10-28" -> heading */ -}}
+{{- $t = replaceRE `(?m)^\[B\](?:\[COLOR [^\]]+\])?(v?\d[^\[]*)(?:\[/COLOR\])?\[/B\](.*)$` "### $1$2" $t -}}
+{{- /* indented list items would become code blocks in markdown */ -}}
+{{- $t = replaceRE `(?m)^[ \t]+- ` "- " $t -}}
+{{- $t = replaceRE `\[/?COLOR[^\]]*\]` "" $t -}}
+{{- $t = replaceRE `\[/?B\]` "**" $t -}}
+{{- $t = replaceRE `\[/?I\]` "_" $t -}}
+{{- $t = replaceRE `\[CR\]` "\n" $t -}}
+{{ $t | markdownify }}

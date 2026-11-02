@@ -1,0 +1,32 @@
+{{- /* Renders Elementum addon settings from src/upstream/plugin.video.elementum/{settings.xml,strings.po} (fetched by generate.sh). */ -}}
+{{- $dir := "upstream/plugin.video.elementum" -}}
+{{- $po := readFile (print $dir "/strings.po") -}}
+{{- $x := readFile (print $dir "/settings.xml") | transform.Unmarshal -}}
+<p><em>From plugin.video.elementum {{ readFile (print $dir "/version") }}.</em></p>
+{{- range $x.category }}
+<h2>{{ partial "kodilabel" (dict "po" $po "label" (index . "-label")) }}</h2>
+<table>
+<thead><tr><th>Setting</th><th>ID</th><th>Type</th><th>Default</th><th>Values</th></tr></thead>
+<tbody>
+{{- range .setting -}}
+  {{- $type := index . "-type" -}}
+  {{- $label := partial "kodilabel" (dict "po" $po "label" (index . "-label")) -}}
+  {{- if or (eq (index . "-visible") "false") (eq $type "sep") -}}
+  {{- else if eq $type "lsep" }}
+<tr><th colspan="5">{{ $label }}</th></tr>
+  {{- else if and (eq $type "text") (eq (index . "-enable") "false") }}
+<tr><td colspan="5"><em>{{ $label }}</em></td></tr>
+  {{- else -}}
+    {{- $values := slice -}}
+    {{- with index . "-lvalues" }}{{ range split . "|" }}{{ $values = $values | append (partial "kodilabel" (dict "po" $po "label" .)) }}{{ end }}{{ end -}}
+    {{- with index . "-values" }}{{ $values = split . "|" }}{{ end -}}
+    {{- $default := index . "-default" -}}
+    {{- if and (eq $type "enum") $values }}{{ $default = index $values (int (default "0" $default)) }}{{ end -}}
+    {{- $range := "" -}}
+    {{- with index . "-range" }}{{ $r := split . "," }}{{ $range = printf "%s – %s" (index $r 0) (index $r (sub (len $r) 1)) }}{{ end }}
+<tr><td>{{ $label }}</td><td><code>{{ index . "-id" }}</code></td><td>{{ $type }}</td><td>{{ $default }}</td><td>{{ delimit $values " / " }}{{ $range }}</td></tr>
+  {{- end -}}
+{{- end }}
+</tbody>
+</table>
+{{- end }}
