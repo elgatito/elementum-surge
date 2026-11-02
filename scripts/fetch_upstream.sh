@@ -21,6 +21,7 @@ declare -A FILES=(
   [elgatito/plugin.video.elementum]="whatsnew.txt resources/settings.xml resources/language/resource.language.en_gb/strings.po"
   [elgatito/script.elementum.burst]="changelog.txt"
   [elgatito/context.elementum]="changelog.txt"
+  [vasilky3/script.elementum.jackett]=""
   [ElementumOrg/service.lt2http]=""
   [ElementumOrg/repository.elementumorg]=""
 )
@@ -53,4 +54,21 @@ for repo in "${!FILES[@]}"; do
     mkdir -p src/upstream/elementum
     fetch elgatito/elementum "${version}" config/config.go src/upstream/elementum/config.go
   fi
+
+  if [[ ${name} == service.lt2http ]]; then
+    # The engine is tagged with the addon version, its changelog is a C++ string with <b>version:</b> headers
+    fetch ElementumOrg/lt2http "${version}" src/app/changelog.h src/upstream/lt2http-changelog.h
+    sed -n '/R""""(/,/)"""";/p' src/upstream/lt2http-changelog.h | sed -e '1d;$d' -E -e 's#^<b>(.*):</b>#[B]\1[/B]#' \
+      > "src/upstream/${name}/changelog.txt"
+    rm src/upstream/lt2http-changelog.h
+  fi
 done
+
+# Every addon served by the repository must be on the Downloads page
+repo_version=$(cat src/upstream/repository.elementumorg/version)
+ids=$(curl -fsSL "${AUTH[@]}" "https://raw.githubusercontent.com/ElementumOrg/repository.elementumorg/${repo_version}/resources/repository.json" | jq -er '.[].id')
+missing=0
+for id in ${ids}; do
+  grep -qF "platforms \"${id}\"" src/content/getting-started/platforms-page.md || { echo "${id}: served by the repository, missing on Downloads page"; missing=1; }
+done
+exit ${missing}

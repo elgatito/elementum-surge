@@ -33,8 +33,14 @@ Optional context menu add-on, see [Context add-on]({{% relref "/context/_index.m
 
 {{< platforms "context.elementum" >}}
 
+## Jackett {#jackett-downloads}
+
+Optional search provider that uses your own [Jackett](https://github.com/Jackett/Jackett) server, an alternative to Burst. Maintained by [vasilky3](https://github.com/vasilky3/script.elementum.jackett). Version **{{< version "script.elementum.jackett" >}}**.
+
+{{< platforms "script.elementum.jackett" >}}
+
 ## LT2http {#lt2http-downloads}
 
-Optional, separate from Elementum: a [LibTorrent-to-HTTP](https://github.com/ElementumOrg/lt2http) streaming service for Kodi. Version **{{< version "service.lt2http" >}}**.
+Optional, separate from Elementum: a LibTorrent-to-HTTP streaming engine for Kodi, see [LT2http]({{% relref "/lt2http/_index.md" %}}). Version **{{< version "service.lt2http" >}}**.
 
 {{< platforms "service.lt2http" >}}

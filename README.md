@@ -39,7 +39,8 @@ Docs are always built from the latest releases of all add-ons. `scripts/fetch_up
 - `addon.xml` and release tag → `static/packages/<repo>/`, served to Kodi by the Elementum repository;
 - `whatsnew.txt` (release tag) / `changelog.txt` (default branch) → "Release notes" pages (`kodinotes` shortcode);
 - `settings.xml` + English `strings.po` of plugin.video.elementum → "Kodi addon settings" page (`kodisettings` shortcode);
-- `config/config.go` of elementum, at the addon's release tag → flags on "Command-line options" page (`cliflags` shortcode).
+- `config/config.go` of elementum, at the addon's release tag → flags on "Command-line options" page (`cliflags` shortcode);
+- `src/app/changelog.h` of lt2http, at service.lt2http's release tag → "Release notes" page, converted to Kodi changelog format.
 
 `src/upstream/` is not committed. The script fails if anything is missing, so a release never goes out with stale data.
 Set `GH_TOKEN` to avoid GitHub API rate limits.

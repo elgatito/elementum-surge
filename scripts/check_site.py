@@ -33,7 +33,7 @@ for f in root.rglob("*.html"):
         check(target.is_file() or (target / "index.html").is_file(), f"{f.relative_to(root)}: broken link {url}")
 
 # Linked from the add-ons (settings, README), must keep working after restructuring
-for path in ("donate", "context", "contribute/log"):
+for path in ("donate", "context", "contribute/log", "lt2http"):
     page(path)
 
 settings = page("configuration/kodi-settings")
@@ -44,7 +44,7 @@ flags = page("configuration/command-line")
 check(len(re.findall(r"<td><code>-[a-z]\w+</code>", flags)) > 10, "command-line: too few flags rendered")
 check("<code>-remoteHost</code>" in flags, "command-line: -remoteHost flag is missing")
 
-for name in ("elementum", "burst", "context"):
+for name in ("elementum", "burst", "context", "lt2http"):
     notes = page(f"release-notes/{name}")
     check(len(re.findall(r'<h3 id="v?\d', notes)) > 2, f"release-notes/{name}: no version headings")
     check(not re.search(r"\[/?(B|I|COLOR)\b", notes), f"release-notes/{name}: Kodi formatting tags left")

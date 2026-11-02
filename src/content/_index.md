@@ -7,7 +7,7 @@ description = "Elementum: torrent streaming add-on for Kodi. Installation, confi
 **Stream torrents in Kodi.** Elementum finds movies and TV shows with the [Burst](burst/) search add-on,
 starts playing while the torrent downloads, keeps a virtual library in Kodi and syncs your watch history with Trakt, Simkl or MDBList.
 
-Latest releases: Elementum **{{< version "plugin.video.elementum" >}}** · Burst **{{< version "script.elementum.burst" >}}** · Context **{{< version "context.elementum" >}}**. See [what's new](release-notes/).
+Latest releases: Elementum **{{< version "plugin.video.elementum" >}}** · Burst **{{< version "script.elementum.burst" >}}** · Context **{{< version "context.elementum" >}}** · [LT2http](lt2http/) **{{< version "service.lt2http" >}}**. See [what's new](release-notes/).
 
 {{< cards >}}
 {{% card title="Install" icon="download" href="getting-started/installation/" %}}
@@ -25,8 +25,11 @@ Answers to the most common questions.
 {{% card title="Get help" icon="life-ring" href="help/" %}}
 Make a log file and report a problem.
 {{% /card %}}
+{{% card title="LT2http" icon="server" href="lt2http/" %}}
+Torrent streaming engine with an HTTP API, for your own add-ons and players.
+{{% /card %}}
 {{% card title="What's new" icon="bullhorn" href="release-notes/" %}}
-Changes in every release of Elementum, Burst and Context.
+Changes in every release of Elementum, Burst, Context and LT2http.
 {{% /card %}}
 {{< /cards >}}
 
