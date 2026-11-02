@@ -1,0 +1,4 @@
+{{- /* Site-root images ("/screenshots/x.png") follow baseURL, so the site also works under a sub-path (e.g. GitHub Pages preview) */ -}}
+{{- $src := .Destination -}}
+{{- if hasPrefix $src "/" }}{{ $src = strings.TrimPrefix "/" $src | relURL }}{{ end -}}
+<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}>

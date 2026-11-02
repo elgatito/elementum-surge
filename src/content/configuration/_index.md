@@ -24,4 +24,4 @@ The daemon gets its configuration in one of two ways:
 Command-line flags are not Kodi settings: they control where the daemon listens, which paths it uses and how it finds Kodi.
 Everything else (storage, BitTorrent, library, tracking, ...) is a Kodi setting, which in server mode can come from the config file.
 
-{{%children style="h3" description="true"%}}
+{{% children style="h3" description="true" /%}}

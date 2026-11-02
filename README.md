@@ -3,13 +3,20 @@
 How do test changes
 ------------
 
-1. Install Hugo **0.92.x extended** (https://github.com/gohugoio/hugo/releases/tag/v0.92.2). Newer versions don't work with the docdock theme.
+1. Install Hugo **0.169.0** or newer (https://gohugo.io/installation/). CI uses the version from `HUGO_VERSION` in `.github/workflows/build.yml`.
 2. Install `go`, `jq` and `curl`, and run `scripts/fetch_upstream.sh` to get data of the latest releases (see below).
 3. From `src/` directory run `hugo server -d dist/`
 
 Once you change any page, it will be automatically regenerated.
 
 To run the same checks as CI (`.github/workflows/build.yml`), from `src/` run `hugo -d /tmp/site && python3 ../scripts/check_site.py /tmp/site`.
+
+Preview
+-------
+
+CI publishes a preview to this repository's GitHub Pages: https://elgatito.github.io/elementum-surge/ (not production).
+It is updated on every push to `master`. To preview another branch, run the "Build" workflow manually on it
+(Actions → Build → Run workflow); the preview always shows the last published run.
 
 Release
 -------

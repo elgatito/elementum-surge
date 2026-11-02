@@ -1,5 +1,5 @@
 baseURL = "/"
-languageCode = "en-us"
+locale = "en-us"
 DefaultContentLanguage = "en"
 
 title = "Elementum"
@@ -47,7 +47,3 @@ weight = 30
 
 [markup.goldmark.renderer]
 unsafe = true
-
-[blackfriday]
-  plainIDAnchors = true
-  hrefTargetBlank = true

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Checks a built site: internal links resolve, generated pages are complete. Usage: check_site.py <hugo output dir>"""
+"""Checks a built site: internal links resolve, generated pages are complete.
+Usage: check_site.py <hugo output dir> [base path, e.g. /elementum-surge/ when built with a sub-path baseURL]"""
 import re
 import sys
 from pathlib import Path
 
 root = Path(sys.argv[1])
+base = sys.argv[2] if len(sys.argv) > 2 else "/"
 errors = []
 
 
@@ -24,7 +26,10 @@ for f in root.rglob("*.html"):
     if f.relative_to(root).parts[0] == "revealjs":  # theme's vendored reveal.js demo files
         continue
     for url in re.findall(r'(?:href|src)="(/(?!/)[^"#?]*)', f.read_text(errors="replace")):
-        target = root / url.lstrip("/")
+        if not url.startswith(base):
+            check(False, f"{f.relative_to(root)}: link outside {base}: {url}")
+            continue
+        target = root / url[len(base):]
         check(target.is_file() or (target / "index.html").is_file(), f"{f.relative_to(root)}: broken link {url}")
 
 settings = page("configuration/kodi-settings")

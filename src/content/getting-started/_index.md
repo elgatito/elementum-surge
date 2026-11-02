@@ -9,4 +9,4 @@ alwaysopen = true
 
 Install [Kodi](https://kodi.tv/) for your OS
 
-{{%children style="h2" description="true"%}}
+{{% children style="h2" description="true" /%}}
