@@ -9,6 +9,8 @@ editURL = "https://github.com/elgatito/elementum-surge/edit/master/src/content/$
 # Blue header and dark sidebar (fits the white logo), assets/css/theme-elementum-*.css; follows the OS light/dark setting
 themeVariant = ["auto", "elementum-light", "elementum-dark"]
 collapsibleMenu = true
+# The logo and title already link to the home page
+disableLandingPageButton = true
 disableShortcutsTitle = false
 
 [markup.goldmark.renderer]

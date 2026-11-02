@@ -2,8 +2,9 @@
 @import "theme-relearn-light.css";
 
 :root {
-  --PRIMARY-color: rgba( 37, 99, 235, 1 ); /* brand primary color, menu header background */
-  --PRIMARY-HOVER-color: rgba( 29, 78, 216, 1 ); /* brand primary hover color */
-  --MENU-HOME-LINK-color: rgba( 219, 234, 254, 1 ); /* home link on the blue header */
-  --MENU-HOME-LINK-HOVER-color: rgba( 255, 255, 255, 1 );
+  --PRIMARY-color: rgba( 30, 136, 229, 1 ); /* brand primary color, menu header background (#1E88E5) */
+  --PRIMARY-HOVER-color: rgba( 25, 118, 210, 1 ); /* brand primary hover color */
+  /* white site title on the blue header (3.7:1, large text); the default is near-black */
+  --LOGO-LINK-color: rgba( 255, 255, 255, 1 );
+  --LOGO-LINK-HOVER-color: rgba( 227, 242, 253, 1 );
 }
