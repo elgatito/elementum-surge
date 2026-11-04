@@ -58,11 +58,10 @@ for repo in "${!FILES[@]}"; do
   fi
 
   if [[ ${name} == service.lt2http ]]; then
-    # The engine is tagged with the addon version, its changelog is a C++ string with <b>version:</b> headers
-    fetch ElementumOrg/lt2http "${version}" src/app/changelog.h src/upstream/lt2http-changelog.h
-    sed -n '/R""""(/,/)"""";/p' src/upstream/lt2http-changelog.h | sed -e '1d;$d' -E -e 's#^<b>(.*):</b>#[B]\1[/B]#' \
-      > "src/upstream/${name}/changelog.txt"
-    rm src/upstream/lt2http-changelog.h
+    # The engine is tagged with the addon version, its changelog.md has "## version" headers, made Kodi-style for kodinotes
+    fetch ElementumOrg/lt2http "${version}" changelog.md src/upstream/lt2http-changelog.md
+    sed -E 's#^\#\# (.*)#[B]\1[/B]#' src/upstream/lt2http-changelog.md > "src/upstream/${name}/changelog.txt"
+    rm src/upstream/lt2http-changelog.md
     # Options of the standalone binary
     mkdir -p src/upstream/lt2http
     fetch ElementumOrg/lt2http "${version}" src/app/config.h src/upstream/lt2http/config.h
