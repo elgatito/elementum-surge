@@ -2,6 +2,7 @@
 title = "Command-line options"
 description = "Running the Elementum daemon yourself: flags, config file, client-server mode"
 weight = 2
+aliases = ["/configuration/command-line/"]
 +++
 
 Normally the Kodi add-on starts the `elementum` binary itself, and you don't need any of this.

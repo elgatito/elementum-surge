@@ -40,5 +40,5 @@ Elementum is now in _Add-ons → Video add-ons_:
 
 ## Next steps
 
-- Go through the [settings]({{% relref "/configuration/kodi-settings.md" %}}), especially _General → Storage_ and the _Tracking_ service.
+- Go through the [settings]({{% relref "/configuration/elementum/kodi-settings.md" %}}), especially _General → Storage_ and the _Tracking_ service.
 - If something doesn't work, check the [FAQ]({{% relref "/help/faq.md" %}}) or [get help]({{% relref "/help/_index.md" %}}).

@@ -2,6 +2,7 @@
 title = "Kodi add-on settings"
 description = "Every setting in Add-ons → Elementum → Configure"
 weight = 1
+aliases = ["/configuration/kodi-settings/"]
 +++
 
 These are the settings you see in Kodi, in _Add-ons → Elementum → Configure_.

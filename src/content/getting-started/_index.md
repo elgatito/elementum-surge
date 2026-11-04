@@ -18,6 +18,6 @@ menuPre = "<i class='fas fa-fw fa-rocket'></i> "
 | Android arm / arm64 / x86 / x64 | Android 5.0 |
 | macOS Intel / Apple Silicon | macOS 13 Ventura |
 
-On other systems you can run Elementum in [client-server mode]({{% relref "/configuration/command-line.md#client-server-mode" %}}), for example with [Docker](https://github.com/ElementumOrg/elementum-docker).
+On other systems you can run Elementum in [client-server mode]({{% relref "/configuration/elementum/command-line.md#client-server-mode" %}}), for example with [Docker](https://github.com/ElementumOrg/elementum-docker).
 
 {{% pages description="true" display="cards" %}}

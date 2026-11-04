@@ -1,7 +1,7 @@
 #!/bin/bash
 # Fetches data of the latest releases of all addons, used by the docs build:
 #   src/data/<addon>/platforms.json             download links (generator.go)
-#   src/upstream/<addon>/                       release notes, settings, daemon flags (shortcodes)
+#   src/upstream/<addon>/                       release notes, settings, daemon/lt2http options (shortcodes)
 #   static/packages/<repo>/{addon.xml,release}  served to Kodi by the Elementum repository
 # Fails on any missing file, so docs are never built from stale data.
 # GH_TOKEN is optional, it raises GitHub API rate limits.
@@ -19,10 +19,10 @@ fetch() { # <repo> <ref> <path> <output>
 # Files rendered in docs, per repo
 declare -A FILES=(
   [elgatito/plugin.video.elementum]="whatsnew.txt resources/settings.xml resources/language/resource.language.en_gb/strings.po"
-  [elgatito/script.elementum.burst]="changelog.txt"
+  [elgatito/script.elementum.burst]="changelog.txt resources/settings.xml resources/language/resource.language.en_gb/strings.po"
   [elgatito/context.elementum]="changelog.txt"
   [vasilky3/script.elementum.jackett]=""
-  [ElementumOrg/service.lt2http]=""
+  [ElementumOrg/service.lt2http]="resources/settings.xml resources/language/resource.language.en_gb/strings.po"
   [ElementumOrg/repository.elementumorg]=""
 )
 
@@ -46,7 +46,9 @@ for repo in "${!FILES[@]}"; do
     ref=${version}
     # changelog.txt is curated on the default branch and can be fixed after a release
     [[ ${f} == changelog.txt ]] && ref=HEAD
-    fetch "${repo}" "${ref}" "${f}" "src/upstream/${name}/${f##*/}"
+    dst="src/upstream/${name}/${f##*/}"
+    # shortcut: older releases keep strings in the pre-Kodi-17 "English" folder, drop once all addons are released with resource.language.en_gb
+    fetch "${repo}" "${ref}" "${f}" "${dst}" || { [[ ${f} == */strings.po ]] && fetch "${repo}" "${ref}" resources/language/English/strings.po "${dst}"; }
   done
 
   if [[ ${name} == plugin.video.elementum ]]; then
@@ -61,6 +63,10 @@ for repo in "${!FILES[@]}"; do
     sed -n '/R""""(/,/)"""";/p' src/upstream/lt2http-changelog.h | sed -e '1d;$d' -E -e 's#^<b>(.*):</b>#[B]\1[/B]#' \
       > "src/upstream/${name}/changelog.txt"
     rm src/upstream/lt2http-changelog.h
+    # Options of the standalone binary
+    mkdir -p src/upstream/lt2http
+    fetch ElementumOrg/lt2http "${version}" src/app/config.h src/upstream/lt2http/config.h
+    fetch ElementumOrg/lt2http "${version}" src/app/config.cpp src/upstream/lt2http/config.cpp
   fi
 done
 

@@ -1,27 +1,19 @@
 +++
 title = "Configuration"
-description = "How Elementum is configured"
+description = "Settings of Elementum, Burst and LT2http"
 weight = 2
 menuPre = "<i class='fas fa-fw fa-sliders'></i> "
 +++
 
-## Two parts, two ways to configure
+Every add-on is configured in Kodi, in _Add-ons → <add-on> → Configure_.
+Elementum and LT2http can also run outside Kodi, then they are configured with command-line options and a config file.
 
-Elementum consists of two parts:
+| Add-on | In Kodi | Outside Kodi |
+|---|---|---|
+| Elementum | [Kodi add-on settings]({{% relref "elementum/kodi-settings.md" %}}) | [Command-line options]({{% relref "elementum/command-line.md" %}}) of the `elementum` daemon |
+| Burst | [Burst settings]({{% relref "burst.md" %}}) | — Burst is a Kodi script, it only runs inside Kodi |
+| LT2http | [Kodi add-on settings]({{% relref "lt2http/kodi-settings.md" %}}) | [Command-line options]({{% relref "lt2http/command-line.md" %}}) of the `lt2http` binary |
 
-- **plugin.video.elementum** — the Kodi add-on (Python). It shows menus in Kodi and starts the daemon.
-- **elementum** — the daemon (Go binary, shipped inside the add-on zip). It does the torrent streaming, library sync, Trakt/Simkl/MDBList sync and so on.
-
-The daemon gets its configuration in one of two ways:
-
-1. **From Kodi** (default). The add-on starts the daemon, and the daemon reads all add-on settings from Kodi over JSON-RPC.
-   You change them in Kodi: _Add-ons → Elementum → Configure_.
-   See [Kodi add-on settings]({{%relref "kodi-settings.md"%}}).
-2. **From the command line and a config file** (server mode). You start the daemon yourself (Linux daemon, Windows service, Docker),
-   pass options as command-line flags, and optionally load settings from a YAML/JSON file instead of asking Kodi.
-   See [Command-line options]({{%relref "command-line.md"%}}).
-
-Command-line flags are not Kodi settings: they control where the daemon listens, which paths it uses and how it finds Kodi.
-Everything else (storage, BitTorrent, library, tracking, ...) is a Kodi setting, which in server mode can come from the config file.
+All lists are generated from the sources of the latest releases, so they are always in sync with the add-ons.
 
 {{% pages description="true" display="cards" %}}

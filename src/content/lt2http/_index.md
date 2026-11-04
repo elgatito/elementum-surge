@@ -30,15 +30,8 @@ The add-on has no browsing interface yet: it starts `lt2http` when Kodi starts, 
 downloads the right binary for your platform after an update, and restarts the engine when you change settings.
 Other add-ons use it through the API at `http://127.0.0.1:65225`.
 
-Settings are in _Add-ons → Services → LT2http → Configure_:
-
-| Tab | What you set there |
-|---|---|
-| General | Pre-play buffer size and timeout, speed limits, connection limits, seeding, trackers, libtorrent options. |
-| Storage | Storage type (memory or files), memory size, download and `.torrent` folders, disk cache. |
-| Network | DHT, LSD, TCP, uTP, UPnP/NAT-PMP, listen and outgoing interfaces, listen ports. |
-| Proxy | SOCKS4, SOCKS5, HTTP or I2P proxy for trackers, downloads and `.torrent` files. |
-| Advanced | Local port, remote host and port, API login and password. |
+Settings are in _Add-ons → Services → LT2http → Configure_, every one of them is listed in
+[Configuration → LT2http]({{% relref "/configuration/lt2http/kodi-settings.md" %}}).
 
 ## Storage
 
@@ -52,14 +45,8 @@ Settings are in _Add-ons → Services → LT2http → Configure_:
 `lt2http` is a single static binary, take it for your platform from [lt2http-binaries](https://github.com/ElementumOrg/lt2http-binaries).
 By default it listens on port `65225` on all interfaces.
 
-```sh
-lt2http --config lt2http.json --update    # load settings from lt2http.json and write back the full config
-lt2http --web_port 8080 --download_storage file --download_path /data/downloads
-lt2http --help                            # every option with its default value
-```
-
-Every setting is a command-line option and a key in the JSON config file, with the same name
-(`web_port`, `download_storage`, `memory_size`, `download_path`, `buffer_size`, `max_download_rate`, `proxy_host`, …).
+Every setting is a command-line option and a key in the JSON config file, see
+[Command-line options]({{% relref "/configuration/lt2http/command-line.md" %}}).
 Set `web_login` and `web_password` to protect the API when it listens on a network interface.
 
 ## HTTP API

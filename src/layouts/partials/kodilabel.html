@@ -1,6 +1,10 @@
-{{- /* Resolves a Kodi string id ("30587") to its English text from strings.po; non-numeric labels are returned as is. */ -}}
+{{- /* Resolves a Kodi string id ("30587") to its English text from strings.po, and "$ADDON[addon 32111]" references inside literal labels; Kodi formatting tags are removed. */ -}}
 {{- $l := .label -}}
 {{- with findRE (printf `msgctxt "#%s"\nmsgid ".*"` $l) .po 1 -}}
-  {{- $l = replaceRE `(?s).*msgid "(.*)"` "$1" (index . 0) | replaceRE `\\"` `"` | replaceRE `\[CR\]` " " | replaceRE `\[/?[A-Z]+[^\]]*\]` "" -}}
+  {{- $l = replaceRE `(?s).*msgid "(.*)"` "$1" (index . 0) | replaceRE `\\"` `"` -}}
 {{- end -}}
+{{- range findRE `\$ADDON\[\S+ \d+\]` $l -}}
+  {{- $l = replace $l . (partial "kodilabel" (dict "po" $.po "label" (replaceRE `.* (\d+)\]` "$1" .))) -}}
+{{- end -}}
+{{- $l = $l | replaceRE `\[CR\]` " " | replaceRE `\[/?(B|I|COLOR|LIGHT|UPPERCASE|LOWERCASE|CAPITALIZE)\b[^\]]*\]` "" | strings.TrimSpace -}}
 {{- return $l -}}

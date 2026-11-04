@@ -17,7 +17,7 @@ Works on any platform and installs and updates all add-ons below. Version **{{< 
 The add-on itself. Version **{{< version "plugin.video.elementum" >}}**.
 
 - **All platforms** zip contains binaries for every platform. Use it if you are not sure which one you need.
-- **Client only** zip has no binary, for [client-server mode]({{% relref "/configuration/command-line.md#client-server-mode" %}}).
+- **Client only** zip has no binary, for [client-server mode]({{% relref "/configuration/elementum/command-line.md#client-server-mode" %}}).
 
 {{< platforms "plugin.video.elementum" >}}
 

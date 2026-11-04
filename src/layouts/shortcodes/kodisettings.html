@@ -1,17 +1,21 @@
-{{- /* Renders Elementum addon settings from src/upstream/plugin.video.elementum/{settings.xml,strings.po} (fetched by generate.sh). */ -}}
-{{- $dir := "upstream/plugin.video.elementum" -}}
+{{- /* Renders addon settings from src/upstream/<addon>/{settings.xml,strings.po} (fetched by scripts/fetch_upstream.sh).
+  Usage: {{< kodisettings addon="script.elementum.burst" skip="_alias$" >}}, addon defaults to plugin.video.elementum, skip is a regexp of setting IDs to leave out. */ -}}
+{{- $addon := .Get "addon" | default "plugin.video.elementum" -}}
+{{- $skip := .Get "skip" -}}
+{{- $dir := print "upstream/" $addon -}}
 {{- $po := readFile (print $dir "/strings.po") -}}
 {{- $x := readFile (print $dir "/settings.xml") | transform.Unmarshal -}}
-<p><em>From plugin.video.elementum {{ readFile (print $dir "/version") }}.</em></p>
+<p><em>From {{ $addon }} {{ readFile (print $dir "/version") }}.</em></p>
 {{- range $x.category }}
 <h2>{{ partial "kodilabel" (dict "po" $po "label" (index . "-label")) }}</h2>
 <table>
 <thead><tr><th>Setting</th><th>ID</th><th>Type</th><th>Default</th><th>Values</th></tr></thead>
 <tbody>
-{{- range .setting -}}
+{{- /* a category with one setting unmarshals to a map, not a list */ -}}
+{{- range cond (reflect.IsMap .setting) (slice .setting) .setting -}}
   {{- $type := index . "-type" -}}
   {{- $label := partial "kodilabel" (dict "po" $po "label" (index . "-label")) -}}
-  {{- if or (eq (index . "-visible") "false") (eq $type "sep") -}}
+  {{- if or (eq (index . "-visible") "false") (eq $type "sep") (and $skip (findRE $skip (index . "-id" | default "") 1)) -}}
   {{- else if eq $type "lsep" }}
 <tr><th colspan="5">{{ $label }}</th></tr>
   {{- else if and (eq $type "text") (eq (index . "-enable") "false") }}

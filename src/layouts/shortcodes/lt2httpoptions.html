@@ -1,0 +1,33 @@
+{{- /* Renders lt2http options from src/upstream/lt2http/{config.cpp,config.h} (fetched by scripts/fetch_upstream.sh). */ -}}
+{{- /* shortcut: parses C++ source with regexps, check_site.py fails the build if it stops matching */ -}}
+{{- $cpp := readFile "upstream/lt2http/config.cpp" -}}
+{{- $h := readFile "upstream/lt2http/config.h" -}}
+{{- $block := index (findRE `(?s)add_options\(\).*?options_description cmdline_options` $cpp 1) 0 }}
+<p><em>From lt2http {{ readFile "upstream/service.lt2http/version" }}.</em></p>
+<table>
+<thead><tr><th>Option</th><th>Type</th><th>Default</th><th>Values</th><th>In config file</th><th>Description</th></tr></thead>
+<tbody>
+{{- /* ("name,n", po::value<T>(&member)->default_value(member), "help") or ("name", bound(member), "help") or ("name,n", "help") */ -}}
+{{- range findRE `\(\s*"[a-z_]+(?:,[a-z])?",\s*(?:\S*?\(&?\w+\)\S*,\s*)?"[^"]*"\s*\)` $block -}}
+  {{- $name := replaceRE `(?s)^\(\s*"([a-z_]+).*` "$1" . -}}
+  {{- $short := replaceRE `(?s)^\(\s*"[a-z_]+(?:,([a-z]))?".*` "$1" . -}}
+  {{- $help := replaceRE `(?s).*"([^"]*)"\s*\)$` "$1" . -}}
+  {{- $member := replaceRE `(?s)^\(\s*"[^"]*",\s*(?:\S*?\(&?(\w+)\)\S*,\s*)?".*` "$1" . | replaceRE `_arg$` "" -}}
+  {{- $type := "" -}}{{- $default := "" -}}{{- $values := "" -}}
+  {{- with $member -}}
+    {{- with findRE (printf `(?m)^\s*[\w:<>]+\s+%s\b[^;(]*;` $member) $h 1 -}}
+      {{- $decl := index . 0 -}}
+      {{- $type = replaceRE `(?s)^\s*([\w:<>]+).*` "$1" $decl -}}
+      {{- if strings.Contains $decl "=" }}{{ $default = replaceRE `(?s).*=\s*([^;]*);` "$1" $decl | replaceRE `^\w+::|"` "" }}{{ end -}}
+    {{- end -}}
+    {{- with findRE (printf `JS_ENUM\(%s,[^)]*\)` $type) $h 1 -}}
+      {{- $values = replaceRE `(?s)JS_ENUM\(\w+,\s*([^)]*)\)` "$1" (index . 0) | replaceRE `\s*,\s*` " / " -}}
+      {{- $type = "string" -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $type = $type | replaceRE `^std::string$` "string" | replaceRE `^std::vector<std::string>$` "list, comma-separated" -}}
+  {{- if eq $type "bool" }}{{ $values = "true / false" }}{{ end }}
+<tr><td><code>--{{ $name }}</code>{{ with $short }}, <code>-{{ . }}</code>{{ end }}</td><td>{{ $type | default "flag" }}</td><td>{{ $default }}</td><td>{{ $values }}</td><td>{{ if strings.Contains $h (printf "JS_MEMBER(%s)" $name) }}yes{{ else }}no{{ end }}</td><td>{{ $help }}</td></tr>
+{{- end }}
+</tbody>
+</table>
