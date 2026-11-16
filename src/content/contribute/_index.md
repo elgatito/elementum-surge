@@ -20,6 +20,8 @@ Elementum is a community-driven open-source project. Pull requests are welcome i
 ## Translations
 
 Add-on texts are in `resources/language/resource.language.<code>/strings.po` of each add-on. Fix or add a language and open a pull request.
+Elementum's own texts are translated in the Elementum add-on too, and copied into the binary: see [Providers, icons and translations]({{% relref "bundled-data.md" %}}),
+which also explains how providers and their icons get from Burst into Elementum.
 
 ## Documentation
 

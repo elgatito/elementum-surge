@@ -47,9 +47,10 @@ Everything of the built-in search is in `providers/` in Elementum's profile
 | `providers.default.json` | The set shipped with Elementum, written on every start. Copy from it, don't edit it. |
 | `settings.json` | What you set: general options, each provider's settings, and whether Burst was imported. Holds passwords: keep it private. |
 | `cookies.json` | Cookies the sites set, kept for the next searches. |
-| `icons/` | Provider icons. |
+| `icons/` | Provider icons. Add `<id>.png` for a provider of your own. |
 
 Changes to the definition files are read on the next start of Elementum; changes made in the settings dialog or the API apply at once.
+How the shipped providers and icons get into Elementum is described in [Providers, icons and translations]({{% relref "/contribute/bundled-data.md" %}}).
 
 ## Your own providers
 
