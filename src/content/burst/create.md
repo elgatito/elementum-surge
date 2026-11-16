@@ -4,7 +4,8 @@ description = "Write a provider definition for Burst and the built-in search"
 weight = 2
 +++
 
-A provider added to Burst's _providers.json_ comes to Elementum's [built-in search]({{% relref "builtin.md" %}}) too, with the next Elementum release.
+A provider added to Burst's _providers.json_ comes to Elementum's [built-in search]({{% relref "builtin.md" %}}) too, with the next Elementum release:
+Elementum's builds take the file from Burst ([how]({{% relref "/contribute/bundled-data.md" %}})).
 To use a provider only for yourself, without a pull request, see [How to override a provider]({{% relref "override.md" %}}).
 
 ## Preparation
