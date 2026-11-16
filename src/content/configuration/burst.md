@@ -20,4 +20,7 @@ not listed here to keep the page short:
 
 Provider definitions themselves can be changed with [overrides]({{% relref "/burst/override.md" %}}).
 
+Elementum's [built-in search]({{% relref "/burst/builtin.md" %}}) has the same settings in _Built-in search settings_ in Elementum's main menu,
+and can import them from Burst.
+
 {{< kodisettings addon="script.elementum.burst" skip="_(alias|contains)$" >}}

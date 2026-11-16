@@ -1,20 +1,20 @@
 +++
 title = "Cookie sync"
 description = "Log in to trackers with cookies from your browser"
-weight = 4
+weight = 5
 +++
 
 <!--more-->
 
 ## What it is
 
-Burst can't log in to some trackers by itself: they use captchas, Cloudflare checks or two-factor login.
-With cookie sync you log in to the tracker in your browser, and Burst uses the same cookies (and the same browser User-Agent) for searches and torrent downloads.
+Burst and Elementum's [built-in search]({{% relref "builtin.md" %}}) can't log in to some trackers by themselves: they use captchas, Cloudflare checks or two-factor login.
+With cookie sync you log in to the tracker in your browser, and the search uses the same cookies (and the same browser User-Agent) for searches and torrent downloads.
 
 Cookies travel through a private GitHub Gist:
 
 1. The [SyncMyCookie v3](https://github.com/ElementumOrg/sync-my-cookie) browser extension pushes cookies of the sites you choose into a Gist, encrypted with your password.
-2. Burst reads that Gist before each search and adds the cookies to its own cookie storage.
+2. Burst, or the built-in search, reads that Gist before searching and adds the cookies to its own cookie storage.
 
 ## Browser
 
@@ -24,7 +24,24 @@ Cookies travel through a private GitHub Gist:
 3. Log in to the tracker in the browser, open the extension on that site and click **Push**.
    Turn on **Auto Push** for the site, so cookies are pushed again when they change.
 
-## Kodi
+## Elementum's built-in search
+
+In Elementum's main menu, open **Built-in search settings → Cookie sync**:
+
+1. Choose **Connect GitHub and select Gist**. Elementum shows a web address (`github.com/login/device`) and a code.
+   Open that address on any device, sign in to **the same GitHub account** the extension uses, and enter the code.
+   The window closes by itself once GitHub accepts the code; _Cancel_ stops waiting.
+2. Choose the Gist with your cookies from the list: each is shown with its description, ID, the number of cookies and sites in it, and when it was updated.
+3. If you set an encryption key in the extension, enter it in **Encryption password (optional)**.
+
+The menu then shows the **GitHub user** and the **Active Gist**; choose them to sign in again or to pick another Gist.
+If you used cookie sync in Burst, [importing Burst's settings]({{% relref "builtin.md#coming-from-burst" %}}) brings it over, GitHub sign-in included.
+Apps do the same with `POST /api/providers/cookie-sync/login` and `GET /api/providers/cookie-sync/gists`.
+
+Differences from Burst: the Gist is read at most every five minutes, cookies are kept in `providers/cookies.json` in Elementum's profile,
+and a private provider whose site has synced cookies is searched even without a username and password.
+
+## Burst
 
 In _Burst settings → Cookie sync_:
 

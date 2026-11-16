@@ -1,13 +1,13 @@
 +++
 title = "Command-line options"
-description = "Running the Elementum daemon yourself: flags, config file, client-server mode"
+description = "Running Elementum yourself: flags, the settings file, client-server mode"
 weight = 2
 aliases = ["/configuration/command-line/"]
 +++
 
 Normally the Kodi add-on starts the `elementum` binary itself, and you don't need any of this.
-You need it when you run the daemon **separately from Kodi**: on a NAS, in [Docker](https://github.com/ElementumOrg/elementum-docker),
-as a Linux daemon or Windows service, or on a platform that has no Elementum binary.
+You need it when you run Elementum **yourself**: on its own, on a NAS, in [Docker]({{% relref "/integrations/servers.md" %}}),
+as a Linux daemon or Windows service, or for a platform that has no Elementum binary. See [Ways to run Elementum]({{% relref "/getting-started/ways-to-run.md" %}}).
 
 The binary is inside the add-on zip, in `resources/bin/<platform>/elementum` (`elementum.exe` on Windows).
 
@@ -20,29 +20,52 @@ The list below is generated from the source of the latest release.
 
 {{< cliflags >}}
 
-The daemon runs in **server mode** when `-configPath` or `-disableParentProcessWatcher` is set.
+Elementum keeps running when the program that started it ends (**server mode**) when `-configPath` or `-disableParentProcessWatcher` is set.
 
-## Config file
+## Settings file
 
-With `-configPath` the daemon does not ask Kodi for settings at all, it reads them from a file.
-The easiest way to get such a file is to export it from a working setup:
+With `-configPath=<file>` Elementum reads its settings from a file instead of asking Kodi, so it runs without Kodi.
+When `-configPath` is empty, the `ELEMENTUM_CONFIG_PATH` environment variable is used.
 
-1. Configure Elementum in Kodi as usual.
-2. Start the daemon once with `-exportConfig=/path/to/elementum.yml` (plus `-remoteHost` if Kodi is on another device). It reads the settings from Kodi, writes them to the file and keeps running; stop it afterwards.
-3. Edit the file if needed and start the daemon with `-configPath=/path/to/elementum.yml`.
+- **Kodi does this for you.** Since 0.1.120 the add-on writes all its settings to `settings.json` in Elementum's profile,
+  starts the binary with `-configPath` pointing at it, and rewrites the file whenever you change a setting.
+  `GET /api/system/info` says `"settings_source": "file"` then.
+- **On your own**, point `-configPath` at a file that does not exist yet: Elementum creates it with default settings
+  (taken from the add-on's `settings.xml` when `-addonPath` is set) and logs a warning. Then edit it.
+- Elementum checks the file every 2 seconds. A valid change is applied at once; a broken file is logged and the previous settings stay.
+  `GET /reload` reads it at once.
+- Tokens and other values Elementum changes itself (Trakt, Simkl, MDBList, Scrob and OpenSubtitles tokens) are written back into the file (JSON only),
+  and into Kodi when it is connected. A change of only these does not restart anything.
+- The file holds tokens and passwords: keep it private. Elementum creates it readable by its owner only.
 
-The file has the add-on info, the platform and a `settings` map. Keys in `settings` are the
-IDs from [Kodi add-on settings]({{%relref "kodi-settings.md"%}}), for example:
+A JSON file looks like this (YAML works too, with lowercase keys):
 
-```yaml
-settings:
-  download_storage: 0       # 0 = File, 1 = Memory
-  download_path: /data/downloads
-  library_path: /data/library
-  buffer_size: 20
+```json
+{
+    "Version": 1,
+    "Info": { "ID": "plugin.video.elementum", "Path": "/opt/elementum/", "Profile": "/var/lib/elementum/", "TempPath": "/tmp/elementum" },
+    "Platform": { "OS": "linux", "Arch": "x64" },
+    "Language": "en",
+    "SecondLanguage": "",
+    "Region": "US",
+    "InterfaceLanguage": "en",
+    "Settings": {
+        "download_storage": 0,
+        "download_path": "/srv/downloads",
+        "library_path": "/srv/library",
+        "buffer_size": 20,
+        "providers_source": 1
+    }
+}
 ```
 
-Flags still win over the file: e.g. `-downloadsPath` overrides `download_path`.
+- `Info.ID`, `Info.Profile`, `Platform` and `Settings` are required.
+- `Version` is the format of the file; Elementum refuses a newer one than it knows.
+- `Language` is the metadata language, `InterfaceLanguage` the language of texts Elementum shows in Kodi.
+- Keys in `Settings` are the IDs from [Kodi add-on settings]({{%relref "kodi-settings.md"%}}).
+- Flags win over the file: `-downloadsPath` overrides `download_path`.
+
+`-exportConfig=<file>` still writes the settings of a running Kodi setup to a file, as a starting point.
 
 ## Client-server mode
 

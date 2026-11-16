@@ -5,6 +5,20 @@ weight = 1
 aliases = ["/getting-started/faq/"]
 +++
 
+### Searches find nothing
+
+* Check which search Elementum uses: _Elementum → Configure → Providers → Search torrents with_ ([details]({{% relref "/burst/_index.md#which-search-is-used" %}})).
+* With the built-in search, open _Built-in search settings_ in Elementum's main menu: the first two lines show the providers in use.
+  Private providers marked _no login yet_ are not searched.
+* Results are filtered as in Burst: names without a resolution or release type are dropped, and so are CAM and TeleSync releases.
+  Change it in _Built-in search settings → Release type_ or _Filtering_.
+* A site that answers with a check page (Cloudflare) needs [cookie sync]({{% relref "/burst/cookie-sync.md" %}}).
+
+### Can Elementum run without Kodi?
+
+Yes, since 0.1.120: on a server, in Docker, or for the TV app and other apps. See [Ways to run Elementum]({{% relref "/getting-started/ways-to-run.md" %}})
+and [Use Elementum from outside]({{% relref "/integrations/_index.md" %}}).
+
 ### Watched status from Trakt is not shown, "resume N seconds earlier" doesn't work, etc.
 
 Enable these options in Elementum (you don't need to set up the library in Kodi unless you want to):

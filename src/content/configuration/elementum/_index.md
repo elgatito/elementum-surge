@@ -1,26 +1,25 @@
 +++
 title = "Elementum"
-description = "Kodi add-on settings and the daemon's command-line options"
+description = "Kodi add-on settings, the settings file and command-line options"
 weight = 1
 +++
 
-## Two parts, two ways to configure
+## Two parts
 
 Elementum consists of two parts:
 
-- **plugin.video.elementum** — the Kodi add-on (Python). It shows menus in Kodi and starts the daemon.
-- **elementum** — the daemon (Go binary, shipped inside the add-on zip). It does the torrent streaming, library sync, Trakt/Simkl/MDBList sync and so on.
+- **plugin.video.elementum** — the Kodi add-on (Python). It shows menus in Kodi and starts the application.
+- **elementum** — the application (a Go binary, shipped inside the add-on zip). It does the torrent search and streaming, the library,
+  Trakt/Simkl/MDBList/Scrob sync, and serves the [JSON API]({{% relref "/integrations/json-api.md" %}}). It also runs on its own, see [Ways to run Elementum]({{% relref "/getting-started/ways-to-run.md" %}}).
 
-The daemon gets its configuration in one of two ways:
+## Where settings come from
 
-1. **From Kodi** (default). The add-on starts the daemon, and the daemon reads all add-on settings from Kodi over JSON-RPC.
-   You change them in Kodi: _Add-ons → Elementum → Configure_.
-   See [Kodi add-on settings]({{%relref "kodi-settings.md"%}}).
-2. **From the command line and a config file** (server mode). You start the daemon yourself (Linux daemon, Windows service, Docker),
-   pass options as command-line flags, and optionally load settings from a YAML/JSON file instead of asking Kodi.
-   See [Command-line options]({{%relref "command-line.md"%}}).
+1. **From Kodi.** You change settings in Kodi, _Add-ons → Elementum → Configure_, see [Kodi add-on settings]({{%relref "kodi-settings.md"%}}).
+   Since 0.1.120 the add-on also writes them to a settings file and starts the binary with it; older versions let the binary read them from Kodi.
+2. **From a settings file**, when you run the binary yourself with `-configPath`. See [Settings file]({{%relref "command-line.md#settings-file"%}}).
 
-Command-line flags are not Kodi settings: they control where the daemon listens, which paths it uses and how it finds Kodi.
-Everything else (storage, BitTorrent, library, tracking, ...) is a Kodi setting, which in server mode can come from the config file.
+Command-line flags are not settings: they control where Elementum listens, which paths it uses, its login, and how it finds Kodi.
+Everything else (storage, BitTorrent, library, tracking, providers, ...) is a setting.
+The built-in search keeps its own settings, see [Built-in search]({{% relref "/burst/builtin.md" %}}).
 
 {{% pages description="true" display="cards" %}}

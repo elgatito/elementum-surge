@@ -29,7 +29,9 @@ The repository works on any platform and keeps Elementum, Burst and Context up t
 Open _Add-ons → Install from repository → ElementumOrg repository_ and install:
 
 - **Elementum** (_Video add-ons_): the add-on itself.
-- **Elementum Burst** (_Program add-ons_): searches torrent providers. Without it Elementum finds nothing.
+- **Elementum Burst** (_Program add-ons_): searches torrent providers. Elementum installs it by itself if no search add-on is there.
+  Since 0.1.120 Elementum can also search on its own: set _Elementum → Configure → Providers → Search torrents with_ to _Built-in search_
+  and choose providers in _Built-in search settings_ in Elementum's main menu. See [Torrent search]({{% relref "/burst/_index.md" %}}).
 - **Elementum Context** (_Context menus_, optional): adds "Elementum" items to the context menu of your Kodi library.
 
 You can also install the Elementum zip from [Downloads]({{% relref "platforms-page.md" %}}) directly. Use the _all-in-one_ zip, it works on every platform.

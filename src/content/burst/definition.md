@@ -1,11 +1,14 @@
 +++
 title = "Provider definition reference"
 description = "Syntax of provider definitions in JSON, every key with its values and examples"
-weight = 2
+weight = 3
 +++
 
 A provider definition tells Burst how to search a site and how to read the results.
 This page describes every key Burst understands. To create and test a provider, see [How to add a provider]({{% relref "create.md" %}}).
+
+The same definitions are used by Elementum's [built-in search]({{% relref "builtin.md" %}}). It reads every key on this page the same way,
+except the Python expressions (`parser`, `login_object`, `login_headers`, `post_data`, `headers`), which it takes from the [`builtin` part](#the-builtin-part).
 
 ## File format
 
@@ -339,3 +342,27 @@ A public HTML tracker, 1337x (some fallback queries left out):
 A search for _The Matrix (1999)_ opens `https://www.1337x.to/search/The+Matrix+1999/1/`. Then Burst reads the rows and opens each result page (`subpage`) to find the magnet link.
 
 See [`providers.json`](https://github.com/elgatito/script.elementum.burst/blob/master/burst/providers/providers.json) for many more examples.
+
+## The `builtin` part
+
+Elementum cannot run Python, so every provider in `providers.json` also has its Python expressions as JSON, under `builtin`:
+
+```json
+"parser": {
+    "name": "item('a', order=2)",
+    "torrent": "'https://www.1337x.to%s' % item(tag='a', attribute='href', order=2)"
+},
+"builtin": {
+    "parser": {
+        "name": {"nth": 2, "tag": "a"},
+        "torrent": {"op": "format", "format": "https://www.1337x.to%s", "arg": {"attr": "href", "nth": 2, "tag": "a"}}
+    }
+}
+```
+
+Burst ignores `builtin`. Don't edit it by hand: change the provider as usual and run `make builtin` (`scripts/builtin.py`),
+which writes it from the Python expressions; CI fails when the two don't match. The script also converts a file of your own providers:
+`python3 scripts/builtin.py my-providers.json`. An expression it doesn't understand gives `"builtin": {"unsupported": "..."}`,
+and the provider is searched by Burst only.
+
+The JSON forms are described in [Built-in search → Parser fields]({{% relref "builtin.md#parser-fields" %}}).

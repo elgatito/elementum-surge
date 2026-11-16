@@ -1,7 +1,7 @@
 +++
 title = "Cloudflare-protected trackers"
 description = "What to enable so searches pass Cloudflare checks, and what breaks them"
-weight = 5
+weight = 6
 +++
 
 <!--more-->

@@ -1,7 +1,7 @@
 +++
 title = "Donate"
 description = "Support Elementum development"
-weight = 9
+weight = 10
 menuPre = "<i class='fas fa-fw fa-mug-hot'></i> "
 +++
 

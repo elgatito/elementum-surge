@@ -1,7 +1,7 @@
 +++
 title = "Contribute"
 description = "Help to improve Elementum"
-weight = 8
+weight = 9
 menuPre = "<i class='fas fa-fw fa-code-branch'></i> "
 +++
 

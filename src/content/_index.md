@@ -1,15 +1,16 @@
 +++
 title = "Elementum"
 type = "home"
-description = "Elementum torrent streaming add-on for Kodi and the LT2http streaming engine: installation, configuration, help and release notes."
+description = "Elementum, the torrent streaming application for Kodi, servers and apps, and the LT2http streaming engine: installation, configuration, integrations, help and release notes."
 +++
 
-**Stream torrents in Kodi.** Documentation of the ElementumOrg projects: the Elementum add-on and the LT2http streaming engine.
+**Stream torrents in Kodi, on a server, or in your own app.** Documentation of the ElementumOrg projects: Elementum and the LT2http streaming engine.
 
 ## Elementum
 
-Elementum finds movies and TV shows with the [Burst](burst/) search add-on, starts playing while the torrent downloads,
-keeps a virtual library in Kodi and syncs your watch history with Trakt, Simkl or MDBList.
+Elementum finds movies and TV shows on torrent sites with its own [built-in search](burst/builtin/) or the [Burst](burst/) add-on,
+starts playing while the torrent downloads, keeps a virtual library in Kodi and syncs your watch history with Trakt, Simkl, MDBList or Scrob.
+It runs as a Kodi add-on, or on its own on a server or in Docker, and other apps — like the Samsung TV app — use it through its [JSON API](integrations/json-api/).
 Latest releases: Elementum **{{< version "plugin.video.elementum" >}}** · Burst **{{< version "script.elementum.burst" >}}** · Context **{{< version "context.elementum" >}}**.
 
 {{< cards >}}
@@ -19,8 +20,11 @@ Set up Elementum in Kodi in a few steps.
 {{% card title="Configure" icon="sliders" href="configuration/" %}}
 Every add-on setting, and running the daemon on a server.
 {{% /card %}}
-{{% card title="Burst" icon="magnifying-glass" href="burst/" %}}
-Torrent search add-on: providers, private trackers, custom definitions.
+{{% card title="Torrent search" icon="magnifying-glass" href="burst/" %}}
+Built-in search and Burst: providers, private trackers, your own definitions.
+{{% /card %}}
+{{% card title="Use from outside" icon="plug" href="integrations/" %}}
+JSON API, Web UI, Docker and servers.
 {{% /card %}}
 {{% card title="Context" icon="list" href="context/" %}}
 Play any movie or episode in Kodi with Elementum.
@@ -37,7 +41,8 @@ Changes in every release of Elementum.
 
 1. In Kodi, open _Settings → Services → Control_ and enable both **Application control** options (remote control).
 2. Download the **ElementumOrg repository** zip from [Downloads](getting-started/platforms-page/) and install it with _Add-ons → Install from zip file_.
-3. Open _Add-ons → Install from repository → ElementumOrg repository_ and install **Elementum**, and **Elementum Burst** for searching.
+3. Open _Add-ons → Install from repository → ElementumOrg repository_ and install **Elementum**. It installs **Elementum Burst** for searching,
+   or search with Elementum's own [built-in search](burst/builtin/).
 
 More details and screenshots are in [Installation](getting-started/installation/).
 

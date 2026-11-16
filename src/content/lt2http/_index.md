@@ -1,7 +1,7 @@
 +++
 title = "LT2http"
 description = "LibTorrent-to-HTTP: torrent download and streaming engine with a REST API"
-weight = 6
+weight = 7
 menuPre = "<i class='fas fa-fw fa-server'></i> "
 +++
 

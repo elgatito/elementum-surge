@@ -1,7 +1,7 @@
 +++
 title = "Help & support"
 description = "FAQ, log files and reporting problems"
-weight = 3
+weight = 5
 menuPre = "<i class='fas fa-fw fa-life-ring'></i> "
 +++
 

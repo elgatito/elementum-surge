@@ -1,7 +1,7 @@
 +++
 title = "Context add-on"
 description = "Play any movie or episode in Kodi with Elementum"
-weight = 5
+weight = 6
 menuPre = "<i class='fas fa-fw fa-list'></i> "
 +++
 

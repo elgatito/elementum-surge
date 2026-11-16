@@ -1,7 +1,7 @@
 +++
 title = "Release notes"
 description = "What changed in each release"
-weight = 7
+weight = 8
 menuPre = "<i class='fas fa-fw fa-bullhorn'></i> "
 +++
 

@@ -1,8 +1,11 @@
 +++
 title = "How to add a provider"
-description = "Write a provider definition for Burst"
-weight = 1
+description = "Write a provider definition for Burst and the built-in search"
+weight = 2
 +++
+
+A provider added to Burst's _providers.json_ comes to Elementum's [built-in search]({{% relref "builtin.md" %}}) too, with the next Elementum release.
+To use a provider only for yourself, without a pull request, see [How to override a provider]({{% relref "override.md" %}}).
 
 ## Preparation
 
@@ -16,6 +19,7 @@ To add a new provider:
 - Clone your fork: `git clone git@github.com:yourusername/script.elementum.burst.git`
 - Create a new branch, e.g. `git checkout -b my_provider`
 - Make your changes to _providers.json_.
+- Run `make builtin`: it writes the [`builtin` part]({{% relref "definition.md#the-builtin-part" %}}) that Elementum's built-in search reads. CI checks it.
 - Push them to GitHub with `git push origin my_provider`
 - GitHub will offer to open a pull request, so your changes can be included in Burst.
 

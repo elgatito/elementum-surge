@@ -1,11 +1,15 @@
 +++
 title = "How to override a provider"
 description = "Change a provider or add your own, without changing Burst"
-weight = 3
+weight = 4
 +++
 
 There are a few ways to change a provider or add your own locally.
-All files below go into Burst's data folder, _USERDATA/addon_data/script.elementum.burst/_.
+
+For Elementum's built-in search, put the changes in a JSON file in Elementum's `providers/` folder instead: see
+[Built-in search → Your own providers]({{% relref "builtin.md#your-own-providers" %}}). It reads JSON only, not `overrides.py`.
+
+The rest of this page is about the Burst add-on. All files below go into Burst's data folder, _USERDATA/addon_data/script.elementum.burst/_.
 See [where to find the USERDATA folder](https://kodi.wiki/view/Log_file/Advanced#Location).
 
 ### Add a custom provider with a JSON file
