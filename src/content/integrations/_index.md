@@ -39,8 +39,8 @@ Elementum has one optional login, `-localLogin` and `-localPassword`. In Kodi it
 Elementum is made for a network you trust, like your home network.
 
 - **Set a login** on any network you do not fully trust, and never expose the port to the internet. Use a VPN to reach it from outside.
-- Browsers may call Elementum from any web page (CORS allows every origin), and many Kodi routes act on a plain `GET`, such as `/shutdown`.
-  A login stops a page you visit from using Elementum through your browser.
+- A web page you visit cannot use Elementum's Kodi routes or the Web UI through your browser: Elementum refuses requests a browser makes
+  for another site. The JSON API is open to every origin (CORS), as apps need it, so a login is what protects it.
 - `/files/` has no login, so that players can open the files Elementum serves.
 - Notifications sent to API clients can contain file paths or addresses from error messages.
 - The [settings file]({{% relref "/configuration/elementum/command-line.md#settings-file" %}}) and the built-in search's `providers/settings.json` hold tokens and passwords: keep them private.
