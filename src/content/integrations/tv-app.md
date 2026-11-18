@@ -38,8 +38,8 @@ Turn on Developer Mode on the TV, then install the `.wgt` with **Apps2Samsung** 
 
 ### LG
 
-Install the `.ipk` with [webOS Dev Manager](https://github.com/webosbrew/dev-manager-desktop) (recommended), the `ares-*` tools, or Homebrew Channel on rooted TVs.
-With Developer Mode the session expires and the TV then removes the app: extend it from time to time.
+Install the `.ipk` with [webOS Dev Manager](https://github.com/webosbrew/dev-manager-desktop) (recommended; it also manages rooted TVs with Homebrew Channel) or the `ares-*` tools.
+With Developer Mode the session expires and the TV then removes the app: extend it from time to time (the TV must be online). Rooted TVs don't need Developer Mode.
 
 ## First start
 
