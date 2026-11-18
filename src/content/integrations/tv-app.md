@@ -6,11 +6,11 @@ weight = 3
 
 The Elementum TV app is a front-end you control with the TV remote. Browse movies and shows, search, pick a stream and play it on the TV.
 It does not run Elementum itself: it talks to an Elementum on your network through the [JSON API]({{% relref "json-api.md" %}}).
-The app is a separate project: [ElementumOrg/elementum-tizen](https://github.com/ElementumOrg/elementum-tizen).
+The app is a separate project: [ElementumOrg/elementum-tv](https://github.com/ElementumOrg/elementum-tv).
 
 > [!WARNING]
 > **LG (webOS) support is experimental.** Nobody has tested it on a real LG TV yet. If you try it, please
-> [report how it went](https://github.com/ElementumOrg/elementum-tizen/issues/new/choose) (see [Reporting problems](#reporting-problems)).
+> [report how it went](https://github.com/ElementumOrg/elementum-tv/issues/new/choose) (see [Reporting problems](#reporting-problems)).
 
 ## Requirements
 
@@ -25,12 +25,12 @@ The app is a separate project: [ElementumOrg/elementum-tizen](https://github.com
 | Samsung (Tizen) | Tizen 4.0 or newer (2018 models and later) | `.wgt` |
 | LG (webOS) | webOS 4.0 or newer (2018 models and later). **Experimental.** | `.ipk` |
 
-Both packages are on [GitHub Releases](https://github.com/ElementumOrg/elementum-tizen/releases/latest).
+Both packages are on [GitHub Releases](https://github.com/ElementumOrg/elementum-tv/releases/latest).
 The app is in no TV store, so you install it yourself ("sideload").
 
 ## Install
 
-The step-by-step guide is [INSTALL.md](https://github.com/ElementumOrg/elementum-tizen/blob/main/INSTALL.md) in the app's repository. In short:
+The step-by-step guide is [INSTALL.md](https://github.com/ElementumOrg/elementum-tv/blob/main/INSTALL.md) in the app's repository. In short:
 
 ### Samsung
 
@@ -110,5 +110,5 @@ Update Elementum and the TV app together: a new app may need a newer Elementum.
 
 ## Reporting problems
 
-Open an issue in [elementum-tizen](https://github.com/ElementumOrg/elementum-tizen/issues/new/choose).
+Open an issue in [elementum-tv](https://github.com/ElementumOrg/elementum-tv/issues/new/choose).
 LG users: use the **LG webOS report** template and say which TV model and webOS version you have and what worked.
