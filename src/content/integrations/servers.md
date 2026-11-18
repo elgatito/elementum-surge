@@ -5,7 +5,7 @@ weight = 2
 +++
 
 Elementum does not need to run on the Kodi device. It can run on a NAS, a server or in Docker, and serve Kodi
-devices, the TV app and other [apps]({{% relref "json-api.md" %}}) from there.
+devices, the [TV app]({{% relref "tv-app.md" %}}) and other [apps]({{% relref "json-api.md" %}}) from there.
 
 ## Docker
 
@@ -33,7 +33,7 @@ This is what the repository sets up: Kodi runs the add-on in client mode, and El
 
 ### On its own, without Kodi
 
-To serve only apps (for example the TV app), let Elementum keep its settings in a file instead of asking a Kodi.
+To serve only apps (for example the [TV app]({{% relref "tv-app.md" %}})), let Elementum keep its settings in a file instead of asking a Kodi.
 In `docker-compose.yml`, replace `-remoteHost` with a settings file in the data volume:
 
 ```yaml

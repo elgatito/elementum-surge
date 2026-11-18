@@ -19,6 +19,10 @@ aliases = ["/getting-started/faq/"]
 Yes, since 0.1.120: on a server, in Docker, or for the TV app and other apps. See [Ways to run Elementum]({{% relref "/getting-started/ways-to-run.md" %}})
 and [Use Elementum from outside]({{% relref "/integrations/_index.md" %}}).
 
+### Can I watch on my TV without Kodi?
+
+Yes, on Samsung and LG TVs with the [TV app]({{% relref "/integrations/tv-app.md" %}}). It talks to an Elementum running elsewhere on your network.
+
 ### Watched status from Trakt is not shown, "resume N seconds earlier" doesn't work, etc.
 
 Enable these options in Elementum (you don't need to set up the library in Kodi unless you want to):

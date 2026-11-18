@@ -5,7 +5,7 @@ weight = 1
 +++
 
 Since 0.1.120 Elementum can search torrent sites itself, with the providers of Burst, without Kodi and without the Burst add-on.
-It is what Elementum uses when it runs on its own or for the TV app, and in Kodi when you choose it in
+It is what Elementum uses when it runs on its own or for the [TV app]({{% relref "/integrations/tv-app.md" %}}), and in Kodi when you choose it in
 _Elementum → Configure → Providers → Search torrents with_ (see [Which search is used]({{% relref "_index.md#which-search-is-used" %}})).
 
 ## Settings in Kodi

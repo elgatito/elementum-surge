@@ -4,7 +4,7 @@ description = "Browse, search, play and manage Elementum from your own app or sc
 weight = 1
 +++
 
-The JSON API is how apps talk to Elementum: the Samsung TV app uses it, and so can your scripts and tools.
+The JSON API is how apps talk to Elementum: the [TV app]({{% relref "tv-app.md" %}}) for Samsung and LG TVs uses it, and so can your scripts and tools.
 It is part of Elementum 0.1.120 and later, on the same port as everything else (`65220` by default).
 
 - **Base URL:** `http://<elementum address>:65220/api`

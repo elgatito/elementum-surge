@@ -10,7 +10,7 @@ description = "Elementum, the torrent streaming application for Kodi, servers an
 
 Elementum finds movies and TV shows on torrent sites with its own [built-in search](burst/builtin/) or the [Burst](burst/) add-on,
 starts playing while the torrent downloads, keeps a virtual library in Kodi and syncs your watch history with Trakt, Simkl, MDBList or Scrob.
-It runs as a Kodi add-on, or on its own on a server or in Docker, and other apps — like the Samsung TV app — use it through its [JSON API](integrations/json-api/).
+It runs as a Kodi add-on, or on its own on a server or in Docker, and other apps — like the [TV app](integrations/tv-app/) for Samsung and LG TVs — use it through its [JSON API](integrations/json-api/).
 Latest releases: Elementum **{{< version "plugin.video.elementum" >}}** · Burst **{{< version "script.elementum.burst" >}}** · Context **{{< version "context.elementum" >}}**.
 
 {{< cards >}}

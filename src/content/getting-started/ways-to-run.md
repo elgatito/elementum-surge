@@ -13,7 +13,7 @@ Running inside Kodi is one way to use it, not the only one.
 | **Server for Kodi** (client mode) | You start the binary on another machine, Kodi's add-on only talks to it. | Kodi's add-on settings, read over the network. | A weak Kodi box, or a platform without an Elementum binary (Xbox, iOS, tvOS). |
 | **Standalone** | You start the binary with `-configPath`. No Kodi and no parent process needed. | A [settings file]({{% relref "/configuration/elementum/command-line.md#settings-file" %}}) (JSON or YAML). | A NAS or a server, used by [other apps]({{% relref "/integrations/_index.md" %}}). |
 | **Docker** | The [elementum-docker](https://github.com/ElementumOrg/elementum-docker) image, in any of the modes above. | As the mode it runs in. | A server, or Windows and macOS hosts. See [Docker and servers]({{% relref "/integrations/servers.md" %}}). |
-| **Server for other apps** | Any of the above. | As the mode it runs in. | The Samsung TV app, scripts and your own tools, through the [JSON API]({{% relref "/integrations/json-api.md" %}}). |
+| **Server for other apps** | Any of the above. | As the mode it runs in. | The [TV app]({{% relref "/integrations/tv-app.md" %}}) (Samsung and LG), scripts and your own tools, through the [JSON API]({{% relref "/integrations/json-api.md" %}}). |
 
 Everything is served on one port (`65220` by default, `-localPort`): the [JSON API]({{% relref "/integrations/json-api.md" %}}) under `/api`,
 the routes the Kodi add-on uses, the torrent [Web UI]({{% relref "/integrations/_index.md#web-ui" %}}) under `/web`, and the files being streamed.
