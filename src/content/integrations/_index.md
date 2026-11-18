@@ -1,6 +1,6 @@
 +++
 title = "Use Elementum from outside"
-description = "The JSON API, the Web UI, servers and Docker, and how to keep it safe"
+description = "The JSON API, the TV app, the Web UI, servers and Docker, and how to keep it safe"
 weight = 4
 menuPre = "<i class='fas fa-fw fa-plug'></i> "
 +++

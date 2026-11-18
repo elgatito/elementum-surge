@@ -8,14 +8,13 @@ The Elementum TV app is a front-end you control with the TV remote. Browse movie
 It does not run Elementum itself: it talks to an Elementum on your network through the [JSON API]({{% relref "json-api.md" %}}).
 The app is a separate project: [ElementumOrg/elementum-tizen](https://github.com/ElementumOrg/elementum-tizen).
 
-{{% callout color="orange" %}}
-**LG (webOS) support is experimental.** Nobody has tested it on a real LG TV yet. If you try it, please
-[report how it went](https://github.com/ElementumOrg/elementum-tizen/issues/new/choose) (see [Reporting problems](#reporting-problems)).
-{{% /callout %}}
+> [!WARNING]
+> **LG (webOS) support is experimental.** Nobody has tested it on a real LG TV yet. If you try it, please
+> [report how it went](https://github.com/ElementumOrg/elementum-tizen/issues/new/choose) (see [Reporting problems](#reporting-problems)).
 
 ## Requirements
 
-- **Elementum 0.1.120 or newer** with its JSON API on port `65220`. Older releases have no API and the app cannot connect.
+- **Elementum 0.1.120 or newer** with its JSON API (port `65220` by default). Older releases have no API and the app cannot connect.
   Elementum can run as the Kodi add-on, on a server or in [Docker]({{% relref "servers.md" %}}), as long as the TV can reach it on the local network.
 - **Kodi is optional.** Without it, Elementum uses its [built-in search]({{% relref "/burst/builtin.md" %}}), which you set up from the TV
   (_Settings → Built-in search settings_).
@@ -23,11 +22,11 @@ The app is a separate project: [ElementumOrg/elementum-tizen](https://github.com
 
 | Platform | TV | Package |
 |---|---|---|
-| Samsung (Tizen) | Tizen 4.0 or newer (2018 models and later), in Developer Mode | `.wgt` |
-| LG (webOS) | webOS 4.0 or newer (2018 models and later), in Developer Mode. **Experimental.** | `.ipk` |
+| Samsung (Tizen) | Tizen 4.0 or newer (2018 models and later) | `.wgt` |
+| LG (webOS) | webOS 4.0 or newer (2018 models and later). **Experimental.** | `.ipk` |
 
 Both packages are on [GitHub Releases](https://github.com/ElementumOrg/elementum-tizen/releases/latest).
-Neither app is in a TV store, so you install it yourself ("sideload").
+The app is in no TV store, so you install it yourself ("sideload").
 
 ## Install
 
@@ -35,18 +34,12 @@ The step-by-step guide is [INSTALL.md](https://github.com/ElementumOrg/elementum
 
 ### Samsung
 
-1. Turn on Developer Mode on the TV.
-2. Install the `.wgt` with **Apps2Samsung** (recommended: it signs and installs the package for you), or with the Tizen CLI.
+Turn on Developer Mode on the TV, then install the `.wgt` with **Apps2Samsung** (recommended) or the Tizen CLI.
 
 ### LG
 
-1. Install the **Developer Mode** app from the LG Content Store, sign in with an LG developer account, turn on Developer Mode and the key server, restart the TV.
-2. Install the `.ipk` with one of:
-   - [webOS Dev Manager](https://github.com/webosbrew/dev-manager-desktop) (recommended): add the TV and install the file.
-   - The `ares-*` command line tools (`npm install -g @webos-tools/cli`).
-   - Homebrew Channel, on rooted TVs.
-3. The Developer Mode session **expires**, and when it does the TV removes sideloaded apps. Extend it in the Developer Mode app from time to time.
-   Rooted TVs with Homebrew Channel have no expiry.
+Install the `.ipk` with [webOS Dev Manager](https://github.com/webosbrew/dev-manager-desktop) (recommended), the `ares-*` tools, or Homebrew Channel on rooted TVs.
+With Developer Mode the session expires and the TV then removes the app: extend it from time to time.
 
 ## First start
 
@@ -76,13 +69,17 @@ You can change them later in _Settings_.
 |---|---|
 | Arrows | Move the focus |
 | OK | Open or press |
-| Long-press OK | Context menu of a movie or episode: add to or remove from the library, mark watched or unwatched |
-| Back | Go back; at the home screen, asks to exit |
-| Play, Pause, Stop | Control the player |
-| Fast forward, Rewind | Seek 60 seconds (the player also seeks in 10 second steps) |
-| Green | Next audio track |
-| Yellow | Next subtitle track |
+| Long-press OK | Menu of a movie, show or episode: add to or remove from the library (movies and shows), mark watched or unwatched (needs a linked tracker such as Trakt) |
+| Back | Go back; at the home screen, asks to exit. Closes the player too. |
+| Play, Pause | Play or pause |
+| Stop | Close the player |
+| Fast forward, Rewind | Seek 60 seconds forward or back |
+| Left, Right on the progress bar | Seek 10 seconds back or forward (Up from the buttons selects the bar) |
+| Green (player) | Next audio track |
+| Yellow (player) | Next subtitle track, or off |
 | Magic Remote pointer (LG) | Click presses. Hovering highlights buttons, sidebar entries and text fields. |
+
+While the on-screen player controls are hidden, the first arrow or OK press only shows them.
 
 ## Limitations
 
@@ -106,7 +103,7 @@ Update Elementum and the TV app together: a new app may need a newer Elementum.
 ## Troubleshooting
 
 - **Cannot connect:** the TV and the Elementum machine must be on the same network. Check the address and port, that a firewall does not block the port,
-  and that Elementum is 0.1.120 or newer. Opening `http://<address>:65220/api/docs` in a browser on your computer tells you if the API is reachable.
+  and that Elementum is 0.1.120 or newer. Opening `http://<address>:65220/api/docs` in a browser on another device shows Elementum's API page (no login needed) if the API is reachable.
 - **Login rejected:** enter the same login and password as in Elementum's settings.
 - **No search results:** set up the [built-in search]({{% relref "/burst/builtin.md" %}}) in the app's settings, or choose it in Elementum.
 - **The app vanished from an LG TV:** the Developer Mode session expired. Turn it on again, install the app again and extend the session.
@@ -114,4 +111,4 @@ Update Elementum and the TV app together: a new app may need a newer Elementum.
 ## Reporting problems
 
 Open an issue in [elementum-tizen](https://github.com/ElementumOrg/elementum-tizen/issues/new/choose).
-LG users: use the **LG webOS report** template and say which TV model and webOS version you have and what worked. Reports are how LG support will leave "experimental".
+LG users: use the **LG webOS report** template and say which TV model and webOS version you have and what worked.

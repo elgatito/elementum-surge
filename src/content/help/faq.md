@@ -21,7 +21,7 @@ and [Use Elementum from outside]({{% relref "/integrations/_index.md" %}}).
 
 ### Can I watch on my TV without Kodi?
 
-Yes, on Samsung and LG TVs with the [TV app]({{% relref "/integrations/tv-app.md" %}}). It talks to an Elementum running elsewhere on your network.
+Yes, on Samsung TVs with the [TV app]({{% relref "/integrations/tv-app.md" %}}), and on LG TVs experimentally. It talks to an Elementum running elsewhere on your network.
 
 ### Watched status from Trakt is not shown, "resume N seconds earlier" doesn't work, etc.
 
