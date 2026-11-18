@@ -8,10 +8,10 @@ The Elementum TV app is a front-end you control with the TV remote. Browse movie
 It does not run Elementum itself: it talks to an Elementum on your network through the [JSON API]({{% relref "json-api.md" %}}).
 The app is a separate project: [ElementumOrg/elementum-tizen](https://github.com/ElementumOrg/elementum-tizen).
 
-{{% notice warning %}}
+{{% callout color="orange" %}}
 **LG (webOS) support is experimental.** Nobody has tested it on a real LG TV yet. If you try it, please
 [report how it went](https://github.com/ElementumOrg/elementum-tizen/issues/new/choose) (see [Reporting problems](#reporting-problems)).
-{{% /notice %}}
+{{% /callout %}}
 
 ## Requirements
 
